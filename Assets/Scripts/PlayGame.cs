@@ -10,6 +10,7 @@ public class PlayGame: MonoBehaviour
     public ResultScript RS;
     public DurationControl DC;
     public UISliding UI;
+    public PlayerState PS;
 
     public TimerScript TS;
     public float streamDurationBar;
@@ -47,6 +48,7 @@ public class PlayGame: MonoBehaviour
             WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
             TS.TimeStart(streamDurationTimer);
             checkIfStreamEnded();
+            PS.Typing();
         }
 
 
@@ -95,6 +97,7 @@ public class PlayGame: MonoBehaviour
         if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {       
             UI.OpenResultsScreen();
+            PS.Idle();
         }
     }
 

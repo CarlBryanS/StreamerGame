@@ -36,7 +36,11 @@ public class BillsScript : MonoBehaviour
     {
         DayCount+= 1;
         MonthCount += 1;
-        if (DayCount>= DayThreshold || MonthCount==MonthThreshold)
+        if(MonthCount == MonthThreshold)
+        {
+            UI.OpenBillsScreen();
+        }
+        else if (DayCount>= DayThreshold)
         {
             WP.Electricity += 25;
             WP.Water += 25;
@@ -49,10 +53,8 @@ public class BillsScript : MonoBehaviour
 
     public void ConfirmBills()
     {
-        Debug.Log(MonthCount);
         if (MonthCount >= MonthThreshold)
         {
-            Debug.Log("wow");
             WP.Money -= (WP.Electricity + WP.Water);
             WP.Electricity = 0;
             WP.Water = 0;

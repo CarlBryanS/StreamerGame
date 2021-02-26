@@ -10,6 +10,7 @@ public class GetInBed : MonoBehaviour
 
     public TimerScript TS;
     public UISliding UI;
+    public PlayerState PS;
 
 
     public WORLDPARAMETERS WP;
@@ -35,6 +36,7 @@ public class GetInBed : MonoBehaviour
            {
                 WP.Health += Time.unscaledDeltaTime / 2;
                 TS.TimeStart(streamDuration);
+                PS.Sleeping();
             }
 
         }
@@ -48,6 +50,7 @@ public class GetInBed : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) || !HoveringOnBed)
         {
+            PS.Idle();
             HoldingBed = false;
         }
             
