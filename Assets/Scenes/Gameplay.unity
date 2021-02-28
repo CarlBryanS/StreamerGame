@@ -1481,7 +1481,7 @@ MonoBehaviour:
   RS: {fileID: 852684670}
   DC: {fileID: 1924798109}
   UI: {fileID: 1924798108}
-  PS: {fileID: 0}
+  PS: {fileID: 1924798110}
   TS: {fileID: 165900715}
   streamDurationBar: 50
   streamDurationTimer: 75
@@ -5778,8 +5778,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23.4, y: -43.1}
-  m_SizeDelta: {x: 83.689026, y: 13.499996}
+  m_AnchoredPosition: {x: -4.85, y: -39.596}
+  m_SizeDelta: {x: 27.17949, y: 6.492358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979233833
 MonoBehaviour:
@@ -7963,8 +7963,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.21, y: -38.8}
-  m_SizeDelta: {x: 64.17998, y: 13.19651}
+  m_AnchoredPosition: {x: 3.6, y: -12.91}
+  m_SizeDelta: {x: 71.00047, y: 3.6256638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290559286
 MonoBehaviour:
@@ -9603,7 +9603,7 @@ MonoBehaviour:
   RS: {fileID: 852684670}
   DC: {fileID: 1924798109}
   UI: {fileID: 1924798108}
-  PS: {fileID: 0}
+  PS: {fileID: 1924798110}
   TS: {fileID: 165900715}
   streamDurationBar: 50
   streamDurationTimer: 75
@@ -12240,7 +12240,7 @@ MonoBehaviour:
   RS: {fileID: 852684670}
   DC: {fileID: 1924798109}
   UI: {fileID: 1924798108}
-  PS: {fileID: 0}
+  PS: {fileID: 1924798110}
   TS: {fileID: 165900715}
   streamDurationBar: 50
   streamDurationTimer: 75
