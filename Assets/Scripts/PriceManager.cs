@@ -34,7 +34,7 @@ public class PriceManager : MonoBehaviour
         {
             for (int i = 0; i < upgrades.Length; i++)
             {
-                upgrades[i].GetComponent<PriceManager>().upgradeCost *= 2;
+                upgrades[i].GetComponent<PriceManager>().upgradeCost += 100;
             }
         }
     }

@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayGame: MonoBehaviour
 {
+    public GameObject Spawner;
+
     public WORLDPARAMETERS WP;
     public ResultScript RS;
     public DurationControl DC;
@@ -42,13 +44,18 @@ public class PlayGame: MonoBehaviour
     private void Update()
     {
         checkIfStreaming();
-        if(amIStreaming)
+        if (amIStreaming)
         {
             WP.Health -= Time.unscaledDeltaTime / streamDurationBar;
             WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
             TS.TimeStart(streamDurationTimer);
             checkIfStreamEnded();
             PS.Typing();
+            Spawner.SetActive(true);
+        }
+        else
+        {
+            Spawner.SetActive(false);
         }
 
 
@@ -76,6 +83,7 @@ public class PlayGame: MonoBehaviour
                 amIStreaming = true;
                 UI.CloseGameScreen();
                 NotEnoughIndicator.SetActive(false);
+                FindObjectOfType<SoundManager>().playTypingSound();
             }
             else
             {

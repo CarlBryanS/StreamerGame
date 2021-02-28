@@ -17,10 +17,10 @@ public class BuyGame : MonoBehaviour
         switch (this.gameObject.name)
         {
             case "BuyMinecraft":
-                if (WP.Money >= 100 && WP.gamingRigStat >=2)
+                if (WP.Money >= 1000 && WP.gamingRigStat >=2)
                 {
                     owned.SetActive(true);
-                    WP.Money -= 100;
+                    WP.Money -= 1000;
                     MC.SetActive(true);
                     for (int i = 0; i < bgExtras.Length; i++)
                     {
@@ -29,10 +29,10 @@ public class BuyGame : MonoBehaviour
                 }
                 break;
             case "BuyCSGO":
-                if (WP.Money >= 500 && WP.gamingRigStat >= 3)
+                if (WP.Money >= 2500 && WP.gamingRigStat >= 3)
                 {
                     owned.SetActive(true);
-                    WP.Money -= 500;
+                    WP.Money -= 2500;
                     CSGO.SetActive(true);
                     for (int i = 0; i < bgExtras.Length; i++)
                     {
@@ -41,11 +41,11 @@ public class BuyGame : MonoBehaviour
                 }
                 break;
             case "BuySims4":
-                if (WP.Money >= 1000 && WP.gamingRigStat >= 2)
+                if (WP.Money >= 5000 && WP.gamingRigStat >= 2)
                 {
                     owned.SetActive(true);
                     SIMS4.SetActive(true);
-                    WP.Money -= 1000;
+                    WP.Money -= 5000;
                     for (int i = 0; i < bgExtras.Length; i++)
                     {
                         bgExtras[i].SetActive(false);

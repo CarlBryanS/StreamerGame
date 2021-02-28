@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4876803299092402263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4876803299092402262}
+  - component: {fileID: 4876803299092402259}
+  - component: {fileID: 4876803299092402260}
+  - component: {fileID: 4876803299092402261}
+  - component: {fileID: 4876803299092402258}
+  - component: {fileID: 4876803299092402257}
+  m_Layer: 0
+  m_Name: GAMEMANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4876803299092402262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876803299092402263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.57190037, y: 0.59923744, z: -0.0323143}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4876803299092402259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876803299092402263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152b52997bc951341b2988ce2ccf0881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeScreen: {fileID: 0}
+  ResultsScreen: {fileID: 0}
+  GameScreen: {fileID: 0}
+  BillsScreen: {fileID: 0}
+  GameStoreScreen: {fileID: 0}
+  FoodStoreScreen: {fileID: 0}
+  UIActive: 0
+  GameScreenActive: 0
+  gameStoreButton: {fileID: 0}
+  foodStoreButton: {fileID: 0}
+  CloseUpgradeScreenButton: {fileID: 0}
+  OpenUpgradeScreenButton: {fileID: 0}
+  DurationSlider: {fileID: 0}
+--- !u!114 &4876803299092402260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876803299092402263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e463e0fa1b071a47b75d1c01b270b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  fansText: {fileID: 0}
+  Energy: 0
+  Health: 0
+  Money: 500
+  Fans: 1
+  Viewers: 0
+  tempHealth: 0
+  tempEnergy: 0
+  Electricity: 0
+  Water: 0
+  Rent: 0
+  viewerCap: 0
+  gamingRigStat: 1
+  socialMediaStat: 0
+--- !u!114 &4876803299092402261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876803299092402263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373c1915f0e93ea4f8ea8a6c927c0ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WP: {fileID: 4876803299092402260}
+  addViewCap: 10
+  addSMStat: 1
+  addRigStat: 1
+  InternetPM: {fileID: 0}
+  RigPM: {fileID: 0}
+  SocialMediaPM: {fileID: 0}
+--- !u!114 &4876803299092402258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876803299092402263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19700773c5e79840b662ff13be404a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WP: {fileID: 4876803299092402260}
+  DurationSlider: {fileID: 0}
+  DurationValue: 0
+  returnedValue: 0
+--- !u!114 &4876803299092402257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876803299092402263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645ce042d7a5ea34db2a492ba0f685e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BrendanAnim: {fileID: 0}
+  Brendan: {fileID: 0}

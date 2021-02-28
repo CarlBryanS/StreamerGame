@@ -22,7 +22,7 @@ public class UpgradeScript : MonoBehaviour
         {
             WP.Money -= InternetPM.upgradeCost;
             
-            InternetPM.upgradeCost *= 5;
+            InternetPM.upgradeCost += 100;
 
             WP.viewerCap += addViewCap;
             Debug.Log("You have upgraded Internet " + WP.viewerCap);
@@ -37,7 +37,7 @@ public class UpgradeScript : MonoBehaviour
         {
             WP.Money -= RigPM.upgradeCost;
 
-            RigPM.upgradeCost *= 5;
+            RigPM.upgradeCost += 100;
 
             WP.gamingRigStat += addRigStat;
 
@@ -52,7 +52,7 @@ public class UpgradeScript : MonoBehaviour
         {
             WP.Money -= SocialMediaPM.upgradeCost;
 
-            SocialMediaPM.upgradeCost *= 5;
+            SocialMediaPM.upgradeCost += 100;
 
             WP.socialMediaStat += addSMStat;
             Debug.Log("You have upgraded Social Media " + WP.socialMediaStat);

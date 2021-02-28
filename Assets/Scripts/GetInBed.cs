@@ -12,10 +12,12 @@ public class GetInBed : MonoBehaviour
     public UISliding UI;
     public PlayerState PS;
 
+    public GameObject Light;
 
     public WORLDPARAMETERS WP;
 
-    public float streamDuration;
+    public float streamDurationTimer;
+    public float streamDurationBar;
     private void OnMouseEnter()
     {
           HoveringOnBed = true;       
@@ -30,15 +32,24 @@ public class GetInBed : MonoBehaviour
     {
         checkIfSleeping();
         //sleep
-        if(HoldingBed == true)
+        if (HoldingBed == true)
         {
-           if(WP.Health <= 0.999f)
-           {
-                WP.Health += Time.unscaledDeltaTime / 2;
-                TS.TimeStart(streamDuration);
+            if (WP.Health <= 0.999f && !UI.UIActive)
+            {
+                WP.Health += Time.unscaledDeltaTime / streamDurationBar;
+                TS.TimeStart(streamDurationTimer);
                 PS.Sleeping();
+                Light.SetActive(false);
+            }
+            else
+            {
+                PS.Idle();
             }
 
+        }
+        else
+        {
+            Light.SetActive(true);
         }
     }
 

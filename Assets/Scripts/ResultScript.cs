@@ -15,6 +15,8 @@ public class ResultScript : MonoBehaviour
     public float ViewersForTheDay;
     public float FansGainedValue;
 
+    
+
     public void ResetResults()
     {
         MoneyGainedValue = 0;

@@ -8,6 +8,7 @@ public class WORLDPARAMETERS : MonoBehaviour
 {
     public TMP_Text moneyText;
     public TMP_Text fansText;
+    public TMP_Text currentRigText;
 
     public float Energy;
     public float Health;
@@ -37,7 +38,7 @@ public class WORLDPARAMETERS : MonoBehaviour
         socialMediaStat = 1;
         Health = 1;
         Energy = 1;
-        Money = 500;
+        Money = 0;
         Fans = 0;
         Viewers = 0;
         Electricity = 0;
@@ -47,6 +48,7 @@ public class WORLDPARAMETERS : MonoBehaviour
 
     private void Update()
     {
+        currentRigText.SetText("Current Rig Level: " + gamingRigStat);
        moneyText.SetText(Money.ToString());
        fansText.SetText(Fans.ToString());
     }
