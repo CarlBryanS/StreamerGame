@@ -27,6 +27,10 @@ public class PlayGame: MonoBehaviour
     public int GTMax;
     public int GTMin;
 
+    public int tempViewers;
+    public int tempFans;
+    public int tempMoney;
+
     private void Awake()
     {
         WP.tempHealth = WP.Health;
@@ -64,26 +68,43 @@ public class PlayGame: MonoBehaviour
     {
         WP.tempEnergy = WP.Energy;
         WP.tempHealth = WP.Health;
+
+        tempFans = WP.Fans;
+        tempMoney = WP.Money;
+        tempViewers = WP.Viewers;
+       // WP.Viewers = 0;
         DC.SubtractFromSlider();
         if (DC.DurationValue != 0)
-        {       
+        {
+
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
                 
                 WP.tempHealth -= DC.DurationValue;
                 WP.tempEnergy -= DC.DurationValue;
 
-                WP.Viewers += Mathf.Clamp((WP.Fans / 2 + (GameTrend)) / DC.ReturnDurationInt(), WP.Fans, WP.viewerCap);
-                WP.Money += ((WP.Viewers / 2 + (GameTrend)) / DC.ReturnDurationInt());
-                WP.Fans += Mathf.Clamp(((WP.Viewers * WP.socialMediaStat / 2) / DC.ReturnDurationInt()), 0, WP.Viewers);
+                WP.Viewers = Mathf.Clamp(Random.Range(1,GameTrend) * DC.ReturnDurationInt(), WP.Fans, WP.viewerCap);
+                RS.ViewersForTheDay = WP.Viewers;
 
-                RS.ViewersForTheDay += Mathf.Clamp((WP.Fans / 2 + (GameTrend)) / DC.ReturnDurationInt(), WP.Fans, WP.viewerCap);
-                RS.MoneyGainedValue += ((WP.Viewers / 2 + (GameTrend)) / DC.ReturnDurationInt());
-                RS.FansGainedValue += Mathf.Clamp(((WP.Viewers/2 * WP.socialMediaStat) / DC.ReturnDurationInt()), 0, WP.Viewers);
+                
+               // RS.ViewersForTheDay += Mathf.Clamp(Random.Range(0, GameTrend), WP.Fans, WP.viewerCap);
+
+                WP.Fans += Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat), 0, WP.Viewers);
+                RS.FansGainedValue = WP.Fans - tempFans;
+                //RS.FansGainedValue += Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat), 0, WP.Viewers);
+
+                WP.Money += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers);
+                RS.MoneyGainedValue = WP.Money - tempMoney;
+               // RS.MoneyGainedValue += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers);
+
+
+
+                
                 amIStreaming = true;
                 UI.CloseGameScreen();
                 NotEnoughIndicator.SetActive(false);
                 FindObjectOfType<SoundManager>().playTypingSound();
+                HelpScreenScript.TPCBool = true;
             }
             else
             {
@@ -95,7 +116,7 @@ public class PlayGame: MonoBehaviour
     void checkIfStreaming()
     {
         if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
-        {
+        {         
             amIStreaming = false;
         }
     }

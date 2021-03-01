@@ -35,7 +35,7 @@ public class WORLDPARAMETERS : MonoBehaviour
     private void Awake()
     {
         viewerCap = 5;
-        socialMediaStat = 1;
+        socialMediaStat = 0;
         Health = 1;
         Energy = 1;
         Money = 0;

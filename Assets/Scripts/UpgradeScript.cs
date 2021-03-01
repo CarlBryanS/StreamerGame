@@ -20,9 +20,10 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= InternetPM.upgradeCost)
         {
+            HelpScreenScript.TInternetBool = true;
             WP.Money -= InternetPM.upgradeCost;
             
-            InternetPM.upgradeCost += 100;
+            InternetPM.upgradeCost += 25;
 
             WP.viewerCap += addViewCap;
             Debug.Log("You have upgraded Internet " + WP.viewerCap);
@@ -35,6 +36,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= RigPM.upgradeCost)
         {
+            HelpScreenScript.TGamingRigBool = true;
             WP.Money -= RigPM.upgradeCost;
 
             RigPM.upgradeCost += 100;
@@ -50,9 +52,10 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= SocialMediaPM.upgradeCost)
         {
+            HelpScreenScript.TSocialMediaMarketingBool = true;
             WP.Money -= SocialMediaPM.upgradeCost;
 
-            SocialMediaPM.upgradeCost += 100;
+            SocialMediaPM.upgradeCost += 50;
 
             WP.socialMediaStat += addSMStat;
             Debug.Log("You have upgraded Social Media " + WP.socialMediaStat);

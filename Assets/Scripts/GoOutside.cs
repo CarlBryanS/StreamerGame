@@ -16,6 +16,7 @@ public class GoOutside : MonoBehaviour
             this.GetComponent<BoxCollider>().center = new Vector3(-1.825011f, 2.067194f, -1.398365f);
             gameStoreButton.SetActive(true);
             foodStoreButton.SetActive(true);
+            HelpScreenScript.TDoorBool = true;
         }
     }
 

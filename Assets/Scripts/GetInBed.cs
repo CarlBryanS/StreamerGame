@@ -40,6 +40,7 @@ public class GetInBed : MonoBehaviour
                 TS.TimeStart(streamDurationTimer);
                 PS.Sleeping();
                 Light.SetActive(false);
+                HelpScreenScript.TSleepBool = true;
             }
             else
             {

@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip typingSound;
     public AudioClip eatSound;
     public AudioClip chatSound;
-    AudioSource AS;
+    public AudioSource AS;
     // Start is called before the first frame update
     void Start()
     {

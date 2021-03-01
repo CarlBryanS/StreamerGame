@@ -19,6 +19,7 @@ public class BuyGame : MonoBehaviour
             case "BuyMinecraft":
                 if (WP.Money >= 1000 && WP.gamingRigStat >=2)
                 {
+                    HelpScreenScript.TGameStoreBool = true;
                     owned.SetActive(true);
                     WP.Money -= 1000;
                     MC.SetActive(true);
@@ -31,6 +32,7 @@ public class BuyGame : MonoBehaviour
             case "BuyCSGO":
                 if (WP.Money >= 2500 && WP.gamingRigStat >= 3)
                 {
+                    HelpScreenScript.TGameStoreBool = true;
                     owned.SetActive(true);
                     WP.Money -= 2500;
                     CSGO.SetActive(true);
@@ -41,8 +43,9 @@ public class BuyGame : MonoBehaviour
                 }
                 break;
             case "BuySims4":
-                if (WP.Money >= 5000 && WP.gamingRigStat >= 2)
+                if (WP.Money >= 5000 && WP.gamingRigStat >= 4)
                 {
+                    HelpScreenScript.TGameStoreBool = true;
                     owned.SetActive(true);
                     SIMS4.SetActive(true);
                     WP.Money -= 5000;

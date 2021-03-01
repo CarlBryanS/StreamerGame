@@ -56,8 +56,8 @@ public class BillsScript : MonoBehaviour
             ElectricityObj.transform.localPosition = new Vector2(10.79f, 9.550006f);
             WaterObj.transform.localPosition = new Vector2(10.79f, -3.4f);
             billsImage.sprite = billsSprites[1];
-            WP.Electricity += 25;
-            WP.Water += 25;
+            WP.Electricity += 100;
+            WP.Water += 100;
             Electricity.SetText(WP.Electricity.ToString());
             Water.SetText(WP.Water.ToString());
             UI.OpenBillsScreen();
@@ -69,11 +69,20 @@ public class BillsScript : MonoBehaviour
     {
         if (MonthCount >= MonthThreshold)
         {
-            WP.Money -= (WP.Electricity + WP.Water);
-            WP.Electricity = 0;
-            WP.Water = 0;
-            UI.CloseBillsScreen();
-            MonthCount = 0;
+            if(WP.Money >= (WP.Electricity + WP.Water))
+            {
+                HelpScreenScript.TPayBool = true;
+                WP.Money -= (WP.Electricity + WP.Water);
+                WP.Electricity = 0;
+                WP.Water = 0;
+                UI.CloseBillsScreen();
+                MonthCount = 0;
+            }
+            else
+            {
+                UI.OpenGOScreen();
+            }
+           
         }
         else
         {
