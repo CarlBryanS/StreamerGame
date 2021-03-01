@@ -56,8 +56,8 @@ public class BillsScript : MonoBehaviour
             ElectricityObj.transform.localPosition = new Vector2(10.79f, 9.550006f);
             WaterObj.transform.localPosition = new Vector2(10.79f, -3.4f);
             billsImage.sprite = billsSprites[1];
-            WP.Electricity += 100;
-            WP.Water += 100;
+            WP.Electricity += 500;
+            WP.Water += 500;
             Electricity.SetText(WP.Electricity.ToString());
             Water.SetText(WP.Water.ToString());
             UI.OpenBillsScreen();

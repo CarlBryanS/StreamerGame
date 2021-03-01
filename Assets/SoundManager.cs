@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip eatSound;
     public AudioClip chatSound;
     public AudioSource AS;
+    public AudioSource Typing;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +33,9 @@ public class SoundManager : MonoBehaviour
 
     public void playTypingSound()
     {
-        AS.loop = true;
-        AS.clip = typingSound;
-        AS.Play();
+        //AS.loop = true;
+        // AS.clip = typingSound;
+        Typing.Play();
     }
     public void playEatSound()
     {

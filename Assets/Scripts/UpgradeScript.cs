@@ -12,14 +12,37 @@ public class UpgradeScript : MonoBehaviour
     public int addSMStat;
     public int addRigStat;
 
+    int InternetLevel;
+    int RigLevel;
+    int SMMLevel;
+
+    public TMP_Text InternetLevelText;
+    public TMP_Text RigLevelText;
+    public TMP_Text SMMLevelText;
+
     public PriceManager InternetPM;
     public PriceManager RigPM;
     public PriceManager SocialMediaPM;
+
+    private void Start()
+    {
+        InternetLevel = 1;
+        RigLevel = 1;
+        SMMLevel = 1;
+    }
+
+    private void Update()
+    {
+        InternetLevelText.SetText(InternetLevel.ToString());
+        RigLevelText.SetText(RigLevel.ToString());
+        SMMLevelText.SetText(SMMLevel.ToString());
+    }
 
     public void InternetUpgrade()
     {
         if (WP.Money >= InternetPM.upgradeCost)
         {
+            InternetLevel += 1;
             HelpScreenScript.TInternetBool = true;
             WP.Money -= InternetPM.upgradeCost;
             
@@ -36,6 +59,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= RigPM.upgradeCost)
         {
+            RigLevel += 1;
             HelpScreenScript.TGamingRigBool = true;
             WP.Money -= RigPM.upgradeCost;
 
@@ -52,6 +76,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= SocialMediaPM.upgradeCost)
         {
+            SMMLevel += 1;
             HelpScreenScript.TSocialMediaMarketingBool = true;
             WP.Money -= SocialMediaPM.upgradeCost;
 

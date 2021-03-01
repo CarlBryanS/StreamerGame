@@ -27,7 +27,6 @@ public class PopupScript : MonoBehaviour
         switch (this.gameObject.name)
         {
             case "ChatBubbleObject(Clone)":
-                Debug.Log("Plus Fans");
                 RSScript.FansGainedValue += 1;
                 WPScript.Fans += 1;
                 FindObjectOfType<SoundManager>().playChatSound();

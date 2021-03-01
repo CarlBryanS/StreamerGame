@@ -118,6 +118,7 @@ public class PlayGame: MonoBehaviour
         if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {         
             amIStreaming = false;
+            FindObjectOfType<SoundManager>().Typing.Stop();
         }
     }
 
