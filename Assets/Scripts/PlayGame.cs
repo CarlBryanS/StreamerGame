@@ -82,8 +82,9 @@ public class PlayGame: MonoBehaviour
                 
                 WP.tempHealth -= DC.DurationValue;
                 WP.tempEnergy -= DC.DurationValue;
+                
 
-                WP.Viewers = Mathf.Clamp(Random.Range(1,GameTrend) * DC.ReturnDurationInt(), WP.Fans, WP.viewerCap);
+                WP.Viewers = Mathf.Clamp(Random.Range(1,GameTrend) * DC.ReturnDurationInt(), ReturnViewerMinimum(WP.Fans), WP.viewerCap);
                 RS.ViewersForTheDay = WP.Viewers;
 
                 
@@ -134,5 +135,15 @@ public class PlayGame: MonoBehaviour
     public void DisableNotEnoughIndicator()
     {
         NotEnoughIndicator.SetActive(false);
+    }
+
+
+    public int ReturnViewerMinimum(int number)
+    {
+        if(number>= WP.viewerCap)
+        {
+            number = WP.viewerCap;
+        }
+        return number;
     }
 }

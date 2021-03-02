@@ -88,6 +88,6 @@ public class HelpScreenScript : MonoBehaviour
 
     public void assignGreen(TMP_Text text)
     {
-        text.color = new Color32(30, 255, 0, 255);
+        text.color = new Color32(17, 140, 0, 255);
     }
 }

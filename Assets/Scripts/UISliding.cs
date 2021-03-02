@@ -15,6 +15,7 @@ public class UISliding : MonoBehaviour
     public RectTransform FoodStoreScreen;
     public RectTransform HelpScreen;
     public RectTransform GOScreen;
+    public RectTransform RestartScreen;
 
     public bool UIActive;
     public bool GameScreenActive;
@@ -32,7 +33,7 @@ public class UISliding : MonoBehaviour
     }
     public void OpenUpgradeScreen()
     {
-        if(!PlayGame.amIStreaming)
+        if(!PlayGame.amIStreaming && UIActive == false)
         {
             CloseUpgradeScreenButton.SetActive(true);
             OpenUpgradeScreenButton.SetActive(false);
@@ -123,7 +124,7 @@ public class UISliding : MonoBehaviour
 
     public void OpenHelpScreen()
     {
-        if (!PlayGame.amIStreaming)
+        if (!PlayGame.amIStreaming && UIActive == false)
         {
             UIActive = true;
             HelpScreen.DOAnchorPos(Vector2.zero, 0.25f);
@@ -147,6 +148,23 @@ public class UISliding : MonoBehaviour
     public void CloseGOScreen()
     {
         UIActive = false;
-        GOScreen.DOAnchorPos(new Vector2(1521f, -924f), 0.25f);
+        GOScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
+    }
+
+    public void OpenRestartScreen()
+    {
+        if (!PlayGame.amIStreaming && UIActive == false)
+        {
+            UIActive = true;
+            RestartScreen.DOAnchorPos(Vector2.zero, 0.25f);
+        }
+
+
+    }
+
+    public void CloseRestartScreen()
+    {
+        UIActive = false;
+        RestartScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
     }
 }
