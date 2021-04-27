@@ -9,11 +9,10 @@ public class ChatScript : MonoBehaviour
     public ChatterGenerator CG;
     public PersonalityMessagesScript PMS;
     public List<Chatter> ActiveChatters = new List<Chatter>();
-    Chatter ChatterToBeAdded;
-
     string ChatString;
     string RandomMessage;
     public TMP_Text ChatBox;
+    public GameObject Donation;
 
     public bool crRunning;
 
@@ -30,6 +29,9 @@ public class ChatScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach(Chatter x in ActiveChatters){
+            Debug.Log(x.chatterName + " " + ActiveChatters.IndexOf(x));
+        }
         ChatBox.SetText(ChatString);
 
         if(WP.Viewers> ActiveChatters.Count && ActiveChatters.Count <= CG.Chatters.Count){
@@ -48,6 +50,7 @@ public class ChatScript : MonoBehaviour
     }
 
     public void ClearActiveChatters(){
+        ChatString = "";
         ActiveChatters.Clear();
     }
 
@@ -69,7 +72,7 @@ public class ChatScript : MonoBehaviour
     }
 
      IEnumerator StartChat()
- {  
+    {  
      crRunning = true;
      yield return new WaitForSeconds(3);
      while(true){
@@ -82,5 +85,20 @@ public class ChatScript : MonoBehaviour
 
      }
     yield return crRunning = false;
- }
+    }
+
+    public void DonationCheck(){
+        foreach(Chatter x in ActiveChatters){
+            Debug.Log("rolling");
+            if(GachaRoll() <11){
+                Debug.Log("roll success");
+                Donation.SetActive(true);
+            }
+        }
+    }
+
+    public int GachaRoll(){
+        int roll = Random.Range(0,100);
+        return roll;
+    }
 }

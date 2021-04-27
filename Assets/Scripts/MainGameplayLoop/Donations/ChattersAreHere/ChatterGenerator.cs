@@ -19,26 +19,22 @@ public class ChatterGenerator : MonoBehaviour
     //Is Banned?
     public bool isBanned;
 
-    public string tempName;
-
     public bool guyIsHere;
 
    [SerializeField]
    public List<Chatter> Chatters = new List<Chatter>();
 
-    void Start(){
-        Chatters.Add(new Chatter(tempName, Personality[Random.Range(0, Personality.Length)], Wealth[Random.Range(0, Wealth.Length)], false)); 
+    void Start(){    
+         
     }
 
     void Update(){
-        /*foreach(Chatter x in Chatters) {
-            Debug.Log(x.chatterName.ToString() + " "+x.chatterPersonality.ToString() +" "+ x.chatterWealth.ToString() + " "+x.chatterIsBanned.ToString() + " " + Chatters.IndexOf(x));
-          }*/
-        foreach(Chatter x in Chatters.ToList()) {
-            Debug.Log(x.chatterName.ToString() + " " + Chatters.IndexOf(x));
-          }
+       // foreach(Chatter x in Chatters) {
+        //    Debug.Log(x.chatterName.ToString() + " "+x.chatterPersonality.ToString() +" "+ x.chatterWealth.ToString() + " "+x.chatterIsBanned.ToString() + " " + Chatters.IndexOf(x));
+        //  }
 
         AddUniqueChatter();
+   
     }
 
     public string GenerateName(){
@@ -50,26 +46,32 @@ public class ChatterGenerator : MonoBehaviour
         return list[Random.Range(0, list.Length)];
     } 
 
-    public void GenerateChatter(){
-        tempName=RandomName;
-        Chatters.Add(new Chatter(tempName, Personality[Random.Range(0, Personality.Length)], Wealth[Random.Range(0, Wealth.Length)], false));  
+    public void GenerateChatter(string name){
+        Chatters.Add(new Chatter(name, Personality[Random.Range(0, Personality.Length)], Wealth[Random.Range(0, Wealth.Length)], false));  
+        guyIsHere= false;
     }
 
     public void AddUniqueChatter(){
-        GenerateName();
-        foreach(Chatter x in Chatters.ToList()) {
-            if((x.chatterName.ToString() != RandomName)){
-                Debug.Log("wow");
-                guyIsHere=false;
-                if(guyIsHere == false){
-                    GenerateChatter();
-                 }
-            }
-            else{
-                guyIsHere = true;
-            }
+        if(Chatters.Count >0){
+                GenerateName();          
+                foreach(Chatter x in Chatters.ToList()) {  
+                    if((x.chatterName.ToString() == RandomName)){
+                        guyIsHere = true;
+                    }
+                }
+
+                if(guyIsHere ==false){
+                    GenerateChatter(RandomName);
+                }
+                else{
+                    guyIsHere =false;
+                }
+
+        }
+        else{
+            GenerateChatter(GenerateName());
         }
 
-
     }
+    
 }

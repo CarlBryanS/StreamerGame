@@ -10,6 +10,7 @@ public class DonationScript : MonoBehaviour
 {
 
 
+    public WORLDPARAMETERS WP;
     public ChatScript CS ;
     public PersonalityMessagesScript PMS;
     Chatter currentDonator;
@@ -30,10 +31,11 @@ public class DonationScript : MonoBehaviour
     void OnEnable()
     {       
     
+    
        currentDonator =CS.ActiveChatters[Random.Range(0,CS.ActiveChatters.Count)];
        Debug.Log(currentDonator.chatterName);
 
-       switch(currentDonator.chatterPersonality){
+       switch(currentDonator.chatterWealth){
            case "Poor":
             RandomAmount = Random.Range(1,10);
             break;
@@ -51,11 +53,7 @@ public class DonationScript : MonoBehaviour
             break; 
        }
 
-     
-
-
-
-
+       WP.Money += RandomAmount;
        DonationText.SetText(currentDonator.chatterName+ " has donated " + RandomAmount + " Pesos." + "\n" + "\n" + RandomMessage); 
        StartCoroutine("Donation");      
     }
@@ -72,8 +70,6 @@ public class DonationScript : MonoBehaviour
     if(StartFadeOut){
         DonationGroup.alpha -= Time.unscaledDeltaTime/1.2f;
     }
-    
-      
     }
 
     IEnumerator Donation()

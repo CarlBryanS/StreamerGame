@@ -115,7 +115,7 @@ public class PlayGame: MonoBehaviour
                 HelpScreenScript.TPCBool = true;
 
                 WP.ControlStreamUI(false);
-
+                CS.Invoke("DonationCheck", 1);
             }
             else
             {

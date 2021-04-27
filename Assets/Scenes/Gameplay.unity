@@ -11300,6 +11300,7 @@ MonoBehaviour:
   - Poor
   - Rich
   isBanned: 0
+  guyIsHere: 0
 --- !u!1 &1262349839
 GameObject:
   m_ObjectHideFlags: 0
