@@ -8,7 +8,7 @@ public class StartStream : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!PlayGame.amIStreaming && !UI.UIActive)
+        if (!PlayGame.amIStreaming && !UI.UIActive && !WORLDPARAMETERS.amIUIHovered)
         {
             UI.OpenGameScreen();
         }

@@ -40,7 +40,7 @@ public class UpgradeScript : MonoBehaviour
 
     public void InternetUpgrade()
     {
-        if (WP.Money >= InternetPM.upgradeCost)
+        if (WP.Money >= InternetPM.upgradeCost && InternetLevel < 10)
         {
             InternetLevel += 1;
             HelpScreenScript.TInternetBool = true;
@@ -57,7 +57,7 @@ public class UpgradeScript : MonoBehaviour
 
     public void RigUpgrade()
     {
-        if (WP.Money >= RigPM.upgradeCost)
+        if (WP.Money >= RigPM.upgradeCost && RigLevel < 10)
         {
             RigLevel += 1;
             HelpScreenScript.TGamingRigBool = true;
@@ -74,7 +74,7 @@ public class UpgradeScript : MonoBehaviour
 
     public void SocialMediaUpgrade()
     {
-        if (WP.Money >= SocialMediaPM.upgradeCost)
+        if (WP.Money >= SocialMediaPM.upgradeCost && SMMLevel < 10)
         {
             SMMLevel += 1;
             HelpScreenScript.TSocialMediaMarketingBool = true;

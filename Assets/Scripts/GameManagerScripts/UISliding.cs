@@ -16,8 +16,10 @@ public class UISliding : MonoBehaviour
     public RectTransform HelpScreen;
     public RectTransform GOScreen;
     public RectTransform RestartScreen;
+    public RectTransform DonationScreen;
 
     public bool UIActive;
+    public bool DonationIsActive;
     public bool GameScreenActive;
 
     public GameObject gameStoreButton;
@@ -28,8 +30,18 @@ public class UISliding : MonoBehaviour
 
     public Slider DurationSlider;
 
+    public Camera GameplayCamera;
+    public Camera RoomCamera;
+    public GameObject FaceCam;
+
     private void Update()
     {
+        if(RoomCamera.transform.position.x >= -4f){
+            ShowWall();
+        }
+        else{
+            HideWall();
+        }
     }
     public void OpenUpgradeScreen()
     {
@@ -167,4 +179,46 @@ public class UISliding : MonoBehaviour
         UIActive = false;
         RestartScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
     }
+
+    public void OpenDonations()
+    {
+        DonationIsActive = true;
+        DonationScreen.DOAnchorPos(new Vector2(1, -4), 0.25f);     
+    }
+
+    public void CloseDonations()
+    {
+        if(DonationIsActive == true){
+            DonationScreen.DOAnchorPos(new Vector2(1f, 584f), 0.25f);      
+            DonationIsActive = false;
+        }
+
+    }
+
+    public void StreamPerspective(){
+        RoomCamera.transform.DOMove(new Vector3(-3.461f,3.461f,-6.122f), 2);
+        RoomCamera.transform.DORotate(new Vector3(0,0,0), 2);
+    }
+
+    public void RoomPerspective(){
+        RoomCamera.transform.DOMove(new Vector3(-15f,4.56f,0.59f), 2);
+        RoomCamera.transform.DORotate(new Vector3(0,85,0), 2);
+    }
+
+  private void ShowWall() {
+     RoomCamera.cullingMask |= 1 << LayerMask.NameToLayer("RandomWall");
+ }
+  private void HideWall() {
+     RoomCamera.cullingMask &=  ~(1 << LayerMask.NameToLayer("RandomWall"));
+ }
+
+   public void RescaleFaceCamera(){
+       FaceCam.transform.DOScale(new Vector3(0.06932702f,0.2637316f,0.04150333f), 1);
+       FaceCam.transform.DOLocalMove(new Vector3(-0.92f,-0.578f,-1.2f), 1);
+   }
+
+    public void RescaleFaceCameraBase(){
+       FaceCam.transform.DOScale(new Vector3(0.2577544f,0.9805408f,0.1543073f), 1);
+       FaceCam.transform.DOLocalMove(new Vector3(0.02f,-0.03f,-1.2f), 1);
+   }
 }

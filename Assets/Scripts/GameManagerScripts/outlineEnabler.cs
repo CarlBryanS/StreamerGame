@@ -26,7 +26,7 @@ public class outlineEnabler : MonoBehaviour
 
     private void Update()
     {
-        if(amIHovered && !UI.UIActive && !PlayGame.amIStreaming)
+        if(amIHovered && !UI.UIActive && !PlayGame.amIStreaming && !WORLDPARAMETERS.amIUIHovered )
         {
             for (int i = 0; i < Out.Length; i++)
             {
@@ -43,6 +43,5 @@ public class outlineEnabler : MonoBehaviour
             
         }
     }
-
 
 }

@@ -6,18 +6,19 @@ using TMPro;
 
 public class PlayGame: MonoBehaviour
 {
-    public GameObject Spawner;
+  //  public GameObject Spawner;
 
     public WORLDPARAMETERS WP;
     public ResultScript RS;
     public DurationControl DC;
     public UISliding UI;
     public PlayerState PS;
-
+    public ChatScript CS;
     public TimerScript TS;
     public float streamDurationBar;
     public float streamDurationTimer;
     public static bool amIStreaming;
+    public static bool GOAHEAD;
 
     // public TMP_Text GameTrendText;
 
@@ -33,6 +34,7 @@ public class PlayGame: MonoBehaviour
 
     private void Awake()
     {
+        GOAHEAD = false;
         WP.tempHealth = WP.Health;
         WP.tempEnergy = WP.Energy;
         GameTrend = Random.Range(GTMin, GTMax);
@@ -48,18 +50,23 @@ public class PlayGame: MonoBehaviour
     private void Update()
     {
         checkIfStreaming();
-        if (amIStreaming)
+        if (amIStreaming && GOAHEAD == true)
         {
             WP.Health -= Time.unscaledDeltaTime / streamDurationBar;
             WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
             TS.TimeStart(streamDurationTimer);
             checkIfStreamEnded();
             PS.Typing();
-            Spawner.SetActive(true);
+
+           
+          //  Spawner.SetActive(true);
+          if(UI.DonationIsActive == false){
+            UI.OpenDonations();
+          }
         }
         else
         {
-            Spawner.SetActive(false);
+//something
         }
 
 
@@ -103,9 +110,12 @@ public class PlayGame: MonoBehaviour
                 
                 amIStreaming = true;
                 UI.CloseGameScreen();
+                StartCoroutine("CameraPerspective");
                 NotEnoughIndicator.SetActive(false);
-                FindObjectOfType<SoundManager>().playTypingSound();
                 HelpScreenScript.TPCBool = true;
+
+                WP.ControlStreamUI(false);
+
             }
             else
             {
@@ -127,8 +137,15 @@ public class PlayGame: MonoBehaviour
     {
         if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {       
+            GOAHEAD = false;
             UI.OpenResultsScreen();
             PS.Idle();
+            WP.ControlStreamUI(true);
+            UI.RoomPerspective();
+            UI.RoomCamera.enabled = true;
+            UI.GameplayCamera.enabled = false;
+            UI.RescaleFaceCameraBase();
+            CS.ClearActiveChatters();
         }
     }
 
@@ -146,4 +163,18 @@ public class PlayGame: MonoBehaviour
         }
         return number;
     }
+
+    IEnumerator CameraPerspective(){
+        if(amIStreaming){
+            UI.StreamPerspective();          
+            yield return new WaitForSeconds(2);
+            UI.RoomCamera.enabled = false;
+            UI.GameplayCamera.enabled = true;
+            UI.RescaleFaceCamera();
+            yield return new WaitForSeconds(1);
+            FindObjectOfType<SoundManager>().playTypingSound();
+            GOAHEAD = true;
+        }
+    }
+
 }

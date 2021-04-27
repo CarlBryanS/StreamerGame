@@ -31,7 +31,9 @@ public class WORLDPARAMETERS : MonoBehaviour
     public int gamingRigStat;
     public int socialMediaStat;
 
-
+    public static bool amIUIHovered;
+     public GameObject[] UIThatNeedsToBeDisabled;
+ 
     private void Awake()
     {
         viewerCap = 5;
@@ -53,4 +55,16 @@ public class WORLDPARAMETERS : MonoBehaviour
        fansText.SetText(Fans.ToString());
     }
 
+    public void AmHoveredYes(){
+        amIUIHovered = true;
+    }
+
+    public void ControlStreamUI(bool I){
+     foreach(GameObject UI in UIThatNeedsToBeDisabled){
+                    UI.SetActive(I);
+                }
+    }
+    public void AmHoveredNo(){
+        amIUIHovered = false;
+    }
 }

@@ -9,14 +9,15 @@ public class PopupScript : MonoBehaviour
     private void Awake()
     {
     }
-    void OnTriggerEnter2D(Collider2D other)
+    
+   /*   void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "KillWall")
         {
             Destroy(this.gameObject);
         }
     }
-    void OnMouseDown()
+  void OnMouseDown()
     {
         GameObject WP = GameObject.Find("GAMEMANAGER");
         WORLDPARAMETERS WPScript = WP.GetComponent<WORLDPARAMETERS>();
@@ -44,5 +45,5 @@ public class PopupScript : MonoBehaviour
     {
         icon.transform.Rotate(Vector3.up * 100 * Time.deltaTime);
         this.transform.position += -transform.up * Time.deltaTime;
-    }
+    }*/
 }

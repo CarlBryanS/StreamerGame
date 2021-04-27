@@ -24,19 +24,19 @@ public class DurationControl : MonoBehaviour
     {
         if(DurationValue >=0.8f)
         {
-            returnedValue = 4;
+            returnedValue = 2;
         }
         else if(DurationValue>= 0.5f)
         {
-            returnedValue = 3;
+            returnedValue = 1;
         }
         else if(DurationValue >=0.2f)
         {
-            returnedValue = 2;
+            returnedValue = 1;
         }
         else if(DurationValue <= 0.2f)
         {
-            returnedValue = 1;
+            returnedValue = 0;
         }
         return returnedValue;
     }
