@@ -30,8 +30,10 @@ public class WORLDPARAMETERS : MonoBehaviour
     public int viewerCap;
     public int gamingRigStat;
     public int socialMediaStat;
-
+    public float streamTime;
     public static bool amIUIHovered;
+
+    public Sprite[] popularityImages;
      public GameObject[] UIThatNeedsToBeDisabled;
  
     private void Awake()
@@ -40,7 +42,7 @@ public class WORLDPARAMETERS : MonoBehaviour
         socialMediaStat = 0;
         Health = 1;
         Energy = 1;
-        Money = 0;
+        Money = 1000;
         Fans = 0;
         Viewers = 0;
         Electricity = 0;
@@ -50,9 +52,13 @@ public class WORLDPARAMETERS : MonoBehaviour
 
     private void Update()
     {
-        currentRigText.SetText("Current Rig Level: " + gamingRigStat);
+       currentRigText.SetText(gamingRigStat.ToString());
        moneyText.SetText(Money.ToString());
        fansText.SetText(Fans.ToString());
+
+       Application.targetFrameRate =-1; 
+       QualitySettings.maxQueuedFrames = 3;    
+       //QualitySettings.vSyncCount = 0;
     }
 
     public void AmHoveredYes(){

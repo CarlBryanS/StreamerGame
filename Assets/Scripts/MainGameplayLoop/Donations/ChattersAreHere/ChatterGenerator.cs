@@ -25,15 +25,20 @@ public class ChatterGenerator : MonoBehaviour
    public List<Chatter> Chatters = new List<Chatter>();
 
     void Start(){    
-         
+         GenerateList();
     }
 
     void Update(){
        // foreach(Chatter x in Chatters) {
-        //    Debug.Log(x.chatterName.ToString() + " "+x.chatterPersonality.ToString() +" "+ x.chatterWealth.ToString() + " "+x.chatterIsBanned.ToString() + " " + Chatters.IndexOf(x));
-        //  }
-
-        AddUniqueChatter();
+         //  Debug.Log(x.chatterName.ToString() + " "+x.chatterPersonality.ToString() +" "+ x.chatterWealth.ToString() + " "+x.chatterIsBanned.ToString() + " " + Chatters.IndexOf(x));
+        // }
+     /*   if(Chatters.Count < 9){
+            AddUniqueChatter();
+        }
+        else{
+            Debug.Log("wow");
+            this.gameObject.SetActive(false);
+        }*/
    
     }
 
@@ -72,6 +77,11 @@ public class ChatterGenerator : MonoBehaviour
             GenerateChatter(GenerateName());
         }
 
+    }
+    public void GenerateList(){
+        while(Chatters.Count<9){
+            AddUniqueChatter();
+        }
     }
     
 }

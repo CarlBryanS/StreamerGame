@@ -13,16 +13,11 @@ public class MessageTimer : MonoBehaviour
     bool Enabled;
     public float timerSpeed;
 
-    public float TimerWhen;
-    public GameObject MessageBG;
-    public GameObject DonationButton;
-
     void OnEnable(){
         amountDonated = Random.Range(1,20);
          Enabled = true;
     }
     void OnDisable(){
-       // UI.CloseDonations();
         Enabled = false;
     }
     void Start(){
@@ -34,21 +29,11 @@ public class MessageTimer : MonoBehaviour
        {
             StartTimer();
        }
-
-       if(bar.fillAmount <= 0 ){
-                   UI.CloseDonations();
-       }
     }
 
     // Start is called before the first frame update
     public void StartTimer()
     {
         bar.fillAmount -= Time.unscaledDeltaTime/timerSpeed;
-    }
-
-    public void AcceptDonation(){
-        WP.Money += amountDonated;
-        UI.CloseDonations();
-        DonationButton.SetActive(false);
     }
 }

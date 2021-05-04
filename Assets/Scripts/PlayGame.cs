@@ -31,13 +31,15 @@ public class PlayGame: MonoBehaviour
     public int tempViewers;
     public int tempFans;
     public int tempMoney;
-
+    public RenderTexture FaceCamTexture;
+    public Image PopularityImage;
     private void Awake()
     {
         GOAHEAD = false;
         WP.tempHealth = WP.Health;
         WP.tempEnergy = WP.Energy;
         GameTrend = Random.Range(GTMin, GTMax);
+        popularityIndicator();
        // GameTrendText.SetText(GameTrend.ToString());
     }
 
@@ -52,6 +54,7 @@ public class PlayGame: MonoBehaviour
         checkIfStreaming();
         if (amIStreaming && GOAHEAD == true)
         {
+            WP.streamTime += Time.unscaledDeltaTime;
             WP.Health -= Time.unscaledDeltaTime / streamDurationBar;
             WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
             TS.TimeStart(streamDurationTimer);
@@ -60,9 +63,6 @@ public class PlayGame: MonoBehaviour
 
            
           //  Spawner.SetActive(true);
-          if(UI.DonationIsActive == false){
-            UI.OpenDonations();
-          }
         }
         else
         {
@@ -137,12 +137,13 @@ public class PlayGame: MonoBehaviour
     {
         if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {       
+            WP.streamTime = 0;
             GOAHEAD = false;
             UI.OpenResultsScreen();
             PS.Idle();
             WP.ControlStreamUI(true);
             UI.RoomPerspective();
-            UI.RoomCamera.enabled = true;
+            UI.RoomCamera.targetTexture = null;
             UI.GameplayCamera.enabled = false;
             UI.RescaleFaceCameraBase();
             CS.ClearActiveChatters();
@@ -164,11 +165,27 @@ public class PlayGame: MonoBehaviour
         return number;
     }
 
+    public void popularityIndicator(){
+        if(this.GameTrend > 0 && this.GameTrend <40){
+            PopularityImage.sprite = WP.popularityImages[0];
+        }
+        else if(this.GameTrend > 40 && this.GameTrend <60){
+            PopularityImage.sprite = WP.popularityImages[1];
+        }
+        else if(this.GameTrend > 60 && this.GameTrend <90){
+            PopularityImage.sprite = WP.popularityImages[2];
+        }
+        else if(this.GameTrend > 90){
+            PopularityImage.sprite = WP.popularityImages[3];
+        }
+    }
+
+
     IEnumerator CameraPerspective(){
         if(amIStreaming){
             UI.StreamPerspective();          
             yield return new WaitForSeconds(2);
-            UI.RoomCamera.enabled = false;
+            UI.RoomCamera.targetTexture = FaceCamTexture;
             UI.GameplayCamera.enabled = true;
             UI.RescaleFaceCamera();
             yield return new WaitForSeconds(1);
@@ -176,5 +193,4 @@ public class PlayGame: MonoBehaviour
             GOAHEAD = true;
         }
     }
-
 }

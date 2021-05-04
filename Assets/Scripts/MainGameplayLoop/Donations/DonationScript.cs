@@ -29,11 +29,8 @@ public class DonationScript : MonoBehaviour
 
     // Start is called before the first frame update
     void OnEnable()
-    {       
-    
-    
+    {           
        currentDonator =CS.ActiveChatters[Random.Range(0,CS.ActiveChatters.Count)];
-       Debug.Log(currentDonator.chatterName);
 
        switch(currentDonator.chatterWealth){
            case "Poor":

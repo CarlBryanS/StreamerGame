@@ -16,10 +16,8 @@ public class UISliding : MonoBehaviour
     public RectTransform HelpScreen;
     public RectTransform GOScreen;
     public RectTransform RestartScreen;
-    public RectTransform DonationScreen;
 
     public bool UIActive;
-    public bool DonationIsActive;
     public bool GameScreenActive;
 
     public GameObject gameStoreButton;
@@ -178,21 +176,6 @@ public class UISliding : MonoBehaviour
     {
         UIActive = false;
         RestartScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
-    }
-
-    public void OpenDonations()
-    {
-        DonationIsActive = true;
-        DonationScreen.DOAnchorPos(new Vector2(1, -4), 0.25f);     
-    }
-
-    public void CloseDonations()
-    {
-        if(DonationIsActive == true){
-            DonationScreen.DOAnchorPos(new Vector2(1f, 584f), 0.25f);      
-            DonationIsActive = false;
-        }
-
     }
 
     public void StreamPerspective(){

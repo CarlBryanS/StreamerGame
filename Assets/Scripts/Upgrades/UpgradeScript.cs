@@ -49,7 +49,6 @@ public class UpgradeScript : MonoBehaviour
             InternetPM.upgradeCost += 25;
 
             WP.viewerCap += addViewCap;
-            Debug.Log("You have upgraded Internet " + WP.viewerCap);
         }
 
        
@@ -67,7 +66,6 @@ public class UpgradeScript : MonoBehaviour
 
             WP.gamingRigStat += addRigStat;
 
-            Debug.Log("You have upgraded Rig " + WP.gamingRigStat);
         }
         //raise value of gaming rig
     }
@@ -83,7 +81,6 @@ public class UpgradeScript : MonoBehaviour
             SocialMediaPM.upgradeCost += 50;
 
             WP.socialMediaStat += addSMStat;
-            Debug.Log("You have upgraded Social Media " + WP.socialMediaStat);
         }
     }
 }

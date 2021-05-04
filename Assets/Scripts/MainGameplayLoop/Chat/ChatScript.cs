@@ -15,7 +15,8 @@ public class ChatScript : MonoBehaviour
     public GameObject Donation;
 
     public bool crRunning;
-
+ 
+  
     //int testLimit = 5;
     // Start is called before the first frame update
     void OnEnable(){
@@ -29,17 +30,19 @@ public class ChatScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(Chatter x in ActiveChatters){
-            Debug.Log(x.chatterName + " " + ActiveChatters.IndexOf(x));
-        }
-        ChatBox.SetText(ChatString);
+        if(PlayGame.amIStreaming){
+            /*foreach(Chatter x in ActiveChatters){
+                Debug.Log(x.chatterName + " " + ActiveChatters.IndexOf(x));
+            }*/
+            ChatBox.SetText(ChatString);
 
-        if(WP.Viewers> ActiveChatters.Count && ActiveChatters.Count <= CG.Chatters.Count){
-           AddActiveChatter(CG.Chatters[Random.Range(0, CG.Chatters.Count)]);
-        }
+            if(WP.Viewers/2> ActiveChatters.Count && ActiveChatters.Count <= CG.Chatters.Count){
+            AddActiveChatter(CG.Chatters[Random.Range(0, CG.Chatters.Count)]);
+            }
 
-        if(crRunning == false && PlayGame.amIStreaming){
-            StartCoroutine("StartChat");
+            if(crRunning == false && PlayGame.amIStreaming){
+                StartCoroutine("StartChat");
+            }
         }
     }
 
@@ -76,8 +79,7 @@ public class ChatScript : MonoBehaviour
      crRunning = true;
      yield return new WaitForSeconds(3);
      while(true){
-         Debug.Log("adding messages");
-         AddChatMessages(CG.Chatters[Random.Range(0, CG.Chatters.Count)]);
+            AddChatMessages(CG.Chatters[Random.Range(0, CG.Chatters.Count)]);
          yield return new WaitForSeconds(4);
          if(PlayGame.amIStreaming == false){
             break;
@@ -89,9 +91,7 @@ public class ChatScript : MonoBehaviour
 
     public void DonationCheck(){
         foreach(Chatter x in ActiveChatters){
-            Debug.Log("rolling");
             if(GachaRoll() <11){
-                Debug.Log("roll success");
                 Donation.SetActive(true);
             }
         }

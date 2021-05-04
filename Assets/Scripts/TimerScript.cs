@@ -47,13 +47,12 @@ public class TimerScript : MonoBehaviour
 
         if(Mathf.Floor(oldDay) < Mathf.Floor(day))
         {
-            Debug.Log("New Day");
             oldDay += 1;
             BS.CheckDays();
             for (int i = 0; i < PG.Length; i += 1)
-            {
-                
+            {               
                 PG[i].ResetGameTrends();
+                PG[i].popularityIndicator();
             }
         }
     }

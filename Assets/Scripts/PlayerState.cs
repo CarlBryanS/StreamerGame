@@ -8,7 +8,7 @@ public class PlayerState : MonoBehaviour
     public GameObject Brendan;
     public void Sleeping()
     {
-        Brendan.transform.localPosition = new Vector3(4.77f, -315.79f, 371.54f);
+        Brendan.transform.localPosition = new Vector3(4.77f, -315.98f, 371.54f);
         Brendan.transform.localEulerAngles = new Vector3(0, -90, 0);
         BrendanAnim.SetBool("isTyping", false);
         BrendanAnim.SetBool("isSleeping", true);
