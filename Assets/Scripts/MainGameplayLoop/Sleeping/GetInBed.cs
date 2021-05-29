@@ -13,26 +13,40 @@ public class GetInBed : MonoBehaviour
     public PlayerState PS;
 
     public GameObject Light;
+    public GameObject sleepButton;
 
     public WORLDPARAMETERS WP;
 
     public float streamDurationTimer;
     public float streamDurationBar;
+
+    public static bool isAsleep;
     private void OnMouseEnter()
     {
-          HoveringOnBed = true;       
+         // HoveringOnBed = true;
+    if (!StreamChosenGame.amIStreaming && !UI.UIActive && !PartTimeScript.isWorking && !isAsleep)
+        {
+            this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 4.437178f, 7.626603f);
+            this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, 0.8984127f, -0.01983786f);
+            sleepButton.SetActive(true);
+        }       
     }
 
     private void OnMouseExit()
     {
-          HoveringOnBed = false;
+        if(!isAsleep){
+        this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
+        this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
+        sleepButton.SetActive(false);
+        }
+
+        //HoveringOnBed = false;
     }
 
     private void Update()
     {
-        checkIfSleeping();
         //sleep
-        if (HoldingBed == true)
+        if (isAsleep == true)
         {
             if (WP.Health <= 0.999f && !UI.UIActive)
             {
@@ -41,30 +55,38 @@ public class GetInBed : MonoBehaviour
                 PS.Sleeping();
                 Light.SetActive(false);
                 HelpScreenScript.TSleepBool = true;
+                
             }
             else
             {
+                this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
+                this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
+                sleepButton.SetActive(false);
+                isAsleep =false;
+                Light.SetActive(true);
                 PS.Idle();
             }
-
         }
-        else
         {
-            Light.SetActive(true);
+            
         }
     }
-
-    void checkIfSleeping()
+     public void Sleep()
     {
-        if (Input.GetMouseButtonDown(0) && HoveringOnBed && !UI.UIActive &&!PlayGame.amIStreaming)
-        {
-            HoldingBed = true;
+        if(WP.Health < 1){
+            if(!isAsleep){
+                isAsleep = true;
+            }
+            else{
+                PS.Idle();
+                Light.SetActive(true);
+                isAsleep =false;
+            }
         }
-        else if (Input.GetMouseButtonUp(0) || !HoveringOnBed)
-        {
-            PS.Idle();
-            HoldingBed = false;
+        else{
+            //say you have full health;
         }
-            
+
+
     }
 }

@@ -24,9 +24,9 @@ public class PlayerState : MonoBehaviour
 
     public void Idle()
     {
-        Brendan.transform.localPosition = new Vector3(3.723f, -317.242f, 369.201f);
-        Brendan.transform.localEulerAngles = new Vector3(0, -90, 0);
         BrendanAnim.SetBool("isSleeping", false);
         BrendanAnim.SetBool("isTyping", false);
+        Brendan.transform.localPosition = new Vector3(3.723f, -317.242f, 369.201f);
+        Brendan.transform.localEulerAngles = new Vector3(0, -90, 0);
     }
 }

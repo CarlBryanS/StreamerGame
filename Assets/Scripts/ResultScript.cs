@@ -14,11 +14,12 @@ public class ResultScript : MonoBehaviour
     public float MoneyGainedValue;
     public float ViewersForTheDay;
     public float FansGainedValue;
+    public float DonationsReceived;
 
-    
 
     public void ResetResults()
     {
+        DonationsReceived = 0;
         MoneyGainedValue = 0;
         ViewersForTheDay = 0;
         FansGainedValue = 0;

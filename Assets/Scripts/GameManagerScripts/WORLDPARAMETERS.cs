@@ -6,8 +6,7 @@ using TMPro;
 
 public class WORLDPARAMETERS : MonoBehaviour
 {
-    public TMP_Text moneyText;
-    public TMP_Text fansText;
+
     public TMP_Text currentRigText;
 
     public float Energy;
@@ -34,7 +33,7 @@ public class WORLDPARAMETERS : MonoBehaviour
     public static bool amIUIHovered;
 
     public Sprite[] popularityImages;
-     public GameObject[] UIThatNeedsToBeDisabled;
+    public GameObject[] UIThatNeedsToBeDisabled;
  
     private void Awake()
     {
@@ -53,11 +52,9 @@ public class WORLDPARAMETERS : MonoBehaviour
     private void Update()
     {
        currentRigText.SetText(gamingRigStat.ToString());
-       moneyText.SetText(Money.ToString());
-       fansText.SetText(Fans.ToString());
 
-       Application.targetFrameRate =-1; 
-       QualitySettings.maxQueuedFrames = 3;    
+     //  Application.targetFrameRate =-1; 
+     //  QualitySettings.maxQueuedFrames = 3;    
        //QualitySettings.vSyncCount = 0;
     }
 

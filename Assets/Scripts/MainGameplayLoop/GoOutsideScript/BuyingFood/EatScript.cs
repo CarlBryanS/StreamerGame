@@ -5,6 +5,7 @@ using UnityEngine;
 public class EatScript : MonoBehaviour
 {
     public WORLDPARAMETERS WP;
+    public SetVisualStats SVS;
     public float eatValue;
     public int foodPrice;
 
@@ -16,6 +17,7 @@ public class EatScript : MonoBehaviour
         {
             if(WP.Energy+ eatValue >= 1)
             {
+                
                 HelpScreenScript.TFoodBool = true;
                 FindObjectOfType<SoundManager>().playEatSound();
                 WP.Energy = 1;
@@ -28,6 +30,7 @@ public class EatScript : MonoBehaviour
             }
             
             WP.Money -= foodPrice;
+            SVS.UpdateUI();
         }
             
     }

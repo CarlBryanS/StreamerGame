@@ -7,7 +7,7 @@ using TMPro;
 public class UpgradeScript : MonoBehaviour
 {
     public WORLDPARAMETERS WP;
-
+    public SetVisualStats SVS;
     public int addViewCap;
     public int addSMStat;
     public int addRigStat;
@@ -23,6 +23,10 @@ public class UpgradeScript : MonoBehaviour
     public PriceManager InternetPM;
     public PriceManager RigPM;
     public PriceManager SocialMediaPM;
+
+    public GameObject InternetButton;
+    public GameObject RigButton;
+    public GameObject SocialMediaButton;
 
     private void Start()
     {
@@ -42,6 +46,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= InternetPM.upgradeCost && InternetLevel < 10)
         {
+            
             InternetLevel += 1;
             HelpScreenScript.TInternetBool = true;
             WP.Money -= InternetPM.upgradeCost;
@@ -49,6 +54,11 @@ public class UpgradeScript : MonoBehaviour
             InternetPM.upgradeCost += 25;
 
             WP.viewerCap += addViewCap;
+            InternetPM.Upgrade();
+            SVS.UpdateUI();
+            if(InternetLevel > 9){
+                InternetButton.SetActive(false);
+            }
         }
 
        
@@ -65,7 +75,11 @@ public class UpgradeScript : MonoBehaviour
             RigPM.upgradeCost += 100;
 
             WP.gamingRigStat += addRigStat;
-
+            RigPM.Upgrade();
+            SVS.UpdateUI();
+            if(RigLevel > 9){
+                RigButton.SetActive(false);
+            }
         }
         //raise value of gaming rig
     }
@@ -81,6 +95,11 @@ public class UpgradeScript : MonoBehaviour
             SocialMediaPM.upgradeCost += 50;
 
             WP.socialMediaStat += addSMStat;
+            SocialMediaPM.Upgrade();
+            SVS.UpdateUI();
+            if(SMMLevel > 9){
+                SocialMediaButton.SetActive(false);
+            }
         }
     }
 }

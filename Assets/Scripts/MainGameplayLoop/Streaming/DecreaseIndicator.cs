@@ -14,8 +14,11 @@ public class DecreaseIndicator : MonoBehaviour
 
     Image indicator;
 
+    public static bool statRanOut;
+
     private void Start()
     {
+        statRanOut = false;
         indicator = GetComponent<Image>();
     }
 
@@ -26,10 +29,12 @@ public class DecreaseIndicator : MonoBehaviour
             switch (this.gameObject.name)
             {
                 case "HealthDecreaseIndicator":
-                    indicator.fillAmount = DC.DurationSlider.value + (1 - health.fillAmount);
+                    indicator.fillAmount = DC.ShittyConversion() + (1 - health.fillAmount);
+                    checkIfCapped();
                     break;
                 case "EnergyDecreaseIndicator":
-                    indicator.fillAmount = DC.DurationSlider.value + (1 - energy.fillAmount);
+                    indicator.fillAmount = DC.ShittyConversion()+ (1 - energy.fillAmount);
+                    checkIfCapped();
                     break;
             }
         }
@@ -38,5 +43,15 @@ public class DecreaseIndicator : MonoBehaviour
             indicator.fillAmount = 0;
         }
 
+    }
+
+    
+    public void checkIfCapped(){
+        if(indicator.fillAmount>=0.99 || (WP.Health - 0.042) <0|| (WP.Energy -0.042) <0){
+            statRanOut = true;
+        }
+        else{
+            statRanOut = false;
+        }
     }
 }

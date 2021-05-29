@@ -20,6 +20,7 @@ public class BillsScript : MonoBehaviour
     public int DayCount;
     public int MonthCount;
     public int DayThreshold;
+    public int currentMonth;
 
     public int MonthThreshold;
 
@@ -30,6 +31,7 @@ public class BillsScript : MonoBehaviour
  
     private void Start()
     {
+        currentMonth = 1;
         billsImage = GetComponent<Image>();
         DayCount = 1;
         MonthCount = 1;
@@ -56,8 +58,8 @@ public class BillsScript : MonoBehaviour
             ElectricityObj.transform.localPosition = new Vector2(10.79f, 9.550006f);
             WaterObj.transform.localPosition = new Vector2(10.79f, -3.4f);
             billsImage.sprite = billsSprites[1];
-            WP.Electricity += 500;
-            WP.Water += 500;
+            WP.Electricity = 500*currentMonth;
+            WP.Water =500*currentMonth;
             Electricity.SetText(WP.Electricity.ToString());
             Water.SetText(WP.Water.ToString());
             UI.OpenBillsScreen();
@@ -77,6 +79,7 @@ public class BillsScript : MonoBehaviour
                 WP.Water = 0;
                 UI.CloseBillsScreen();
                 MonthCount = 0;
+                currentMonth +=1;
             }
             else
             {

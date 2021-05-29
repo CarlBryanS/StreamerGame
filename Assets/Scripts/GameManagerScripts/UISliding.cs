@@ -16,12 +16,15 @@ public class UISliding : MonoBehaviour
     public RectTransform HelpScreen;
     public RectTransform GOScreen;
     public RectTransform RestartScreen;
+    public RectTransform PartTimeScreen;
 
     public bool UIActive;
     public bool GameScreenActive;
 
+    public GameObject DoorUI;
     public GameObject gameStoreButton;
     public GameObject foodStoreButton;
+    public GameObject partTimeButton;
 
     public GameObject CloseUpgradeScreenButton;
     public GameObject OpenUpgradeScreenButton;
@@ -43,7 +46,7 @@ public class UISliding : MonoBehaviour
     }
     public void OpenUpgradeScreen()
     {
-        if(!PlayGame.amIStreaming && UIActive == false)
+        if(!StreamChosenGame.amIStreaming&& UIActive == false&& !GetInBed.isAsleep)
         {
             CloseUpgradeScreenButton.SetActive(true);
             OpenUpgradeScreenButton.SetActive(false);
@@ -54,7 +57,7 @@ public class UISliding : MonoBehaviour
 
     public void CloseUpgradeScreen()
     {
-        if (!PlayGame.amIStreaming)
+        if (!StreamChosenGame.amIStreaming)
         {
             CloseUpgradeScreenButton.SetActive(false);
             OpenUpgradeScreenButton.SetActive(true);
@@ -108,8 +111,10 @@ public class UISliding : MonoBehaviour
     {
         UIActive = true;
         GameStoreScreen.DOAnchorPos(Vector2.zero, 0.25f);
-        gameStoreButton.SetActive(false);
+        DoorUI.SetActive(false);
+       /* gameStoreButton.SetActive(false);
         foodStoreButton.SetActive(false);
+        partTimeButton.SetActive(false);*/
     }
 
     public void CloseGamesStoreScreen()
@@ -122,8 +127,10 @@ public class UISliding : MonoBehaviour
     {
         UIActive = true;
         FoodStoreScreen.DOAnchorPos(Vector2.zero, 0.25f);
-        gameStoreButton.SetActive(false);
+        DoorUI.SetActive(false);
+       /* gameStoreButton.SetActive(false);
         foodStoreButton.SetActive(false);
+        partTimeButton.SetActive(false);*/
     }
 
     public void CloseFoodStoreScreen()
@@ -134,7 +141,7 @@ public class UISliding : MonoBehaviour
 
     public void OpenHelpScreen()
     {
-        if (!PlayGame.amIStreaming && UIActive == false)
+        if (!StreamChosenGame.amIStreaming && UIActive == false && !GetInBed.isAsleep)
         {
             UIActive = true;
             HelpScreen.DOAnchorPos(Vector2.zero, 0.25f);
@@ -149,7 +156,6 @@ public class UISliding : MonoBehaviour
 
     public void OpenGOScreen()
     {
-
             UIActive = true;
             GOScreen.DOAnchorPos(Vector2.zero, 0.25f);
         
@@ -163,7 +169,7 @@ public class UISliding : MonoBehaviour
 
     public void OpenRestartScreen()
     {
-        if (!PlayGame.amIStreaming && UIActive == false)
+        if (!StreamChosenGame.amIStreaming && UIActive == false&& !GetInBed.isAsleep)
         {
             UIActive = true;
             RestartScreen.DOAnchorPos(Vector2.zero, 0.25f);
@@ -177,6 +183,22 @@ public class UISliding : MonoBehaviour
         UIActive = false;
         RestartScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
     }
+    
+    public void OpenPartTimeScreen(){
+        UIActive = true;
+        PartTimeScreen.DOAnchorPos(new Vector2(109f, 9.2f), 0.25f);
+        DoorUI.SetActive(false);
+       /* gameStoreButton.SetActive(false);
+        foodStoreButton.SetActive(false);
+        partTimeButton.SetActive(false); */
+    }
+
+    public void ClosePartTimeScreen()
+    {
+        UIActive = false;
+        PartTimeScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+    }
+
 
     public void StreamPerspective(){
         RoomCamera.transform.DOMove(new Vector3(-3.461f,3.461f,-6.122f), 2);
@@ -196,12 +218,12 @@ public class UISliding : MonoBehaviour
  }
 
    public void RescaleFaceCamera(){
-       FaceCam.transform.DOScale(new Vector3(0.06932702f,0.2637316f,0.04150333f), 1);
-       FaceCam.transform.DOLocalMove(new Vector3(-0.92f,-0.578f,-1.2f), 1);
+       FaceCam.transform.DOScale(new Vector3(50.46221f,219.3284f,31.46498f), 1);
+       FaceCam.transform.DOLocalMove(new Vector3(-712f,-380.5f,-10098.91f), 1);
    }
 
     public void RescaleFaceCameraBase(){
-       FaceCam.transform.DOScale(new Vector3(0.2577544f,0.9805408f,0.1543073f), 1);
-       FaceCam.transform.DOLocalMove(new Vector3(0.02f,-0.03f,-1.2f), 1);
+       FaceCam.transform.DOScale(new Vector3(190.1007f,219.3283f,110.0575f), 1);
+       FaceCam.transform.DOLocalMove(new Vector3(-10.73804f,-9.193085f,-10098.91f), 1);
    }
 }

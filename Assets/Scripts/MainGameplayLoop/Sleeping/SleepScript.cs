@@ -6,16 +6,16 @@ public class SleepScript : MonoBehaviour
 {
     public TimerScript TS;
     public ResultScript RS;
-    public PlayGame[] PG;
+    public GameStats[]GS;
     public WORLDPARAMETERS WP;
     
     public void Sleep()
     {
         RS.ResetResults();
         //ResetGameTrendValues
-        for(int i =0;i < PG.Length; i+=1 )
+        for(int i =0;i < GS.Length; i+=1 )
         {
-            PG[i].ResetGameTrends();
+            GS[i].ResetGameTrends();
         }
     }
 }

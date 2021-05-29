@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: 4d0e0aaa60a39a64787be8cbe786bd66
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8360227429196568529
+    second: ClockBaseAnimation_0
+  - first:
+      213: 558976280808929908
+    second: ClockBaseAnimation_1
+  - first:
+      213: 6628164302541892949
+    second: ClockBaseAnimation_2
+  - first:
+      213: -2210333365818755614
+    second: ClockBaseAnimation_3
+  - first:
+      213: 2419604662991116731
+    second: ClockBaseAnimation_4
+  - first:
+      213: -7869046676739311905
+    second: ClockBaseAnimation_5
+  - first:
+      213: -7395008916545771145
+    second: ClockBaseAnimation_6
+  - first:
+      213: -925332255928270637
+    second: ClockBaseAnimation_7
+  - first:
+      213: 8804952546531243780
+    second: ClockBaseAnimation_8
+  - first:
+      213: -3425153566907480800
+    second: ClockBaseAnimation_9
+  - first:
+      213: -1227117684581049063
+    second: ClockBaseAnimation_10
+  - first:
+      213: 3006769411545647398
+    second: ClockBaseAnimation_11
+  - first:
+      213: 6406543710577304124
+    second: ClockBaseAnimation_12
+  - first:
+      213: 3456244913341287410
+    second: ClockBaseAnimation_13
+  - first:
+      213: 1960414617893119872
+    second: ClockBaseAnimation_14
+  - first:
+      213: -2086554757763390787
+    second: ClockBaseAnimation_15
+  - first:
+      213: -885782106984112983
+    second: ClockBaseAnimation_16
+  - first:
+      213: -4173551239886299426
+    second: ClockBaseAnimation_17
+  - first:
+      213: 4373880207086634923
+    second: ClockBaseAnimation_18
+  - first:
+      213: -6555680534163637387
+    second: ClockBaseAnimation_19
+  - first:
+      213: 1468324396846304998
+    second: ClockBaseAnimation_20
+  - first:
+      213: 6487552884092978879
+    second: ClockBaseAnimation_21
+  - first:
+      213: 3672004534708664750
+    second: ClockBaseAnimation_22
+  - first:
+      213: 236945272135339912
+    second: ClockBaseAnimation_23
+  - first:
+      213: 7272918908142907507
+    second: ClockBaseAnimation_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ClockBaseAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3720
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d71dbe6d8e750470800000000000000
+      internalID: 8360227429196568529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 3720
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a3c7f37f1e1c700800000000000000
+      internalID: 558976280808929908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 3720
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d2fedc058fbfb50800000000000000
+      internalID: 6628164302541892949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 3720
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5fd2fb3815351e0800000000000000
+      internalID: -2210333365818755614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 3720
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9d6721f99249120800000000000000
+      internalID: 2419604662991116731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2790
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd63cff4db78bc290800000000000000
+      internalID: -7869046676739311905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 2790
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77961722296af5990800000000000000
+      internalID: -7395008916545771145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 2790
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d04f22473f8823f0800000000000000
+      internalID: -925332255928270637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 2790
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4077a20c0b9713a70800000000000000
+      internalID: 8804952546531243780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 2790
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02541576af86770d0800000000000000
+      internalID: -3425153566907480800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1860
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d52f8a7f668fee0800000000000000
+      internalID: -1227117684581049063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1860
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62940b869d03ab920800000000000000
+      internalID: 3006769411545647398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1860
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3229fabf8d98e850800000000000000
+      internalID: 6406543710577304124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 1860
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb457ccf6c07ff20800000000000000
+      internalID: 3456244913341287410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_14
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 1860
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087a00055bac43b10800000000000000
+      internalID: 1960414617893119872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 930
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2ac1bb0811b03e0800000000000000
+      internalID: -2086554757763390787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_16
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 930
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac90d4edd115b3f0800000000000000
+      internalID: -885782106984112983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_17
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 930
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede9fae72419416c0800000000000000
+      internalID: -4173551239886299426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_18
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 930
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7c281efd423bc30800000000000000
+      internalID: 4373880207086634923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_19
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 930
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57bbb34a94b8505a0800000000000000
+      internalID: -6555680534163637387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee40196249806410800000000000000
+      internalID: 1468324396846304998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_21
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 0
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb64cedb9fa680a50800000000000000
+      internalID: 6487552884092978879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_22
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 0
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea9fee05ba495f230800000000000000
+      internalID: 3672004534708664750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_23
+      rect:
+        serializedVersion: 2
+        x: 2940
+        y: 0
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88fc5d8387cc94300800000000000000
+      internalID: 236945272135339912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClockBaseAnimation_24
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 0
+        width: 980
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3707410a6399ee460800000000000000
+      internalID: 7272918908142907507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

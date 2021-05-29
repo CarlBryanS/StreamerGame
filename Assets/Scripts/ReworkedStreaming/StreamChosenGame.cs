@@ -1,46 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class PlayGame: MonoBehaviour
+public class StreamChosenGame : MonoBehaviour
 {
-  //  public GameObject Spawner;
-
     public WORLDPARAMETERS WP;
+    public ControlStreamTime CST;
     public ResultScript RS;
-    public DurationControl DC;
-    public UISliding UI;
-    public PlayerState PS;
-    public ChatScript CS;
     public TimerScript TS;
+    public PlayerState PS;
+    public UISliding UI;
+    public ChatScript CS;
+    public DurationControl DC;
     public ActiveGame AG;
+    public GameObject NotEnoughIndicator;
+    public GameStats[] GS;
     public float streamDurationBar;
     public float streamDurationTimer;
     public static bool amIStreaming;
     public static bool GOAHEAD;
-
-    // public TMP_Text GameTrendText;
-
-    public GameObject NotEnoughIndicator;
-
-    public int tempViewers;
-    public int tempFans;
-    public int tempMoney;
     public RenderTexture FaceCamTexture;
- 
-    private void Awake()
-    {
-        GOAHEAD = false;
-        WP.tempHealth = WP.Health;
-        WP.tempEnergy = WP.Energy;
-        
-       // GameTrendText.SetText(GameTrend.ToString());
-    }
 
-    private void Update()
-    {
+    int tempFans;
+    int tempMoney;
+    int tempViewers;
+
+    void Update(){
         checkIfStreaming();
         if (amIStreaming && GOAHEAD == true)
         {           
@@ -56,23 +41,39 @@ public class PlayGame: MonoBehaviour
         {
 //something
         }
-
-
     }
-    public void Stream()
-    {
-        /*
+
+    public void Stream(){
+        switch(ActiveGame.selectedGame){
+            case"amongUs":
+                Debug.Log(GS[0].GameTrend);
+                startStream(GS[0].GameTrend);
+                break;
+            case"mineCraft":
+                Debug.Log(GS[1].GameTrend);
+                startStream(GS[1].GameTrend);
+                break;
+            case"csGO":
+                Debug.Log(GS[2].GameTrend);
+                startStream(GS[2].GameTrend);
+                break;
+            case"sims4":
+                Debug.Log(GS[3].GameTrend);
+                startStream(GS[3].GameTrend);
+                break;
+        }
+    }
+    void startStream(int GameTrend){
         WP.tempEnergy = WP.Energy;
         WP.tempHealth = WP.Health;
 
         tempFans = WP.Fans;
         tempMoney = WP.Money;
         tempViewers = WP.Viewers;
-       // WP.Viewers = 0;
-       
+        //WP.Viewers = 0;
+        DC.getTargetValues();
         if (DC.DurationValue != 0)
         {
-
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
                 AG.ResetHighlights();
@@ -82,21 +83,11 @@ public class PlayGame: MonoBehaviour
 
                 WP.Viewers = Mathf.Clamp(Random.Range(1,GameTrend) * DC.ReturnDurationInt(), ReturnViewerMinimum(WP.Fans), WP.viewerCap);
                 RS.ViewersForTheDay = WP.Viewers;
-
-                
-               // RS.ViewersForTheDay += Mathf.Clamp(Random.Range(0, GameTrend), WP.Fans, WP.viewerCap);
-
-                WP.Fans += Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat) * DC.ReturnDurationInt(), 0, WP.Viewers);
+                WP.Fans += fanLimit(Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat) * DC.ReturnDurationInt(), 0, WP.Viewers));
                 RS.FansGainedValue = WP.Fans - tempFans;
-                //RS.FansGainedValue += Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat), 0, WP.Viewers);
-
                 WP.Money += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers);
                 RS.MoneyGainedValue = WP.Money - tempMoney;
-               // RS.MoneyGainedValue += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers);
-
-
-
-                
+              
                 amIStreaming = true;
                 UI.CloseGameScreen();
                 StartCoroutine("CameraPerspective");
@@ -110,9 +101,9 @@ public class PlayGame: MonoBehaviour
             {
                NotEnoughIndicator.SetActive(true);
             }
-        }*/
+        }
     }
-
+    
     int hardMoneyLimit(){
         return 1;
     }
@@ -130,6 +121,7 @@ public class PlayGame: MonoBehaviour
     {
         if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {    
+            Debug.Log("test");
             CS.CancelInvoke("DonationCheck");   
             WP.streamTime = 0;
             GOAHEAD = false;
@@ -143,6 +135,7 @@ public class PlayGame: MonoBehaviour
             CS.ClearActiveChatters();
             streamDurationBar = 20;
             streamDurationTimer =20;
+            CST.ResetTimeVisual();
         }
     }
 
@@ -173,6 +166,17 @@ public class PlayGame: MonoBehaviour
             yield return new WaitForSeconds(1);
             FindObjectOfType<SoundManager>().playTypingSound();
             GOAHEAD = true;
+        }
+    }
+
+    int fanLimit(int num){
+        if(WP.Fans >= WP.viewerCap){
+            Debug.Log("fan max");
+            return 0;
+        }
+        else{
+            Debug.Log("fan not max");
+            return num;
         }
     }
 }

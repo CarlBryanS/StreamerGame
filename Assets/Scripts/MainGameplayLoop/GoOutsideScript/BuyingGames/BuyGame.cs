@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuyGame : MonoBehaviour
 {
     public WORLDPARAMETERS WP;
+    public SetVisualStats SVS;
 
     public GameObject MC;
     public GameObject CSGO;
@@ -27,6 +28,7 @@ public class BuyGame : MonoBehaviour
                     {
                         bgExtras[i].SetActive(false);
                     }
+                    SVS.UpdateUI();
                 }
                 break;
             case "BuyCSGO":
@@ -40,6 +42,7 @@ public class BuyGame : MonoBehaviour
                     {
                         bgExtras[i].SetActive(false);
                     }
+                    SVS.UpdateUI();
                 }
                 break;
             case "BuySims4":
@@ -53,6 +56,7 @@ public class BuyGame : MonoBehaviour
                     {
                         bgExtras[i].SetActive(false);
                     }
+                    SVS.UpdateUI();
                 }       
                 break;
         }

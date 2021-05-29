@@ -14,46 +14,65 @@ public class TimerScript : MonoBehaviour
     public TMP_Text timeText;
     public TMP_Text daysText;
 
-    public PlayGame[] PG;
+    public GameStats[] GS;
     public WORLDPARAMETERS WP;
     public BillsScript BS;
 
-    string hoursString;
+    public string hoursString;
     string minutesString;
+    float dayNormalized ;
+    float hoursPerDay;
+    float minutesPerHour;
+
+    public static float currentHour;
+    public static float currentMinutes;
     // Start is called before the first frame update
     void Start()
     {
+        currentHour = 8;
         oldDay = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        daysText.SetText(Mathf.Floor(day).ToString());
+        
     }
 
     public void TimeStart(float secondsPerDay)
-    {
+    {     
+        daysText.SetText(Mathf.Floor(day).ToString());
         day += Time.deltaTime / secondsPerDay;
 
-        float dayNormalized = day % 1f;
+        dayNormalized = day % 1f;
 
-        float hoursPerDay = 24f;
-        float minutesPerHour = 60f;
-        string hoursString = Mathf.Floor(dayNormalized * hoursPerDay).ToString("00");
-        string minutesString = Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour).ToString("00");
-
+        hoursPerDay = 24f;
+        minutesPerHour = 60f;
+        
+        hoursString = Mathf.Floor(dayNormalized * hoursPerDay).ToString("00");
+        minutesString = Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour).ToString("00");
+        currentHour = Mathf.Floor(dayNormalized * hoursPerDay);
+        //currentMinutes =Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour);
         timeText.SetText(hoursString + ":" + minutesString);
 
         if(Mathf.Floor(oldDay) < Mathf.Floor(day))
         {
             oldDay += 1;
             BS.CheckDays();
-            for (int i = 0; i < PG.Length; i += 1)
+            for (int i = 0; i < GS.Length; i += 1)
             {               
-                PG[i].ResetGameTrends();
-                PG[i].popularityIndicator();
+                GS[i].ResetGameTrends();
+                GS[i].popularityIndicator();
             }
+        }
+    }
+
+    public float getNextTime(float jobTime){
+        if((currentHour + jobTime) > 23){
+            return (Mathf.Abs(24- (currentHour+jobTime)));
+        }
+        else{
+            return currentHour + jobTime;
         }
     }
 }

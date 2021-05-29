@@ -7,6 +7,7 @@ public class ChatScript : MonoBehaviour
 {
     public WORLDPARAMETERS WP;
     public ChatterGenerator CG;
+    public ResultScript RS;
     public PersonalityMessagesScript PMS;
     public List<Chatter> ActiveChatters = new List<Chatter>();
     string ChatString;
@@ -30,7 +31,7 @@ public class ChatScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayGame.amIStreaming){
+        if(StreamChosenGame.amIStreaming){
             /*foreach(Chatter x in ActiveChatters){
                 Debug.Log(x.chatterName + " " + ActiveChatters.IndexOf(x));
             }*/
@@ -40,7 +41,7 @@ public class ChatScript : MonoBehaviour
             AddActiveChatter(CG.Chatters[Random.Range(0, CG.Chatters.Count)]);
             }
 
-            if(crRunning == false && PlayGame.amIStreaming){
+            if(crRunning == false && StreamChosenGame.amIStreaming){
                 StartCoroutine("StartChat");
             }
         }
@@ -79,9 +80,12 @@ public class ChatScript : MonoBehaviour
      crRunning = true;
      yield return new WaitForSeconds(3);
      while(true){
-            AddChatMessages(CG.Chatters[Random.Range(0, CG.Chatters.Count)]);
+         if(ActiveChatters.Count != 0){
+            AddChatMessages(ActiveChatters[Random.Range(0, ActiveChatters.Count)]);
+         }
+
          yield return new WaitForSeconds(4);
-         if(PlayGame.amIStreaming == false){
+         if(!StreamChosenGame.amIStreaming){
             break;
          }
 
@@ -90,11 +94,14 @@ public class ChatScript : MonoBehaviour
     }
 
     public void DonationCheck(){
-        foreach(Chatter x in ActiveChatters){
-            if(GachaRoll() <11){
-                Donation.SetActive(true);
+        if(!Donation.activeSelf){
+            foreach(Chatter x in ActiveChatters){
+                if(GachaRoll() <11){
+                    Donation.SetActive(true);
+                }
             }
         }
+
     }
 
     public int GachaRoll(){

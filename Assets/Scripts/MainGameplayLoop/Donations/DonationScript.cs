@@ -8,8 +8,7 @@ using DG.Tweening;
 
 public class DonationScript : MonoBehaviour
 {
-
-
+    public ResultScript RS;
     public WORLDPARAMETERS WP;
     public ChatScript CS ;
     public PersonalityMessagesScript PMS;
@@ -29,7 +28,7 @@ public class DonationScript : MonoBehaviour
 
     // Start is called before the first frame update
     void OnEnable()
-    {           
+    {    
        currentDonator =CS.ActiveChatters[Random.Range(0,CS.ActiveChatters.Count)];
 
        switch(currentDonator.chatterWealth){
@@ -49,8 +48,9 @@ public class DonationScript : MonoBehaviour
             RandomMessage = PMS.ToxicDonations[Random.Range(0,PMS.ToxicDonations.Length)];
             break; 
        }
-
+       RS.MoneyGainedValue += RandomAmount; 
        WP.Money += RandomAmount;
+
        DonationText.SetText(currentDonator.chatterName+ " has donated " + RandomAmount + " Pesos." + "\n" + "\n" + RandomMessage); 
        StartCoroutine("Donation");      
     }
@@ -61,12 +61,12 @@ public class DonationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-    if(StartFadeIn){
-        DonationGroup.alpha += Time.unscaledDeltaTime/1.2f;
-    }
-    if(StartFadeOut){
-        DonationGroup.alpha -= Time.unscaledDeltaTime/1.2f;
-    }
+        if(StartFadeIn){
+            DonationGroup.alpha += Time.unscaledDeltaTime/1.2f;
+        }
+        if(StartFadeOut){
+            DonationGroup.alpha -= Time.unscaledDeltaTime/1.2f;
+        }
     }
 
     IEnumerator Donation()
