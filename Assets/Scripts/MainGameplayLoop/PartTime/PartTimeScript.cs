@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PartTimeScript : MonoBehaviour
 {
@@ -20,23 +21,30 @@ public class PartTimeScript : MonoBehaviour
     bool isTimeDone;
     float tempCurrentHour;
 
+    public Image PartTimePage;
+    public Sprite PTFirstPage;
+    public Sprite PTLastPage;
+    public GameObject PTButton;
+    public GameObject PTButton2;
+    public int currentPage;
+
+    public GameObject firstPage;
+    public GameObject secondPage;
+
+void Start(){
+    currentPage =1;
+}
 void Update(){
-        Debug.Log(isWorking);
-        Debug.Log(isEnergyDone);
-        Debug.Log(isHealthDone);
-        Debug.Log(isTimeDone);
-        Debug.Log(Mathf.Abs(Mathf.RoundToInt(tempCurrentHour)));
-        Debug.Log(Mathf.Abs(Mathf.RoundToInt(TimerScript.currentHour)));
         if(isWorking){
             checkIfWorkEnded();
-            if( WP.Energy >= WP.tempEnergy){
+            if(amIWorking && WP.Energy >= WP.tempEnergy){
                 WP.Energy -= Time.unscaledDeltaTime / ptDurationBar;
             }
             else{
                 isEnergyDone = true;
             }
  
-            if (WP.Health >= WP.tempHealth)
+            if (amIWorking && WP.Health >= WP.tempHealth)
             {  
                 WP.Health -= Time.unscaledDeltaTime / ptDurationBar;
             }
@@ -44,7 +52,7 @@ void Update(){
                  isHealthDone = true;
             }
 
-            if(Mathf.Abs(Mathf.RoundToInt(tempCurrentHour)) !=Mathf.Abs(Mathf.RoundToInt(TimerScript.currentHour))){
+            if(amIWorking && Mathf.Abs(Mathf.RoundToInt(tempCurrentHour)) !=Mathf.Abs(Mathf.RoundToInt(TimerScript.currentHour))){
                 TS.TimeStart(partTimeDuration);
             }
             else{
@@ -63,11 +71,11 @@ void Update(){
             WorkPartTime(0.4f, 0.1f, 50, 6);
             break;
         case "comShop":
-            ptDurationBar = 5;
+            ptDurationBar = 7;
             partTimeDuration = 10;
-            WorkPartTime(0.1f, 0.05f, 15, 6);
+            WorkPartTime(0.15f, 0.2f, 15, 1);
             break;
-        case "callCenter":
+        case "angkas":
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.1f, 0.4f, 30, 6);
@@ -113,21 +121,44 @@ void Update(){
 
     void checkIfWorkEnded()
     {
-        /*if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
-        {    
-           Debug.Log("work ended");
-            SVS.UpdateUI();
-            //UI.OpenResultsScreen();
-            //PS.Idle();
-        }*/
         if(isEnergyDone&& isHealthDone && isTimeDone){
             amIWorking=false;
             isWorking =false;
-            WP.Energy = WP.tempEnergy;
-            WP.Health = WP.tempHealth;
+           //WP.Energy = WP.tempEnergy;
+           // WP.Health = WP.tempHealth;
+            WP.Health = Mathf.Round(WP.tempHealth*100)/100;
+            WP.Energy = Mathf.Round(WP.tempEnergy*100)/100;
             Debug.Log("work ended");
             SVS.UpdateUI();
         }
+    }
+
+    public void checkPage(){
+        switch(currentPage){
+            case 1:
+                PTButton.SetActive(true);
+                PTButton2.SetActive(false);
+                PartTimePage.sprite =PTFirstPage;
+                firstPage.SetActive(true);
+                secondPage.SetActive(false);
+                Debug.Log("first page");
+                break;
+            case 2: 
+                PTButton2.SetActive(true);
+                PTButton.SetActive(false);
+                PartTimePage.sprite = PTLastPage;
+                firstPage.SetActive(false);
+                secondPage.SetActive(true);
+                Debug.Log("second page");
+                break;
+            default:
+                Debug.Log("where are we");
+                break;
+        }
+    }
+
+    public void changePage(int pageTurn){
+        currentPage += pageTurn;
     }
 
 }

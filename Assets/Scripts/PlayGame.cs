@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -110,7 +110,7 @@ public class PlayGame: MonoBehaviour
             {
                NotEnoughIndicator.SetActive(true);
             }
-        }*/
+        }
     }
 
     int hardMoneyLimit(){
@@ -176,3 +176,4 @@ public class PlayGame: MonoBehaviour
         }
     }
 }
+*/

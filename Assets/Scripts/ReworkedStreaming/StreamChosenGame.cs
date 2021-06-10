@@ -20,50 +20,52 @@ public class StreamChosenGame : MonoBehaviour
     public static bool amIStreaming;
     public static bool GOAHEAD;
     public RenderTexture FaceCamTexture;
+    public miniGameState mgs;
 
     int tempFans;
     int tempMoney;
     int tempViewers;
+    float tempCurrentHour;
 
     void Update(){
         checkIfStreaming();
         if (amIStreaming && GOAHEAD == true)
-        {           
+        {     
+   
            // WP.streamTime += Time.unscaledDeltaTime;
-            WP.Health -= Time.unscaledDeltaTime / streamDurationBar;
-            WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
-            TS.TimeStart(streamDurationTimer);
+           // WP.Health -= Time.unscaledDeltaTime / streamDurationBar;
+           // WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
+            WP.Health = WP.tempHealth;
+            WP.Energy = WP.tempEnergy;
+            if(Mathf.Abs(Mathf.RoundToInt(tempCurrentHour)) !=Mathf.Abs(Mathf.RoundToInt(TimerScript.currentHour))){
+                TS.TimeStart(1f);
+            }
             PS.Typing(); 
-            checkIfStreamEnded();               
-          //  Spawner.SetActive(true);
-        }
-        else
-        {
-//something
+            checkIfStreamEnded();
         }
     }
 
     public void Stream(){
         switch(ActiveGame.selectedGame){
             case"amongUs":
-                Debug.Log(GS[0].GameTrend);
                 startStream(GS[0].GameTrend);
                 break;
             case"mineCraft":
-                Debug.Log(GS[1].GameTrend);
                 startStream(GS[1].GameTrend);
                 break;
             case"csGO":
-                Debug.Log(GS[2].GameTrend);
                 startStream(GS[2].GameTrend);
                 break;
             case"sims4":
-                Debug.Log(GS[3].GameTrend);
                 startStream(GS[3].GameTrend);
+                break;
+            default:
+                Debug.Log("streaming game not found");
                 break;
         }
     }
     void startStream(int GameTrend){
+        tempCurrentHour = TS.getNextTime(ControlStreamTime.StreamTime);
         WP.tempEnergy = WP.Energy;
         WP.tempHealth = WP.Health;
 
@@ -76,6 +78,7 @@ public class StreamChosenGame : MonoBehaviour
         {
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
+                mgs.gameEnabled();
                 AG.ResetHighlights();
                 WP.tempHealth -= DC.DurationValue;
                 WP.tempEnergy -= DC.DurationValue;
@@ -110,21 +113,22 @@ public class StreamChosenGame : MonoBehaviour
 
     void checkIfStreaming()
     {
-        if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
+        if (miniGameState.State == miniGameState.mgState.paused)//WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {         
-            amIStreaming = false;
+            //amIStreaming = false;
+            CS.CancelInvoke("DonationCheck"); 
             FindObjectOfType<SoundManager>().Typing.Stop();
         }
     }
 
     void checkIfStreamEnded()
     {
-        if (WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
+        if (miniGameState.State == miniGameState.mgState.stopped)//WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {    
-            Debug.Log("test");
+            amIStreaming = false;
+            FindObjectOfType<SoundManager>().Typing.Stop();
             CS.CancelInvoke("DonationCheck");   
-            WP.streamTime = 0;
-            GOAHEAD = false;
+            WP.streamTime = 0;          
             UI.OpenResultsScreen();
             PS.Idle();
             WP.ControlStreamUI(true);
@@ -136,6 +140,10 @@ public class StreamChosenGame : MonoBehaviour
             streamDurationBar = 20;
             streamDurationTimer =20;
             CST.ResetTimeVisual();
+            WP.Health = Mathf.Round(WP.Health*100)/100;
+            WP.Energy = Mathf.Round(WP.Energy*100)/100;
+            ActiveGame.selectedGame = "";
+            GOAHEAD = false;
         }
     }
 
@@ -158,6 +166,7 @@ public class StreamChosenGame : MonoBehaviour
 
     IEnumerator CameraPerspective(){
         if(amIStreaming){
+            Cursor.visible = false;
             UI.StreamPerspective();          
             yield return new WaitForSeconds(2);
             UI.RoomCamera.targetTexture = FaceCamTexture;
@@ -166,16 +175,15 @@ public class StreamChosenGame : MonoBehaviour
             yield return new WaitForSeconds(1);
             FindObjectOfType<SoundManager>().playTypingSound();
             GOAHEAD = true;
+            Cursor.visible = true;
         }
     }
 
     int fanLimit(int num){
         if(WP.Fans >= WP.viewerCap){
-            Debug.Log("fan max");
             return 0;
         }
         else{
-            Debug.Log("fan not max");
             return num;
         }
     }

@@ -7,41 +7,63 @@ public class SpawnerScript : MonoBehaviour
 
     public GameObject[] Spawnables;
 
-    public ResultScript RS;
-    public UISliding UI;
+  //  public ResultScript RS;
+   // public UISliding UI;
 
-    public float spawnTime;
-    public float spawnDelay;
-    private static int PopupsCount;
-    private float PopupLimit;
+     float spawnTime;
+     float spawnDelay;
+
+    public float xDimensions;
+    public float yDimensions;
+    public float zDimensions;
+    public GameObject parent;
+    public float spawnCount;
+    public float spawnLimit;
+    float timer;
+    [SerializeField]bool isSomethingSpawned;
 
     // Start is called before the first frame update
     void OnEnable()
     {
-        PopupLimit = Mathf.Clamp(RS.ViewersForTheDay, 5, RS.ViewersForTheDay);
-        PopupsCount = 0;
-        InvokeRepeating("Spawn", spawnTime, spawnDelay);
-
-
-
+        timer = Random.Range(2, 5);
+        isSomethingSpawned = false;
     }
 
-    void Update()
-    {
-        if (PopupsCount >= PopupLimit)
-            CancelInvoke("Spawn");
+    void Update(){
+        if (!isSomethingSpawned&& StreamChosenGame.GOAHEAD)
+        {
+           timer -= Time.unscaledDeltaTime; 
+           if(timer <= 0 ){
+               Spawn();
+           }  
+        }
     }
 
-    private void OnDisable()
+    void OnTriggerStay2D(Collider2D coll)
     {
-        CancelInvoke("Spawn");
+        if (coll.gameObject.tag== "terrorist")
+        {
+            isSomethingSpawned = true;
+        }
     }
-    public void Spawn()
+
+    void OnTriggerExit2D(Collider2D coll)
     {
-        float randomLocation = Random.Range(-39.73f, -31.11f);
-        int randomSpawn = Random.Range(0, 2);
-        Vector3 whereToSpawn = new Vector3(randomLocation, this.transform.position.y, this.transform.position.z);
-        Instantiate(Spawnables[randomSpawn], whereToSpawn, transform.rotation);
-        PopupsCount+= 1;
+        if (coll.gameObject.tag== "terrorist")
+        {
+            isSomethingSpawned = false;       
+        }
+    }
+    void Spawn()
+    {
+        timer = Random.Range(5, 7);
+        isSomethingSpawned =true;
+        //float randomLocation = Random.Range(this.transform.position.x, 31.11f);
+        int randomSpawn = Random.Range(0, Spawnables.Length);
+        Vector3 whereToSpawn = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        GameObject spawnedTerrorist = Instantiate(Spawnables[randomSpawn], whereToSpawn, transform.rotation) as GameObject;
+        spawnedTerrorist.transform.SetParent(parent.transform);
+        spawnedTerrorist.transform.localScale = new Vector3(xDimensions, yDimensions, zDimensions);
+
     }
 }

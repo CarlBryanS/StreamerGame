@@ -10,6 +10,10 @@ public class ActiveGame : MonoBehaviour
     public GameObject csGoHighlight;
     public GameObject mcHighlight;
     public GameObject sims4Highlight;
+
+    public static ActiveGame instance;
+    void Awake(){
+    }
     public void getActiveGame(string gameName){
         switch(gameName){
             case"amongUs":
@@ -47,7 +51,6 @@ public class ActiveGame : MonoBehaviour
     }
 
     public void ResetHighlights(){
-        selectedGame = "";
         amongUsHighlight.SetActive(false);
         csGoHighlight.SetActive(false);
         mcHighlight.SetActive(false);

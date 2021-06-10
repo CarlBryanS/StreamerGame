@@ -19,6 +19,7 @@ public class GetInBed : MonoBehaviour
 
     public float streamDurationTimer;
     public float streamDurationBar;
+    public GameObject fullWarning;
 
     public static bool isAsleep;
     private void OnMouseEnter()
@@ -34,6 +35,7 @@ public class GetInBed : MonoBehaviour
 
     private void OnMouseExit()
     {
+        fullWarning.SetActive(false);
         if(!isAsleep){
         this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
         this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
@@ -84,6 +86,7 @@ public class GetInBed : MonoBehaviour
             }
         }
         else{
+            fullWarning.SetActive(true);
             //say you have full health;
         }
 

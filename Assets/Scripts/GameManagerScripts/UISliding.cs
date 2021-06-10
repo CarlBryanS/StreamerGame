@@ -17,6 +17,7 @@ public class UISliding : MonoBehaviour
     public RectTransform GOScreen;
     public RectTransform RestartScreen;
     public RectTransform PartTimeScreen;
+    public RectTransform GameResultScreen;
 
     public bool UIActive;
     public bool GameScreenActive;
@@ -35,6 +36,10 @@ public class UISliding : MonoBehaviour
     public Camera RoomCamera;
     public GameObject FaceCam;
 
+    void Start(){
+        UIActive = true;
+    }
+
     private void Update()
     {
         if(RoomCamera.transform.position.x >= -4f){
@@ -43,6 +48,14 @@ public class UISliding : MonoBehaviour
         else{
             HideWall();
         }
+    }
+    public void OpenGameResultScreen(){
+        UIActive = true;
+        GameResultScreen.DOAnchorPos(Vector2.zero, 0.25f);
+    }
+    public void CloseGameResultScreen(){
+        UIActive = false;
+        GameResultScreen.DOAnchorPos(new Vector2(0, 974), 0.25f);
     }
     public void OpenUpgradeScreen()
     {
