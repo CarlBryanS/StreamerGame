@@ -27,6 +27,7 @@ public class UpgradeScript : MonoBehaviour
     public GameObject InternetButton;
     public GameObject RigButton;
     public GameObject SocialMediaButton;
+    public GameObject warning;
 
     private void Start()
     {
@@ -46,7 +47,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= InternetPM.upgradeCost && InternetLevel < 10)
         {
-            
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().UpgradeSound);  
             InternetLevel += 1;
             HelpScreenScript.TInternetBool = true;
             WP.Money -= InternetPM.upgradeCost;
@@ -60,6 +61,11 @@ public class UpgradeScript : MonoBehaviour
                 InternetButton.SetActive(false);
             }
         }
+        else{
+                if(!warning.activeSelf){
+                    warning.SetActive(true);
+                }
+        }
 
        
     }
@@ -68,6 +74,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= RigPM.upgradeCost && RigLevel < 10)
         {
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().UpgradeSound);  
             RigLevel += 1;
             HelpScreenScript.TGamingRigBool = true;
             WP.Money -= RigPM.upgradeCost;
@@ -81,6 +88,11 @@ public class UpgradeScript : MonoBehaviour
                 RigButton.SetActive(false);
             }
         }
+              else{
+                if(!warning.activeSelf){
+                    warning.SetActive(true);
+                }
+        }
         //raise value of gaming rig
     }
 
@@ -88,6 +100,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= SocialMediaPM.upgradeCost && SMMLevel < 10)
         {
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().UpgradeSound);  
             SMMLevel += 1;
             HelpScreenScript.TSocialMediaMarketingBool = true;
             WP.Money -= SocialMediaPM.upgradeCost;
@@ -100,6 +113,11 @@ public class UpgradeScript : MonoBehaviour
             if(SMMLevel > 9){
                 SocialMediaButton.SetActive(false);
             }
+        }
+              else{
+                if(!warning.activeSelf){
+                    warning.SetActive(true);
+                }
         }
     }
 }

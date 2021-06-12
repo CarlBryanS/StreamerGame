@@ -22,6 +22,13 @@ public class GetInBed : MonoBehaviour
     public GameObject fullWarning;
 
     public static bool isAsleep;
+    Image sleepSprite;
+
+    public Sprite sleepingSprite;
+    public Sprite wakeUpSprite;
+    void Start(){
+        sleepSprite = sleepButton.GetComponent<Image>();
+    }
     private void OnMouseEnter()
     {
          // HoveringOnBed = true;
@@ -35,7 +42,7 @@ public class GetInBed : MonoBehaviour
 
     private void OnMouseExit()
     {
-        fullWarning.SetActive(false);
+        //fullWarning.SetActive(false);
         if(!isAsleep){
         this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
         this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
@@ -57,16 +64,21 @@ public class GetInBed : MonoBehaviour
                 PS.Sleeping();
                 Light.SetActive(false);
                 HelpScreenScript.TSleepBool = true;
-                
+                FindObjectOfType<SoundManager>().BGM.Stop();
+                FindObjectOfType<SoundManager>().SleepBGM.enabled = true;
             }
             else
             {
+                Debug.Log("sleep ended");
+                FindObjectOfType<SoundManager>().BGM.Play();
+                FindObjectOfType<SoundManager>().SleepBGM.enabled = false;
                 this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
                 this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
                 sleepButton.SetActive(false);
                 isAsleep =false;
                 Light.SetActive(true);
                 PS.Idle();
+                sleepSprite.sprite = sleepingSprite;
             }
         }
         {
@@ -77,16 +89,24 @@ public class GetInBed : MonoBehaviour
     {
         if(WP.Health < 1){
             if(!isAsleep){
+                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);       
                 isAsleep = true;
+                sleepSprite.sprite = wakeUpSprite;
             }
             else{
+                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
+                FindObjectOfType<SoundManager>().BGM.Play();
+                FindObjectOfType<SoundManager>().SleepBGM.enabled = false;
                 PS.Idle();
                 Light.SetActive(true);
                 isAsleep =false;
+                sleepSprite.sprite = sleepingSprite;
             }
         }
         else{
-            fullWarning.SetActive(true);
+            if(!fullWarning.activeSelf){
+                    fullWarning.SetActive(true);
+                }
             //say you have full health;
         }
 

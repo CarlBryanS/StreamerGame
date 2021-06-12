@@ -28,7 +28,8 @@ public class DonationScript : MonoBehaviour
 
     // Start is called before the first frame update
     void OnEnable()
-    {    
+    {   
+       FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound);    
        currentDonator =CS.ActiveChatters[Random.Range(0,CS.ActiveChatters.Count)];
 
        switch(currentDonator.chatterWealth){

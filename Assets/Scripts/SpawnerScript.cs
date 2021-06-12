@@ -37,6 +37,7 @@ public class SpawnerScript : MonoBehaviour
                Spawn();
            }  
         }
+        //isSomethingSpawned = false;
     }
 
     void OnTriggerStay2D(Collider2D coll)
@@ -49,14 +50,15 @@ public class SpawnerScript : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.tag== "terrorist")
+        isSomethingSpawned=false;
+        /*if (coll.gameObject.tag== "terrorist")
         {
             isSomethingSpawned = false;       
-        }
+        }*/
     }
     void Spawn()
     {
-        timer = Random.Range(5, 7);
+        timer = Random.Range(4, 7);
         isSomethingSpawned =true;
         //float randomLocation = Random.Range(this.transform.position.x, 31.11f);
         int randomSpawn = Random.Range(0, Spawnables.Length);

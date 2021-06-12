@@ -38,6 +38,9 @@ public class TimerScript : MonoBehaviour
     {
         
     }
+    public void ShittyFix(){
+        daysText.SetText(Mathf.Floor(day).ToString());
+    }
 
     public void TimeStart(float secondsPerDay)
     {     

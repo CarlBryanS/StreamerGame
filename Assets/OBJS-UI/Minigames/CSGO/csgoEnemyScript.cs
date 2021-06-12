@@ -32,6 +32,7 @@ public class csgoEnemyScript : MonoBehaviour
     
     void OnMouseDown(){
         if(Health ==1){
+            FindObjectOfType<SoundManager>().playDeathSound();  
             CSGOGameScript.csgoPoints +=1;
             Destroy(this.gameObject);
         }

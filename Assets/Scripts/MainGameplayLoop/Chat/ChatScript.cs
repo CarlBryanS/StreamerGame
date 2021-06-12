@@ -85,7 +85,7 @@ public class ChatScript : MonoBehaviour
          }
 
          yield return new WaitForSeconds(4);
-         if(!StreamChosenGame.amIStreaming){
+         if(!StreamChosenGame.amIStreaming || miniGameState.State == miniGameState.mgState.paused){
             break;
          }
 

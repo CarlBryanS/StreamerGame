@@ -27,10 +27,15 @@ public class CSGOGameScript : MonoBehaviour
     void Update()
     {
         if(miniGameState.State ==miniGameState.mgState.onGoing&& StreamChosenGame.GOAHEAD){
+            FindObjectOfType<SoundManager>().BGM.Stop(); 
+            FindObjectOfType<SoundManager>().CSGOBGM.enabled = true;
             csgoGoalText.SetText("Kill " + csgoGoal.ToString() + " Enemies: " + csgoPoints.ToString()+ "/" + csgoGoal.ToString());
             time -= Time.unscaledDeltaTime;
             timerText.SetText("Time Left: " + Mathf.RoundToInt(time));
             didThePlayerWin();
+            if(Input.GetMouseButtonDown(0)){
+                FindObjectOfType<SoundManager>().playShootSound();    
+            }
         }
     }
 
@@ -39,17 +44,23 @@ public class CSGOGameScript : MonoBehaviour
             csgoActive = false;
             miniGameState.State = miniGameState.mgState.paused;
             resultText.SetText("You Won!");
-            UI.OpenGameResultScreen();          
+            UI.OpenGameResultScreen();   
+            FindObjectOfType<SoundManager>().CSGOBGM.enabled = false;      
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameWinSound);    
         }
         else if(time <= 0){
             csgoActive = false;
             miniGameState.State = miniGameState.mgState.paused;
             resultText.SetText("You Lost!");
             UI.OpenGameResultScreen();     
+            FindObjectOfType<SoundManager>().CSGOBGM.enabled = false;
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameLoseSound);   
         }
     }
 
     public void ConfirmGameResult(){
+
+        FindObjectOfType<SoundManager>().BGM.Play();
         miniGameState.State = miniGameState.mgState.stopped;
         UI.CloseGameResultScreen();
     }

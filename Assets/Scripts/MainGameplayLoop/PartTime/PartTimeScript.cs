@@ -30,6 +30,8 @@ public class PartTimeScript : MonoBehaviour
 
     public GameObject firstPage;
     public GameObject secondPage;
+    public GameObject warning;
+    public GameObject Brendan;
 
 void Start(){
     currentPage =1;
@@ -66,16 +68,19 @@ void Update(){
     {
        switch(Job){
         case "6/12":
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.4f, 0.1f, 50, 6);
             break;
         case "comShop":
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
             ptDurationBar = 7;
             partTimeDuration = 10;
             WorkPartTime(0.15f, 0.2f, 15, 1);
             break;
         case "angkas":
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.1f, 0.4f, 30, 6);
@@ -98,8 +103,7 @@ void Update(){
 
         //tempMoney = WP.Money;
         if (WP.Energy >= partTimeEnergyCost && WP.Health >= partTimeHealthCost)
-            {
-                
+            {             
                 WP.tempHealth -= partTimeHealthCost;
                 WP.tempEnergy -= partTimeEnergyCost;
                 
@@ -107,7 +111,13 @@ void Update(){
                 amIWorking = true;
                 UI.ClosePartTimeScreen();
                 isWorking = true;
+                Brendan.SetActive(false);
                // WP.ControlStreamUI(false);
+            }
+            else{
+                if(!warning.activeSelf){  
+                    warning.SetActive(true);
+                }
             }
     }
 
@@ -122,6 +132,7 @@ void Update(){
     void checkIfWorkEnded()
     {
         if(isEnergyDone&& isHealthDone && isTimeDone){
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound);
             amIWorking=false;
             isWorking =false;
            //WP.Energy = WP.tempEnergy;
@@ -129,7 +140,9 @@ void Update(){
             WP.Health = Mathf.Round(WP.tempHealth*100)/100;
             WP.Energy = Mathf.Round(WP.tempEnergy*100)/100;
             Debug.Log("work ended");
+            Brendan.SetActive(true);
             SVS.UpdateUI();
+            
         }
     }
 

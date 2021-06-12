@@ -27,9 +27,12 @@ public class StreamChosenGame : MonoBehaviour
     int tempViewers;
     float tempCurrentHour;
 
+    public GameObject warning;
+    public GameObject warning2;
+
     void Update(){
         checkIfStreaming();
-        if (amIStreaming && GOAHEAD == true)
+        if (amIStreaming)
         {     
    
            // WP.streamTime += Time.unscaledDeltaTime;
@@ -37,11 +40,14 @@ public class StreamChosenGame : MonoBehaviour
            // WP.Energy -= Time.unscaledDeltaTime / streamDurationBar;
             WP.Health = WP.tempHealth;
             WP.Energy = WP.tempEnergy;
-            if(Mathf.Abs(Mathf.RoundToInt(tempCurrentHour)) !=Mathf.Abs(Mathf.RoundToInt(TimerScript.currentHour))){
-                TS.TimeStart(1f);
+            if(Mathf.Abs(Mathf.RoundToInt(tempCurrentHour)) !=Mathf.Abs(Mathf.RoundToInt(TimerScript.currentHour)) && DC.DurationValue != 24){
+                TS.TimeStart(2f);
             }
-            PS.Typing(); 
             checkIfStreamEnded();
+            if(GOAHEAD == true){
+                PS.Typing(); 
+            }
+
         }
     }
 
@@ -60,7 +66,10 @@ public class StreamChosenGame : MonoBehaviour
                 startStream(GS[3].GameTrend);
                 break;
             default:
-                Debug.Log("streaming game not found");
+                if(!warning.activeSelf){
+                    warning.SetActive(true);
+                }
+                //Debug.Log("streaming game not found");
                 break;
         }
     }
@@ -78,6 +87,10 @@ public class StreamChosenGame : MonoBehaviour
         {
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
+                if(DC.DurationValue == 24){
+                    TS.day +=1;
+                    TS.ShittyFix();
+                }
                 mgs.gameEnabled();
                 AG.ResetHighlights();
                 WP.tempHealth -= DC.DurationValue;
@@ -94,7 +107,6 @@ public class StreamChosenGame : MonoBehaviour
                 amIStreaming = true;
                 UI.CloseGameScreen();
                 StartCoroutine("CameraPerspective");
-                NotEnoughIndicator.SetActive(false);
                 HelpScreenScript.TPCBool = true;
 
                 WP.ControlStreamUI(false);
@@ -102,7 +114,9 @@ public class StreamChosenGame : MonoBehaviour
             }
             else
             {
-               NotEnoughIndicator.SetActive(true);
+                if(!warning2.activeSelf){
+                    warning2.SetActive(true);
+                }
             }
         }
     }
@@ -117,7 +131,6 @@ public class StreamChosenGame : MonoBehaviour
         {         
             //amIStreaming = false;
             CS.CancelInvoke("DonationCheck"); 
-            FindObjectOfType<SoundManager>().Typing.Stop();
         }
     }
 
@@ -126,7 +139,6 @@ public class StreamChosenGame : MonoBehaviour
         if (miniGameState.State == miniGameState.mgState.stopped)//WP.Health <= WP.tempHealth || WP.Energy <= WP.tempEnergy)
         {    
             amIStreaming = false;
-            FindObjectOfType<SoundManager>().Typing.Stop();
             CS.CancelInvoke("DonationCheck");   
             WP.streamTime = 0;          
             UI.OpenResultsScreen();
@@ -173,7 +185,6 @@ public class StreamChosenGame : MonoBehaviour
             UI.GameplayCamera.enabled = true;
             UI.RescaleFaceCamera();
             yield return new WaitForSeconds(1);
-            FindObjectOfType<SoundManager>().playTypingSound();
             GOAHEAD = true;
             Cursor.visible = true;
         }

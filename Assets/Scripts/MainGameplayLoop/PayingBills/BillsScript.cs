@@ -28,6 +28,7 @@ public class BillsScript : MonoBehaviour
 
     Image billsImage;
 
+    bool billsDue;
  
     private void Start()
     {
@@ -39,6 +40,9 @@ public class BillsScript : MonoBehaviour
 
     private void Update()
     {
+        if(billsDue ==true && miniGameState.State != miniGameState.mgState.onGoing && StreamChosenGame.amIStreaming == false && GetInBed.isAsleep == false && PartTimeScript.isWorking == false){
+            UI.OpenBillsScreen();
+        }
     }
     public void CheckDays()
     {
@@ -49,8 +53,11 @@ public class BillsScript : MonoBehaviour
             ElectricityObj.transform.localPosition = new Vector2(10.79f, 6.73f);
             WaterObj.transform.localPosition = new Vector2(10.79f, 19.68f);
             billsImage.sprite = billsSprites[0];
-            
-            UI.OpenBillsScreen();
+            billsDue = true;
+            //if(miniGameState.State != miniGameState.mgState.onGoing){
+            //UI.OpenBillsScreen();
+            //}
+
         }
         else if (DayCount>= DayThreshold)
         {
@@ -62,7 +69,7 @@ public class BillsScript : MonoBehaviour
             WP.Water =500*currentMonth;
             Electricity.SetText(WP.Electricity.ToString());
             Water.SetText(WP.Water.ToString());
-            UI.OpenBillsScreen();
+            billsDue=true;
             DayCount = 0;
         }
     }
@@ -80,15 +87,18 @@ public class BillsScript : MonoBehaviour
                 UI.CloseBillsScreen();
                 MonthCount = 0;
                 currentMonth +=1;
+                billsDue = false;
             }
             else
             {
+                UI.CloseBillsScreen();
                 UI.OpenGOScreen();
             }
            
         }
         else
         {
+            billsDue = false;
             UI.CloseBillsScreen();
         }
 
