@@ -120,8 +120,7 @@ public class UISliding : MonoBehaviour
     }
 
     public void CloseBillsScreen()
-    {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound);   
+    {  
         UIActive = false;
         BillsScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
     }

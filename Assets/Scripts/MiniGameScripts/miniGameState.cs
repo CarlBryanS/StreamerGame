@@ -21,7 +21,7 @@ public class miniGameState : MonoBehaviour
     }
 
     void Update(){
-        if(miniGameState.State == miniGameState.mgState.paused){
+        if(miniGameState.State == miniGameState.mgState.paused ||miniGameState.State == miniGameState.mgState.stopped){
             DisableAll();
         }
     }

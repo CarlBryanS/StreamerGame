@@ -22,7 +22,7 @@ public class mcGameScript : MonoBehaviour
         mcActive =true;
         mcPoints = 0;
         mcGoal =10;
-        //time = ControlStreamTime.StreamTime + 30;
+        time = ControlStreamTime.StreamTime + 30;
     }
 
     // Update is called once per frame
@@ -30,9 +30,14 @@ public class mcGameScript : MonoBehaviour
     {
         if(miniGameState.State ==miniGameState.mgState.onGoing&& StreamChosenGame.GOAHEAD){
             mcGoalText.SetText("Kill " + mcGoal.ToString() + " Enemies: " + mcPoints.ToString()+ "/" + mcGoal.ToString());
-           // time -= Time.unscaledDeltaTime;
-          //  timerText.SetText("Time Left: " + Mathf.RoundToInt(time));
+            FindObjectOfType<SoundManager>().BGM.Stop(); 
+            FindObjectOfType<SoundManager>().MCBGM.enabled = true;
+            time -= Time.unscaledDeltaTime;
+            timerText.SetText("Time Left: " + Mathf.RoundToInt(time));
             didThePlayerWin();
+            if(Input.GetMouseButtonDown(0)){
+                FindObjectOfType<SoundManager>().playShootSound2();    
+            }
         }
     }
 
@@ -43,17 +48,22 @@ public class mcGameScript : MonoBehaviour
             resultText.SetText("You Won!");
             UI.OpenGameResultScreen();       
             FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameWinSound);   
+            FindObjectOfType<SoundManager>().MCBGM.enabled = false;
+  
+            
         }
-        else if(mcGotHit){
+        else if(mcGotHit|| time <= 0){
             mcActive = false;
             miniGameState.State = miniGameState.mgState.paused;
             resultText.SetText("You Lost!");
             UI.OpenGameResultScreen();     
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameLoseSound);   
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameLoseSound);  
+            FindObjectOfType<SoundManager>().MCBGM.enabled = false;         
         }
     }
 
     public void ConfirmGameResult(){
+        FindObjectOfType<SoundManager>().BGM.Play(); 
         miniGameState.State = miniGameState.mgState.stopped;
         UI.CloseGameResultScreen();
     }

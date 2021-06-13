@@ -32,12 +32,14 @@ public class PartTimeScript : MonoBehaviour
     public GameObject secondPage;
     public GameObject warning;
     public GameObject Brendan;
+    public GameObject Lights;
 
 void Start(){
     currentPage =1;
 }
 void Update(){
         if(isWorking){
+            Lights.SetActive(false);
             checkIfWorkEnded();
             if(amIWorking && WP.Energy >= WP.tempEnergy){
                 WP.Energy -= Time.unscaledDeltaTime / ptDurationBar;
@@ -141,6 +143,7 @@ void Update(){
             WP.Energy = Mathf.Round(WP.tempEnergy*100)/100;
             Debug.Log("work ended");
             Brendan.SetActive(true);
+            Lights.SetActive(true);
             SVS.UpdateUI();
             
         }

@@ -8,6 +8,7 @@ public class BillsScript : MonoBehaviour
 {
     public WORLDPARAMETERS WP;
     public UISliding UI;
+    public SetVisualStats SVS;
 
     public TimerScript TS;
 
@@ -29,9 +30,11 @@ public class BillsScript : MonoBehaviour
     Image billsImage;
 
     bool billsDue;
+    bool lost;
  
     private void Start()
     {
+        lost = false;
         currentMonth = 1;
         billsImage = GetComponent<Image>();
         DayCount = 1;
@@ -40,7 +43,7 @@ public class BillsScript : MonoBehaviour
 
     private void Update()
     {
-        if(billsDue ==true && miniGameState.State != miniGameState.mgState.onGoing && StreamChosenGame.amIStreaming == false && GetInBed.isAsleep == false && PartTimeScript.isWorking == false){
+        if(billsDue ==true && miniGameState.State != miniGameState.mgState.onGoing && StreamChosenGame.amIStreaming == false && GetInBed.isAsleep == false && PartTimeScript.isWorking == false && lost == false){
             UI.OpenBillsScreen();
         }
     }
@@ -76,21 +79,24 @@ public class BillsScript : MonoBehaviour
 
     public void ConfirmBills()
     {
-        if (MonthCount >= MonthThreshold)
+        if (MonthCount >= MonthThreshold && lost == false)
         {
             if(WP.Money >= (WP.Electricity + WP.Water))
             {
+                        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound); 
                 HelpScreenScript.TPayBool = true;
                 WP.Money -= (WP.Electricity + WP.Water);
                 WP.Electricity = 0;
                 WP.Water = 0;
                 UI.CloseBillsScreen();
-                MonthCount = 0;
+                MonthCount = 1;
                 currentMonth +=1;
                 billsDue = false;
+                SVS.UpdateUI();
             }
             else
             {
+                lost = true;
                 UI.CloseBillsScreen();
                 UI.OpenGOScreen();
             }

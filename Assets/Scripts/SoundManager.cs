@@ -21,11 +21,18 @@ public class SoundManager : MonoBehaviour
     public AudioClip openWindowSound;
     public AudioClip closeWindowSound;
     public AudioClip UpgradeSound;
-
+    public AudioClip ZombieSpawnSound;
+    public AudioClip ZombieDeathSound;
+    public AudioClip mcArrowSound;
+    public AudioClip simsBrickSound;
     public AudioSource AS;
     public AudioSource AS2;
     public AudioSource BGM;
     public AudioSource CSGOBGM;
+    public AudioSource MCBGM;
+    public AudioSource AmongUsBGM;
+
+    public AudioSource SimsBGM;
     public AudioSource SleepBGM;
     public AudioSource AS3;
     // Start is called before the first frame update
@@ -57,6 +64,11 @@ public class SoundManager : MonoBehaviour
     public void playShootSound(){
         AS2.loop = false;
         AS2.clip = csGoShootSound;
+        AS2.Play();
+    }
+    public void playShootSound2(){
+        AS2.loop = false;
+        AS2.clip = mcArrowSound;
         AS2.Play();
     }
     public void playEatSound()

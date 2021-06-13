@@ -57,7 +57,7 @@ public class GetInBed : MonoBehaviour
         //sleep
         if (isAsleep == true)
         {
-            if (WP.Health <= 0.999f && !UI.UIActive)
+            if (WP.Health < 1f && !UI.UIActive)
             {
                 WP.Health += Time.unscaledDeltaTime / streamDurationBar;
                 TS.TimeStart(streamDurationTimer);

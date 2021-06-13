@@ -29,8 +29,15 @@ public class StreamChosenGame : MonoBehaviour
 
     public GameObject warning;
     public GameObject warning2;
+    public bool temptime;
+    void start(){
+        temptime = false;
+    }
 
     void Update(){
+        if(temptime==true){
+            TS.TimeStart(0.4f);
+        }
         checkIfStreaming();
         if (amIStreaming)
         {     

@@ -13,12 +13,14 @@ public class WordManager : MonoBehaviour
     public string currentWord;
     public Image LeftTimer;
     public Image RightTimer;
+    public static bool playerStarted;
 
     //public Timer timer;
 
     //public SceneMaster sceneMaster;
     void OnEnable()
     {
+        playerStarted = false;
         text.SetText("Get Ready!");
         LeftTimer.fillAmount = 1;
         RightTimer.fillAmount =1;
@@ -50,7 +52,7 @@ public class WordManager : MonoBehaviour
         if(StreamChosenGame.GOAHEAD){
             CheckInput();
             CheckIfComplete();
-            if(LeftTimer.fillAmount >= 0 && RightTimer.fillAmount >= 0){
+            if(LeftTimer.fillAmount >= 0 && RightTimer.fillAmount >= 0 && playerStarted){
                 LeftTimer.fillAmount -= 0.2f *Time.unscaledDeltaTime;
                 RightTimer.fillAmount -= 0.2f *Time.unscaledDeltaTime;
             }
@@ -94,6 +96,7 @@ public class WordManager : MonoBehaviour
     {
         if(IsCorrectLetter(typedLetter))
         {
+            playerStarted = true;
             RemoveLetter();
         }
     }

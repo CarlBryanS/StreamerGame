@@ -22,10 +22,12 @@ public class simsProjectilesScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll){
         if(this.gameObject.tag == "simsMoney" &&(coll.gameObject.tag == "Player")){
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().coinSound);    
             simsGameScript.simsPoints += 1;
             Destroy(this.gameObject);
         }
         else if(this.gameObject.tag == "simsSad" &&(coll.gameObject.tag == "Player")){
+            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().simsBrickSound);    
             simsGameScript.simsHealth -=1;
             Destroy(this.gameObject);
         }

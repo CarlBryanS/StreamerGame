@@ -33,7 +33,7 @@ public class mouseCursor : MonoBehaviour
            if(CSGOGameScript.csgoActive ==true && StreamChosenGame.GOAHEAD){
                Cursor.SetCursor(crosshair, new Vector2(32,31.5f), CursorMode.ForceSoftware);
            }
-           else if(amongUsGameScript.amongUsActive ==true && StreamChosenGame.GOAHEAD){
+           else if((amongUsGameScript.amongUsActive ==true || mcGameScript.mcActive)&& StreamChosenGame.GOAHEAD){
                
             if(Input.GetMouseButton(0)){
                 Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.ForceSoftware);

@@ -94,12 +94,25 @@ public class ChatScript : MonoBehaviour
     }
 
     public void DonationCheck(){
+        if(ActiveGame.selectedGame == "amongUs"){
+            if(WordManager.playerStarted){
+                if(!Donation.activeSelf){
+            foreach(Chatter x in ActiveChatters){
+                if(GachaRoll() <11){
+                    Donation.SetActive(true);
+                }
+            }
+        }
+            }
+        }
+        else{
         if(!Donation.activeSelf){
             foreach(Chatter x in ActiveChatters){
                 if(GachaRoll() <11){
                     Donation.SetActive(true);
                 }
             }
+        }
         }
 
     }

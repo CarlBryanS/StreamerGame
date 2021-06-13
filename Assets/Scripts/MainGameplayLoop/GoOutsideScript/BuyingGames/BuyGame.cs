@@ -13,6 +13,7 @@ public class BuyGame : MonoBehaviour
 
     public GameObject[] bgExtras;
     public GameObject owned;
+    public GameObject warning;
     public void Buy()
     {
         switch (this.gameObject.name)
@@ -31,6 +32,12 @@ public class BuyGame : MonoBehaviour
                     }
                     SVS.UpdateUI();
                 }
+                else{
+                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);  
+                    if(!warning.activeSelf){
+                    warning.SetActive(true);
+                    } 
+                }
                 break;
             case "BuyCSGO":
                 if (WP.Money >= 2500 && WP.gamingRigStat >= 3)
@@ -45,6 +52,12 @@ public class BuyGame : MonoBehaviour
                         bgExtras[i].SetActive(false);
                     }
                     SVS.UpdateUI();
+                }
+                 else{
+                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);   
+                    if(!warning.activeSelf){
+                    warning.SetActive(true);
+                     }
                 }
                 break;
             case "BuySims4":
@@ -61,6 +74,12 @@ public class BuyGame : MonoBehaviour
                     }
                     SVS.UpdateUI();
                 }       
+                 else{
+                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);   
+                    if(!warning.activeSelf){
+                    warning.SetActive(true);
+                     }
+                }
                 break;
         }
     }
