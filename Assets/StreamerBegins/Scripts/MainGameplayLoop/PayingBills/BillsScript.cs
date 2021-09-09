@@ -32,6 +32,11 @@ public class BillsScript : MonoBehaviour
     bool billsDue;
     bool lost;
  
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     private void Start()
     {
         lost = false;
@@ -83,7 +88,7 @@ public class BillsScript : MonoBehaviour
         {
             if(WP.Money >= (WP.Electricity + WP.Water))
             {
-                        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound); 
+                       SoundManager.PlaySound(SoundManager.buySound); 
                 HelpScreenScript.TPayBool = true;
                 WP.Money -= (WP.Electricity + WP.Water);
                 WP.Electricity = 0;

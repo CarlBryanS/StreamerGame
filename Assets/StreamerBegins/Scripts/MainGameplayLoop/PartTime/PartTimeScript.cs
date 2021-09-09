@@ -34,6 +34,12 @@ public class PartTimeScript : MonoBehaviour
     public GameObject Brendan;
     public GameObject Lights;
 
+    public SoundManager SoundManager;
+    void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
+
 void Start(){
     currentPage =1;
 }
@@ -70,19 +76,19 @@ void Update(){
     {
        switch(Job){
         case "6/12":
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
+           SoundManager.PlaySound(SoundManager.clickSound);   
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.4f, 0.1f, 50, 6);
             break;
         case "comShop":
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
+            SoundManager.PlaySound(SoundManager.clickSound);   
             ptDurationBar = 7;
             partTimeDuration = 10;
             WorkPartTime(0.15f, 0.2f, 15, 1);
             break;
         case "angkas":
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
+            SoundManager.PlaySound(SoundManager.clickSound);   
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.1f, 0.4f, 30, 6);
@@ -134,7 +140,7 @@ void Update(){
     void checkIfWorkEnded()
     {
         if(isEnergyDone&& isHealthDone && isTimeDone){
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound);
+            SoundManager.PlaySound(SoundManager.buySound);
             amIWorking=false;
             isWorking =false;
            //WP.Energy = WP.tempEnergy;

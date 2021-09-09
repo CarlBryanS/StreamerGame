@@ -5,7 +5,12 @@ using UnityEngine;
 public class simsProjectilesScript : MonoBehaviour
 {
     public float speed;
+    public SoundManager SoundManager;
     // Start is called before the first frame update
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void OnEnable()
     {
         speed = Random.Range(-2,-4);
@@ -22,12 +27,12 @@ public class simsProjectilesScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll){
         if(this.gameObject.tag == "simsMoney" &&(coll.gameObject.tag == "Player")){
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().coinSound);    
+            SoundManager.PlaySound(SoundManager.coinSound);    
             simsGameScript.simsPoints += 1;
             Destroy(this.gameObject);
         }
         else if(this.gameObject.tag == "simsSad" &&(coll.gameObject.tag == "Player")){
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().simsBrickSound);    
+            SoundManager.PlaySound(SoundManager.simsBrickSound);    
             simsGameScript.simsHealth -=1;
             Destroy(this.gameObject);
         }

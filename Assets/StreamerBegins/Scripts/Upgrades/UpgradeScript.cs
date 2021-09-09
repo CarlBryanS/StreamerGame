@@ -28,6 +28,11 @@ public class UpgradeScript : MonoBehaviour
     public GameObject RigButton;
     public GameObject SocialMediaButton;
     public GameObject warning;
+    public SoundManager SoundManager;
+
+    void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
 
     private void Start()
     {
@@ -47,7 +52,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= InternetPM.upgradeCost && InternetLevel < 10)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().UpgradeSound);  
+            SoundManager.PlaySound(SoundManager.UpgradeSound);  
             InternetLevel += 1;
             HelpScreenScript.TInternetBool = true;
             WP.Money -= InternetPM.upgradeCost;
@@ -74,7 +79,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= RigPM.upgradeCost && RigLevel < 10)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().UpgradeSound);  
+            SoundManager.PlaySound(SoundManager.UpgradeSound);  
             RigLevel += 1;
             HelpScreenScript.TGamingRigBool = true;
             WP.Money -= RigPM.upgradeCost;
@@ -100,7 +105,7 @@ public class UpgradeScript : MonoBehaviour
     {
         if (WP.Money >= SocialMediaPM.upgradeCost && SMMLevel < 10)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().UpgradeSound);  
+            SoundManager.PlaySound(SoundManager.UpgradeSound);  
             SMMLevel += 1;
             HelpScreenScript.TSocialMediaMarketingBool = true;
             WP.Money -= SocialMediaPM.upgradeCost;

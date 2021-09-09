@@ -24,12 +24,18 @@ public class DonationScript : MonoBehaviour
     bool StartFadeIn;
 
     CanvasGroup DonationGroup;
+
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     
 
     // Start is called before the first frame update
     void OnEnable()
     {   
-       FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound);    
+       SoundManager.PlaySound(SoundManager.buySound);    
        currentDonator =CS.ActiveChatters[Random.Range(0,CS.ActiveChatters.Count)];
 
        switch(currentDonator.chatterWealth){

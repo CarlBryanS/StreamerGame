@@ -18,6 +18,11 @@ public class WordManager : MonoBehaviour
     //public Timer timer;
 
     //public SceneMaster sceneMaster;
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void OnEnable()
     {
         playerStarted = false;
@@ -73,7 +78,7 @@ public class WordManager : MonoBehaviour
         else if(LeftTimer.fillAmount <= 0 && RightTimer.fillAmount <= 0)
         {
            // timer.failImage.fillAmount -= 0.2f;
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);   
+            SoundManager.PlaySound(SoundManager.clickErrorSound);   
             ResetTimer();
             SetCurrentWord();
         }

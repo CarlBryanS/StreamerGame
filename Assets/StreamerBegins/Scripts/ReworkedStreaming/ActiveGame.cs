@@ -12,12 +12,16 @@ public class ActiveGame : MonoBehaviour
     public GameObject sims4Highlight;
 
     public static ActiveGame instance;
-    void Awake(){
+
+    public SoundManager SoundManager;
+      void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
     }
+
     public void getActiveGame(string gameName){
         switch(gameName){
             case"amongUs":
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);  
+                SoundManager.PlaySound(SoundManager.clickSound);  
                 amongUsHighlight.SetActive(true);
                 csGoHighlight.SetActive(false);
                 mcHighlight.SetActive(false);
@@ -25,7 +29,7 @@ public class ActiveGame : MonoBehaviour
                 selectedGame = gameName;
                 break;
             case"csGO":
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);  
+                SoundManager.PlaySound(SoundManager.clickSound);  
                 csGoHighlight.SetActive(true);
                 amongUsHighlight.SetActive(false);
                 mcHighlight.SetActive(false);
@@ -33,7 +37,7 @@ public class ActiveGame : MonoBehaviour
                 selectedGame = gameName;
                 break;
             case"mineCraft":
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);  
+                SoundManager.PlaySound(SoundManager.clickSound);  
                 mcHighlight.SetActive(true);
                 sims4Highlight.SetActive(false);
                 amongUsHighlight.SetActive(false);
@@ -41,7 +45,7 @@ public class ActiveGame : MonoBehaviour
                 selectedGame = gameName;
                 break;
             case"sims4":
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);  
+                SoundManager.PlaySound(SoundManager.clickSound);  
                 sims4Highlight.SetActive(true);
                 amongUsHighlight.SetActive(false);
                 csGoHighlight.SetActive(false);

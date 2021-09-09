@@ -36,6 +36,12 @@ public class UISliding : MonoBehaviour
     public Camera RoomCamera;
     public GameObject FaceCam;
 
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
+
     void Start(){
         UIActive = true;
     }
@@ -61,7 +67,7 @@ public class UISliding : MonoBehaviour
     {
         if(!StreamChosenGame.amIStreaming&& UIActive == false&& !GetInBed.isAsleep)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().openWindowSound);   
+            SoundManager.PlaySound(SoundManager.openWindowSound);   
             CloseUpgradeScreenButton.SetActive(true);
             OpenUpgradeScreenButton.SetActive(false);
             UIActive = true;
@@ -73,7 +79,7 @@ public class UISliding : MonoBehaviour
     {
         if (!StreamChosenGame.amIStreaming)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+            SoundManager.PlaySound(SoundManager.closeWindowSound);   
             CloseUpgradeScreenButton.SetActive(false);
             OpenUpgradeScreenButton.SetActive(true);
             UIActive = false;
@@ -89,14 +95,14 @@ public class UISliding : MonoBehaviour
 
     public void CloseResultsScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+        SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         ResultsScreen.DOAnchorPos(new Vector2(0, 974), 0.25f);
     }
 
     public void OpenGameScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
+        SoundManager.PlaySound(SoundManager.clickSound);   
         HelpScreenScript.TStreamBool = true;
         DurationSlider.value = 0f;
         GameScreenActive = true;
@@ -106,7 +112,7 @@ public class UISliding : MonoBehaviour
 
     public void CloseGameScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+        SoundManager.PlaySound(SoundManager.closeWindowSound);   
         GameScreenActive = false;
         UIActive = false;
         GameScreen.DOAnchorPos(new Vector2(-1566, 0), 0.25f);
@@ -127,7 +133,7 @@ public class UISliding : MonoBehaviour
 
     public void OpenGameStoreScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().openWindowSound);   
+        SoundManager.PlaySound(SoundManager.openWindowSound);   
         UIActive = true;
         GameStoreScreen.DOAnchorPos(Vector2.zero, 0.25f);
         DoorUI.SetActive(false);
@@ -138,14 +144,14 @@ public class UISliding : MonoBehaviour
 
     public void CloseGamesStoreScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+        SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         GameStoreScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
     }
 
     public void OpenFoodStoreScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().openWindowSound);   
+        SoundManager.PlaySound(SoundManager.openWindowSound);   
         UIActive = true;
         FoodStoreScreen.DOAnchorPos(Vector2.zero, 0.25f);
         DoorUI.SetActive(false);
@@ -156,7 +162,7 @@ public class UISliding : MonoBehaviour
 
     public void CloseFoodStoreScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+        SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         FoodStoreScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
     }
@@ -165,7 +171,7 @@ public class UISliding : MonoBehaviour
     {
         if (!StreamChosenGame.amIStreaming && UIActive == false && !GetInBed.isAsleep)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().openWindowSound);   
+            SoundManager.PlaySound(SoundManager.openWindowSound);   
             UIActive = true;
             HelpScreen.DOAnchorPos(Vector2.zero, 0.25f);
         }
@@ -173,14 +179,14 @@ public class UISliding : MonoBehaviour
 
     public void CloseHelpScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+        SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         HelpScreen.DOAnchorPos(new Vector2(1521f, -924f), 0.25f);
     }
 
     public void OpenGOScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameLoseSound);   
+        SoundManager.PlaySound(SoundManager.miniGameLoseSound);   
             UIActive = true;
             GOScreen.DOAnchorPos(Vector2.zero, 0.25f);
         
@@ -196,7 +202,7 @@ public class UISliding : MonoBehaviour
     {
         if (!StreamChosenGame.amIStreaming && UIActive == false&& !GetInBed.isAsleep)
         {
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().openWindowSound);   
+            SoundManager.PlaySound(SoundManager.openWindowSound);   
             UIActive = true;
             RestartScreen.DOAnchorPos(Vector2.zero, 0.25f);
         }
@@ -206,13 +212,13 @@ public class UISliding : MonoBehaviour
 
     public void CloseRestartScreen()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);   
+        SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         RestartScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
     }
     
     public void OpenPartTimeScreen(){
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().openWindowSound);   
+        SoundManager.PlaySound(SoundManager.openWindowSound);   
         UIActive = true;
         PartTimeScreen.DOAnchorPos(new Vector2(109f, 9.2f), 0.25f);
         DoorUI.SetActive(false);
@@ -224,10 +230,10 @@ public class UISliding : MonoBehaviour
     public void ClosePartTimeScreen()
     { 
         if(PartTimeScript.isWorking == true){
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);
+            SoundManager.PlaySound(SoundManager.clickSound);
         }
         else if(PartTimeScript.isWorking == false){
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().closeWindowSound);
+            SoundManager.PlaySound(SoundManager.closeWindowSound);
         }
         UIActive = false;
         PartTimeScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);

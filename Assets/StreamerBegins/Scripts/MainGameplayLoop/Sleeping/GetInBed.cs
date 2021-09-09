@@ -26,6 +26,11 @@ public class GetInBed : MonoBehaviour
 
     public Sprite sleepingSprite;
     public Sprite wakeUpSprite;
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void Start(){
         sleepSprite = sleepButton.GetComponent<Image>();
     }
@@ -64,14 +69,14 @@ public class GetInBed : MonoBehaviour
                 PS.Sleeping();
                 Light.SetActive(false);
                 HelpScreenScript.TSleepBool = true;
-                FindObjectOfType<SoundManager>().BGM.Stop();
-                FindObjectOfType<SoundManager>().SleepBGM.enabled = true;
+                SoundManager.BGM.Stop();
+                SoundManager.SleepBGM.enabled = true;
             }
             else
             {
                 Debug.Log("sleep ended");
-                FindObjectOfType<SoundManager>().BGM.Play();
-                FindObjectOfType<SoundManager>().SleepBGM.enabled = false;
+                SoundManager.BGM.Play();
+                SoundManager.SleepBGM.enabled = false;
                 this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
                 this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
                 sleepButton.SetActive(false);
@@ -89,14 +94,14 @@ public class GetInBed : MonoBehaviour
     {
         if(WP.Health < 1){
             if(!isAsleep){
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);       
+                SoundManager.PlaySound(SoundManager.clickSound);       
                 isAsleep = true;
                 sleepSprite.sprite = wakeUpSprite;
             }
             else{
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickSound);   
-                FindObjectOfType<SoundManager>().BGM.Play();
-                FindObjectOfType<SoundManager>().SleepBGM.enabled = false;
+                SoundManager.PlaySound(SoundManager.clickSound);   
+                SoundManager.BGM.Play();
+                SoundManager.SleepBGM.enabled = false;
                 PS.Idle();
                 Light.SetActive(true);
                 isAsleep =false;

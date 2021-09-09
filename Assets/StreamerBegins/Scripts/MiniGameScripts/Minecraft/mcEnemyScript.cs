@@ -9,8 +9,13 @@ public class mcEnemyScript : MonoBehaviour
     SpriteRenderer sprite;
      Animator anim;
     // Start is called before the first frame update
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void OnEnable(){       
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().ZombieSpawnSound);    
+                SoundManager.PlaySound(SoundManager.ZombieSpawnSound);    
     }
     void Start()
     {
@@ -32,7 +37,7 @@ public class mcEnemyScript : MonoBehaviour
             anim.SetTrigger("gotHit");
             health -=1;
             if(health<=0){
-                FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().ZombieDeathSound);    
+               SoundManager.PlaySound(SoundManager.ZombieDeathSound);    
                 mcGameScript.mcPoints+=1;
                 Destroy(this.gameObject);
             }

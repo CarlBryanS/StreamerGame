@@ -14,6 +14,11 @@ public class BuyGame : MonoBehaviour
     public GameObject[] bgExtras;
     public GameObject owned;
     public GameObject warning;
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     public void Buy()
     {
         switch (this.gameObject.name)
@@ -21,7 +26,7 @@ public class BuyGame : MonoBehaviour
             case "BuyMinecraft":
                 if (WP.Money >= 1000 && WP.gamingRigStat >=2)
                 {
-                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound2);   
+                   SoundManager.PlaySound(SoundManager.buySound2);   
                     HelpScreenScript.TGameStoreBool = true;
                     owned.SetActive(true);
                     WP.Money -= 1000;
@@ -33,7 +38,7 @@ public class BuyGame : MonoBehaviour
                     SVS.UpdateUI();
                 }
                 else{
-                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);  
+                    SoundManager.PlaySound(SoundManager.clickErrorSound);  
                     if(!warning.activeSelf){
                     warning.SetActive(true);
                     } 
@@ -42,7 +47,7 @@ public class BuyGame : MonoBehaviour
             case "BuyCSGO":
                 if (WP.Money >= 2500 && WP.gamingRigStat >= 3)
                 {
-                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound2);   
+                    SoundManager.PlaySound(SoundManager.buySound2);   
                     HelpScreenScript.TGameStoreBool = true;
                     owned.SetActive(true);
                     WP.Money -= 2500;
@@ -54,7 +59,7 @@ public class BuyGame : MonoBehaviour
                     SVS.UpdateUI();
                 }
                  else{
-                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);   
+                    SoundManager.PlaySound(SoundManager.clickErrorSound);   
                     if(!warning.activeSelf){
                     warning.SetActive(true);
                      }
@@ -63,7 +68,7 @@ public class BuyGame : MonoBehaviour
             case "BuySims4":
                 if (WP.Money >= 5000 && WP.gamingRigStat >= 4)
                 {
-                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().buySound2);   
+                    SoundManager.PlaySound(SoundManager.buySound2);   
                     HelpScreenScript.TGameStoreBool = true;
                     owned.SetActive(true);
                     SIMS4.SetActive(true);
@@ -75,7 +80,7 @@ public class BuyGame : MonoBehaviour
                     SVS.UpdateUI();
                 }       
                  else{
-                    FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);   
+                    SoundManager.PlaySound(SoundManager.clickErrorSound);   
                     if(!warning.activeSelf){
                     warning.SetActive(true);
                      }

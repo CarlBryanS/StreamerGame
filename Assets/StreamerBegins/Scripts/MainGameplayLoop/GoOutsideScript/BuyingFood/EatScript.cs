@@ -11,6 +11,12 @@ public class EatScript : MonoBehaviour
 
     float tempEnergy;
 
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
+
     public void Eat()
     {
         if (WP.Money >= foodPrice && WP.Energy < 1)
@@ -19,13 +25,13 @@ public class EatScript : MonoBehaviour
             {
                 
                 HelpScreenScript.TFoodBool = true;
-                FindObjectOfType<SoundManager>().playEatSound();
+                SoundManager.playEatSound();
                 WP.Energy = 1;
             }
             else
             {
                 HelpScreenScript.TFoodBool = true;
-                FindObjectOfType<SoundManager>().playEatSound();
+               SoundManager.playEatSound();
                 WP.Energy += eatValue;
             }
             

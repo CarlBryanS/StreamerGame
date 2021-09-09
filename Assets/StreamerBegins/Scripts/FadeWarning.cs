@@ -9,10 +9,15 @@ public class FadeWarning : MonoBehaviour
     bool StartFadeIn;
 
     CanvasGroup AlphaGroup;
+    public SoundManager SoundManager;
     // Start is called before the first frame update
+    void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void OnEnable()
     {
-        FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().clickErrorSound);   
+        SoundManager.PlaySound(SoundManager.clickErrorSound);   
         StartCoroutine("Donation");  
     }
 

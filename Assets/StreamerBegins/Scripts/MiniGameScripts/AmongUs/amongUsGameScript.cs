@@ -12,9 +12,14 @@ public class amongUsGameScript : MonoBehaviour
     public static int amongUsPoints;
     public static int amongUsGoal;
     public static bool amongUsActive;
+    public SoundManager SoundManager;
 
     float time;
     // Start is called before the first frame update
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void OnEnable()
     {
         amongUsActive =true;
@@ -27,8 +32,8 @@ public class amongUsGameScript : MonoBehaviour
     void Update()
     {
         if(miniGameState.State ==miniGameState.mgState.onGoing&& StreamChosenGame.GOAHEAD){
-            FindObjectOfType<SoundManager>().BGM.Stop(); 
-            FindObjectOfType<SoundManager>().AmongUsBGM.enabled = true;
+            SoundManager.BGM.Stop(); 
+            SoundManager.AmongUsBGM.enabled = true;
             if(WordManager.playerStarted){
                 amongUsGoalText.SetText("Type " + amongUsGoal.ToString() + " Sentences: " + amongUsPoints.ToString()+ "/" + amongUsGoal.ToString());
                 time -= Time.unscaledDeltaTime;
@@ -41,26 +46,26 @@ public class amongUsGameScript : MonoBehaviour
 
     void didThePlayerWin(){
         if(amongUsPoints >= amongUsGoal){
-            FindObjectOfType<SoundManager>().AmongUsBGM.enabled = false;
+            SoundManager.AmongUsBGM.enabled = false;
             amongUsActive = false;
             miniGameState.State = miniGameState.mgState.paused;
             resultText.SetText("You Won!");
             UI.OpenGameResultScreen();       
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameWinSound);            
+            SoundManager.PlaySound(SoundManager.miniGameWinSound);            
         }
         else if(time <= 0){
-            FindObjectOfType<SoundManager>().AmongUsBGM.enabled = false;
+            SoundManager.AmongUsBGM.enabled = false;
             amongUsActive = false;
             miniGameState.State = miniGameState.mgState.paused;
             resultText.SetText("You Lost!");
             UI.OpenGameResultScreen();     
-            FindObjectOfType<SoundManager>().PlaySound(FindObjectOfType<SoundManager>().miniGameLoseSound);   
+            SoundManager.PlaySound(SoundManager.miniGameLoseSound);   
  
         }
     }
 
     public void ConfirmGameResult(){
-        FindObjectOfType<SoundManager>().BGM.Play(); 
+        SoundManager.BGM.Play(); 
         miniGameState.State = miniGameState.mgState.stopped;
         UI.CloseGameResultScreen();
     }

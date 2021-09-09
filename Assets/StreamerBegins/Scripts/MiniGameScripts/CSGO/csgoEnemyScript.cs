@@ -11,6 +11,11 @@ public class csgoEnemyScript : MonoBehaviour
     Animator anim;
     SpriteRenderer sr;
     public GameObject parent;
+    public SoundManager SoundManager;
+        void Awake(){
+        SoundManager = FindObjectOfType<SoundManager>();
+    }
+
     void Start(){
         
         anim = gameObject.GetComponent<Animator>();
@@ -32,7 +37,7 @@ public class csgoEnemyScript : MonoBehaviour
     
     void OnMouseDown(){
         if(Health ==1){
-            FindObjectOfType<SoundManager>().playDeathSound();  
+           SoundManager.playDeathSound();  
             CSGOGameScript.csgoPoints +=1;
             Destroy(this.gameObject);
         }
