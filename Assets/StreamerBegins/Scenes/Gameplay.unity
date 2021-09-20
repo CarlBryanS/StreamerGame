@@ -4066,6 +4066,7 @@ MonoBehaviour:
   - {fileID: 188270845}
   owned: {fileID: 239020511}
   warning: {fileID: 2102013674}
+  SoundManager: {fileID: 0}
 --- !u!1 &188661554
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,6 +4220,7 @@ MonoBehaviour:
   - {fileID: 188661554}
   owned: {fileID: 1048541279}
   warning: {fileID: 2102013674}
+  SoundManager: {fileID: 0}
 --- !u!1 &194967828
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,6 +10159,7 @@ MonoBehaviour:
   DonationText: {fileID: 683720711}
   RandomMessage: 
   RandomAmount: 0
+  SoundManager: {fileID: 0}
 --- !u!225 &683720714
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10233,6 +10236,7 @@ MonoBehaviour:
   resultText: {fileID: 90387292}
   gameplaycam: {fileID: 247689291}
   player: {fileID: 1825182261}
+  SoundManager: {fileID: 0}
 --- !u!114 &684221866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12801,6 +12805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b71c170a72c64dbe69183a2d00b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundManager: {fileID: 0}
 --- !u!114 &941085697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12969,6 +12974,7 @@ MonoBehaviour:
   fullWarning: {fileID: 1841855340}
   sleepingSprite: {fileID: 21300000, guid: 6279554c7f019304c804c554ed53bbe3, type: 3}
   wakeUpSprite: {fileID: 21300000, guid: 80bc48176dee50e4e9752609acf757ca, type: 3}
+  SoundManager: {fileID: 0}
 --- !u!114 &943661373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13137,6 +13143,7 @@ MonoBehaviour:
   - {fileID: 948162456}
   owned: {fileID: 2083030612}
   warning: {fileID: 2102013674}
+  SoundManager: {fileID: 0}
 --- !u!1001 &964265452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14291,6 +14298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b71c170a72c64dbe69183a2d00b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundManager: {fileID: 0}
 --- !u!1 &1048541279
 GameObject:
   m_ObjectHideFlags: 0
@@ -14619,6 +14627,7 @@ MonoBehaviour:
   SVS: {fileID: 4876803300460136145}
   eatValue: 0.4
   foodPrice: 24
+  SoundManager: {fileID: 0}
 --- !u!1 &1074800793
 GameObject:
   m_ObjectHideFlags: 0
@@ -16071,6 +16080,7 @@ MonoBehaviour:
   billsSprites:
   - {fileID: 21300000, guid: 1d0c1d4e0982f9e4cb20ea4cb621504a, type: 3}
   - {fileID: 21300000, guid: ce069208e4286264cb540724f801b85f, type: 3}
+  SoundManager: {fileID: 0}
 --- !u!114 &1166441405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16974,6 +16984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b71c170a72c64dbe69183a2d00b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundManager: {fileID: 0}
 --- !u!225 &1290559289
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17268,6 +17279,7 @@ MonoBehaviour:
   SVS: {fileID: 4876803300460136145}
   eatValue: 0.05
   foodPrice: 4
+  SoundManager: {fileID: 0}
 --- !u!1 &1311422894
 GameObject:
   m_ObjectHideFlags: 0
@@ -19163,6 +19175,7 @@ MonoBehaviour:
   amongUsGoalText: {fileID: 345069132}
   timerText: {fileID: 2138520139}
   resultText: {fileID: 90387292}
+  SoundManager: {fileID: 0}
 --- !u!114 &1454977861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19191,6 +19204,7 @@ MonoBehaviour:
   currentWord: 
   LeftTimer: {fileID: 762855965}
   RightTimer: {fileID: 894720934}
+  SoundManager: {fileID: 0}
 --- !u!1 &1467953805
 GameObject:
   m_ObjectHideFlags: 0
@@ -21610,6 +21624,7 @@ MonoBehaviour:
   mcGoalText: {fileID: 1303761995}
   timerText: {fileID: 396703515}
   resultText: {fileID: 90387292}
+  SoundManager: {fileID: 0}
 --- !u!114 &1697566905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22896,6 +22911,7 @@ MonoBehaviour:
   SVS: {fileID: 4876803300460136145}
   eatValue: 0.8
   foodPrice: 40
+  SoundManager: {fileID: 0}
 --- !u!1001 &1759290684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24309,6 +24325,7 @@ MonoBehaviour:
   SVS: {fileID: 4876803300460136145}
   eatValue: 0.13
   foodPrice: 9
+  SoundManager: {fileID: 0}
 --- !u!1 &1841855340
 GameObject:
   m_ObjectHideFlags: 0
@@ -24398,6 +24415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b71c170a72c64dbe69183a2d00b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundManager: {fileID: 0}
 --- !u!225 &1841855345
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -25679,6 +25697,7 @@ MonoBehaviour:
   csgoGoalText: {fileID: 1864630249}
   timerText: {fileID: 631743391}
   resultText: {fileID: 90387292}
+  SoundManager: {fileID: 0}
 --- !u!1 &1911825861
 GameObject:
   m_ObjectHideFlags: 0
@@ -27140,7 +27159,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1896012035}
+      - m_Target: {fileID: 1454977860}
         m_MethodName: ConfirmGameResult
         m_Mode: 1
         m_Arguments:
@@ -28927,6 +28946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b71c170a72c64dbe69183a2d00b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundManager: {fileID: 0}
 --- !u!114 &2102013678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29190,6 +29210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0b71c170a72c64dbe69183a2d00b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundManager: {fileID: 0}
 --- !u!114 &2108762285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30444,6 +30465,7 @@ MonoBehaviour:
   warning: {fileID: 941085693}
   Brendan: {fileID: 864401607}
   Lights: {fileID: 1864630053}
+  SoundManager: {fileID: 0}
 --- !u!114 &4876803300460136147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30460,6 +30482,7 @@ MonoBehaviour:
   csGoHighlight: {fileID: 1655427070}
   mcHighlight: {fileID: 986834746}
   sims4Highlight: {fileID: 1521797213}
+  SoundManager: {fileID: 0}
 --- !u!114 &4876803300460136148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30473,6 +30496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SCG: {fileID: 4876803300460136150}
+  SoundManager: {fileID: 0}
 --- !u!114 &4876803300460136149
 MonoBehaviour:
   m_ObjectHideFlags: 0

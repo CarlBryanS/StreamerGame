@@ -18,7 +18,7 @@ public class DontDestroy : MonoBehaviour
     }
     void Update(){
                 Scene scene = SceneManager.GetActiveScene();
-                if(scene.buildIndex ==2){
+                if(scene.buildIndex ==3 || scene.buildIndex ==4){
                     Destroy(this.gameObject);
                 }
     }

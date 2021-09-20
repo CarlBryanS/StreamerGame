@@ -23,6 +23,10 @@ public class DialogueScript : MonoBehaviour
         BodyText.text = string.Empty;
         StartDialogue();
     }
+    
+    public virtual void OnDisable() {
+        TextActive = false;
+    }
 
     public virtual void StartDialogue(){
         index = 0;
@@ -55,6 +59,14 @@ public class DialogueScript : MonoBehaviour
         else{
             gameObject.SetActive(false);
         }
+    }
+
+    public void TextOn(){
+        TextActive = true;
+    }
+
+    public void TextOff(){
+        TextActive = false;
     }
 
     public virtual bool IsLineOver(){

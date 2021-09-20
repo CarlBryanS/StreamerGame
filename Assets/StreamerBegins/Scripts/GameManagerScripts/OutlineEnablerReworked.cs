@@ -8,11 +8,10 @@ public class OutlineEnablerReworked : MonoBehaviour
 
     public virtual void OnMouseEnter()
     {
-        if(DialogueScript.TextActive == true) return;
         EnableOutline();      
     }
 
-    public void OnMouseExit()
+    public virtual void OnMouseExit()
     {
         DisableOutline();
     }

@@ -12,7 +12,7 @@ public class EatScript : MonoBehaviour
     float tempEnergy;
 
     public SoundManager SoundManager;
-        void Awake(){
+    void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
     }
 
@@ -48,5 +48,9 @@ public class EatScript : MonoBehaviour
     public void stopPreview()
     {
        
+    }
+
+    public void ModifyPrice(int price){
+        foodPrice = price;
     }
 }

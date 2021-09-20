@@ -20,6 +20,7 @@ public class LoadingScript : MonoBehaviour
     public MeshRenderer cover;
 
     public TMP_Text loadingText;
+    public int level;
     
  
     // Use this for initialization
@@ -57,6 +58,6 @@ public class LoadingScript : MonoBehaviour
             loadingText.SetText("Loading...");
             yield return new WaitForSeconds(0.3f);
         }
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(level);
     }
 }

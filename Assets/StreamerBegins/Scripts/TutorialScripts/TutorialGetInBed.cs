@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetInBed : MonoBehaviour
+public class TutorialGetInBed : MonoBehaviour
 {
     public bool HoveringOnBed;
     public bool HoldingBed;
@@ -27,14 +27,16 @@ public class GetInBed : MonoBehaviour
     public Sprite sleepingSprite;
     public Sprite wakeUpSprite;
     public SoundManager SoundManager;
+    public TutorialScript tutorialScript;
     void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
         sleepSprite = sleepButton.GetComponent<Image>();
     }
     private void OnMouseEnter()
     {
+        if(DialogueScript.TextActive)return;
          // HoveringOnBed = true;
-    if (!StreamChosenGame.amIStreaming && !UI.UIActive && !PartTimeScript.isWorking && !isAsleep)
+         if (!StreamChosenGame.amIStreaming && !UI.UIActive && !PartTimeScript.isWorking && !isAsleep)
         {
             this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 4.437178f, 7.626603f);
             this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, 0.8984127f, -0.01983786f);
@@ -44,6 +46,7 @@ public class GetInBed : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if(DialogueScript.TextActive)return;
         if(!isAsleep){
         this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
         this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, -0.004668713f, -0.01983786f);
@@ -53,6 +56,7 @@ public class GetInBed : MonoBehaviour
 
     private void Update()
     {
+        if(DialogueScript.TextActive)return;
         if (isAsleep == true)
         {
             if (WP.Health < 1f && !UI.UIActive)
@@ -67,6 +71,7 @@ public class GetInBed : MonoBehaviour
             }
             else
             {
+                TutorialTriggerCheck.ProgressTo5();
                 SoundManager.BGM.Play();
                 SoundManager.SleepBGM.enabled = false;
                 this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
@@ -84,6 +89,7 @@ public class GetInBed : MonoBehaviour
     }
     public void Sleep()
     {
+        if(DialogueScript.TextActive)return;
         if(WP.Health < 1)
         {
             GoToBed();
@@ -109,6 +115,7 @@ public class GetInBed : MonoBehaviour
         }
         else
         {
+            TutorialTriggerCheck.ProgressTo5();
             SoundManager.PlaySound(SoundManager.clickSound);
             SoundManager.BGM.Play();
             SoundManager.SleepBGM.enabled = false;

@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class UISliding : MonoBehaviour
 {
-
     public RectTransform UpgradeScreen;
     public RectTransform ResultsScreen;
     public RectTransform GameScreen;
@@ -37,12 +36,13 @@ public class UISliding : MonoBehaviour
     public GameObject FaceCam;
 
     public SoundManager SoundManager;
-        void Awake(){
+    void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
     }
 
 
     void Start(){
+        if(DialogueScript.TextActive) return;
         UIActive = true;
     }
 

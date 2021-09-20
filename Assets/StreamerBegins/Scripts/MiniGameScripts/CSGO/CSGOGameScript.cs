@@ -64,7 +64,6 @@ public class CSGOGameScript : MonoBehaviour
     }
 
     public void ConfirmGameResult(){
-
         SoundManager.BGM.Play();
         miniGameState.State = miniGameState.mgState.stopped;
         UI.CloseGameResultScreen();

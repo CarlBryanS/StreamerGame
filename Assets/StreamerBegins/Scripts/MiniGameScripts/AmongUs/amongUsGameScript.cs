@@ -60,7 +60,6 @@ public class amongUsGameScript : MonoBehaviour
             resultText.SetText("You Lost!");
             UI.OpenGameResultScreen();     
             SoundManager.PlaySound(SoundManager.miniGameLoseSound);   
- 
         }
     }
 
