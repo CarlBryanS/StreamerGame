@@ -18,13 +18,15 @@ public class TutorialGoOutside : MonoBehaviour
         if(DialogueScript.TextActive)return;
         if (!StreamChosenGame.amIStreaming && !UI.UIActive && !PartTimeScript.isWorking && !GetInBed.isAsleep)
         {
-            this.GetComponent<BoxCollider>().size = new Vector3(0.8496809f,6.734204f,7f);
-            this.GetComponent<BoxCollider>().center = new Vector3(-1.825011f, 2.046926f, -1.640409f);
-            DoorUI.SetActive(true);
-           // partTimeButton.SetActive(true);
-          //  gameStoreButton.SetActive(true);
-           // foodStoreButton.SetActive(true);
-            HelpScreenScript.TDoorBool = true;
+            if(TutorialTriggerCheck.State == TutorialTriggerCheck.TutorialState.Door){
+                this.GetComponent<BoxCollider>().size = new Vector3(0.8496809f,6.734204f,7f);
+                this.GetComponent<BoxCollider>().center = new Vector3(-1.825011f, 2.046926f, -1.640409f);
+                DoorUI.SetActive(true);
+            // partTimeButton.SetActive(true);
+            //  gameStoreButton.SetActive(true);
+            // foodStoreButton.SetActive(true);
+                HelpScreenScript.TDoorBool = true;
+            }
         }
     }
 

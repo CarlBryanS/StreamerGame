@@ -10,16 +10,11 @@ public class DialogueScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BodyText = null;
     [SerializeField] private StringArray TextLines = null;
     [SerializeField] private float TextSpeed = 0;
-    public UnityEvent HideNextButton;
-    public UnityEvent HideDialogueBox;
-    public UnityEvent ShowNextButton;
-    public UnityEvent ShowDialogueBox;
-    
     public static bool TextActive;
     public int index;
 
     public virtual void OnEnable(){
-        NameText.text = TextLines.speaker + ":";
+        NameText.text = TextLines.speaker;
         BodyText.text = string.Empty;
         StartDialogue();
     }

@@ -3199,6 +3199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095a3b8e179d13499357ecb8ed3977a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialChecked: 1
 --- !u!1 &163035846
 GameObject:
   m_ObjectHideFlags: 0
@@ -22267,6 +22268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095a3b8e179d13499357ecb8ed3977a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialChecked: 1
 --- !u!114 &1736236989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27926,6 +27928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095a3b8e179d13499357ecb8ed3977a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialChecked: 1
 --- !u!114 &2049475201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30160,7 +30163,7 @@ PrefabInstance:
     - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
         type: 3}
       propertyPath: Money
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
         type: 3}
@@ -30291,6 +30294,21 @@ PrefabInstance:
       propertyPath: UIThatNeedsToBeDisabled.Array.data[19]
       value: 
       objectReference: {fileID: 143471228}
+    - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
+        type: 3}
+      propertyPath: Health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
+        type: 3}
+      propertyPath: Energy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
+        type: 3}
+      propertyPath: viewerCap
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4876803299092402261, guid: 91a57c43d6cb9804486fa8e98073ba4d,
         type: 3}
       propertyPath: InternetPM

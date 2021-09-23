@@ -38,9 +38,11 @@ public class TutorialGetInBed : MonoBehaviour
          // HoveringOnBed = true;
          if (!StreamChosenGame.amIStreaming && !UI.UIActive && !PartTimeScript.isWorking && !isAsleep)
         {
+            if(TutorialTriggerCheck.State == TutorialTriggerCheck.TutorialState.Sleep){
             this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 4.437178f, 7.626603f);
             this.GetComponent<BoxCollider>().center = new Vector3(-0.8318317f, 0.8984127f, -0.01983786f);
             sleepButton.SetActive(true);
+            }
         }       
     }
 

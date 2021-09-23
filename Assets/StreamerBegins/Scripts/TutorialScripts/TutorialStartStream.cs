@@ -12,7 +12,10 @@ public class TutorialStartStream : MonoBehaviour
         if(DialogueScript.TextActive)return;
         if (!StreamChosenGame.amIStreaming && !UI.UIActive && !WORLDPARAMETERS.amIUIHovered && !PartTimeScript.isWorking &&!GetInBed.isAsleep)
         {
-            UI.OpenGameScreen();
+            if(TutorialTriggerCheck.State == TutorialTriggerCheck.TutorialState.Start){
+                TutorialTriggerCheck.State= TutorialTriggerCheck.TutorialState.PC;
+                UI.OpenGameScreen();
+            }     
         }
         
     }

@@ -2,9 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TutorialTriggerCheck : MonoBehaviour
 {
+    public enum TutorialState{
+    Start,
+    PC,
+    Door,
+    Sleep,
+    }
+    public static TutorialState State;
     public static int TutorialProgress = 0;
+
+    void Start() {
+        State = TutorialState.Start;
+    }
     public void ProgressTo1(){
         if(TutorialProgress ==0){
             TutorialProgress =1;

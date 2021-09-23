@@ -15,19 +15,19 @@ public static class TutorialIndex{
     public const int Event8 =18;
     public const int Event9 =19;
     public const int End =21;
-    
-
 }
 public class TutorialScript : DialogueScript
 {
-    public TutorialOutlines BedOutline;
-    public TutorialOutlines PcOutline;
-    public TutorialOutlines DoorOutline;
-    public UnityEvent ToggleBrendan;
-    public UnityEvent ToggleHighlights;
-    public UnityEvent OpenPC;
-    public UnityEvent MakeFoodPricesFree;
-    public UnityEvent RestoreFoodPrices;
+    public TutorialEvents TutorialEvents;
+    public GameObject DialogueBox;
+
+    private void Update() {
+        if(TextActive&&DialogueBox.activeSelf){
+            if(Input.GetKeyDown(KeyCode.Space) ||Input.GetKeyDown(KeyCode.Mouse0)){
+                GoNextLine();
+            }
+        }
+    }
 
     public override void OnEnable()
     {
@@ -45,34 +45,34 @@ public class TutorialScript : DialogueScript
        if(base.IsLineOver()){  
            switch(index){
             case TutorialIndex.Event1:
-                StartCoroutine(Event1());            
+                StartCoroutine(TutorialEvents.Event1());            
                 break;
             case TutorialIndex.Event2:
-                StartCoroutine(Event2());   
+                StartCoroutine(TutorialEvents.Event2());   
                 break;
             case TutorialIndex.Event3:
-                StartCoroutine(Event3());   
+                StartCoroutine(TutorialEvents.Event3());   
                 break;
             case TutorialIndex.Event4:
-                StartCoroutine(Event4());   
+                StartCoroutine(TutorialEvents.Event4());   
                 break;
             case TutorialIndex.Event5:
-                StartCoroutine(Event5());   
+                StartCoroutine(TutorialEvents.Event5());   
                 break;
             case TutorialIndex.Event6:
-                StartCoroutine(Event6());
+                StartCoroutine(TutorialEvents.Event6());
                 break;
             case TutorialIndex.Event7:
-                StartCoroutine(Event7());
+                StartCoroutine(TutorialEvents.Event7());
                 break;
             case TutorialIndex.Event8:
-                StartCoroutine(Event8());
+                StartCoroutine(TutorialEvents.Event8());
                 break;
             case TutorialIndex.Event9:
-                StartCoroutine(Event9());
+                StartCoroutine(TutorialEvents.Event9());
                 break;
             case TutorialIndex.End:
-                StartCoroutine(End());
+                StartCoroutine(TutorialEvents.End());
                 break;
             default:
                 base.GoNextLine();
@@ -85,102 +85,7 @@ public class TutorialScript : DialogueScript
         }
     }
 
-    IEnumerator Event1(){
-        HideDialogueBox.Invoke();
-        yield return new WaitForSeconds(1f);
-        ToggleBrendan.Invoke();
-        yield return new WaitForSeconds(1f);
-        ShowDialogueBox.Invoke();
+    public void JustGoNextLine(){
         base.GoNextLine();
-    }
-    IEnumerator Event2(){
-        HideDialogueBox.Invoke();
-        yield return new WaitForSeconds(1f);
-        BedOutline.EnableOutline();
-        yield return new WaitForSeconds(0.5f);
-        BedOutline.DisableOutline();
-        yield return new WaitForSeconds(0.5f);
-        DoorOutline.EnableOutline();
-        yield return new WaitForSeconds(0.5f);
-        DoorOutline.DisableOutline();
-        yield return new WaitForSeconds(0.5f);
-        PcOutline.EnableOutline();
-        yield return new WaitForSeconds(0.5f);
-        PcOutline.DisableOutline();
-        ShowDialogueBox.Invoke();
-        base.GoNextLine();
-    }
-    IEnumerator Event3(){
-        HideDialogueBox.Invoke();
-        yield return new WaitForSeconds(1f);
-        PcOutline.EnableOutline();
-        yield return new WaitForSeconds(0.5f);
-        OpenPC.Invoke();
-        PcOutline.DisableOutline();
-        yield return new WaitForSeconds(0.5f);
-        HideNextButton.Invoke();
-        ShowDialogueBox.Invoke();
-        base.GoNextLine();
-        while(TutorialTriggerCheck.TutorialProgress == 0){
-            yield return null;
-        }
-        ShowDialogueBox.Invoke();
-        ShowNextButton.Invoke();
-    }
-    IEnumerator Event4(){
-        HideDialogueBox.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==1){
-            yield return null;
-        }
-        base.GoNextLine();
-        ShowDialogueBox.Invoke();      
-    }
-    IEnumerator Event5(){    
-        HideDialogueBox.Invoke();
-        TextActive = false;
-        while(TutorialTriggerCheck.TutorialProgress ==2){
-            yield return null;
-        }
-        base.GoNextLine();
-        ShowDialogueBox.Invoke();
-    }
-    IEnumerator Event6(){
-        HideDialogueBox.Invoke();
-        MakeFoodPricesFree.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==3){
-            yield return null;
-        }
-        RestoreFoodPrices.Invoke();
-        base.GoNextLine();
-        ShowDialogueBox.Invoke();
-    }
-    IEnumerator Event7(){
-        HideDialogueBox.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==4){
-            yield return null;
-        }
-        base.GoNextLine();
-        ShowDialogueBox.Invoke();
-    }
-    IEnumerator Event8(){
-        HideDialogueBox.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==5){
-            yield return null;
-        }
-        base.GoNextLine();
-        ShowDialogueBox.Invoke();
-    }
-    IEnumerator Event9(){
-        TextActive = true;
-        HideDialogueBox.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==6){
-            yield return null;
-        }
-        base.GoNextLine();
-        ShowDialogueBox.Invoke();
-    }
-    IEnumerator End(){
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(1);
     }
 }

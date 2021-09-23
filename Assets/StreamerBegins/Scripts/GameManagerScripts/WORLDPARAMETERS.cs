@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WORLDPARAMETERS : MonoBehaviour
 {
@@ -34,20 +35,6 @@ public class WORLDPARAMETERS : MonoBehaviour
 
     public Sprite[] popularityImages;
     public GameObject[] UIThatNeedsToBeDisabled;
- 
-    private void Awake()
-    {
-        viewerCap = 5;
-        socialMediaStat = 0;
-        Health = 1;
-        Energy = 1;
-        Money = 1000;
-        Fans = 0;
-        Viewers = 0;
-        Electricity = 0;
-        Water = 0;
-        Rent = 0;
-    }
 
     private void Update()
     {
@@ -63,9 +50,12 @@ public class WORLDPARAMETERS : MonoBehaviour
     }
 
     public void ControlStreamUI(bool I){
-     foreach(GameObject UI in UIThatNeedsToBeDisabled){
+        if(SceneManager.GetActiveScene().buildIndex !=3){
+             foreach(GameObject UI in UIThatNeedsToBeDisabled){
                     UI.SetActive(I);
                 }
+        }
+
     }
     public void AmHoveredNo(){
         amIUIHovered = false;

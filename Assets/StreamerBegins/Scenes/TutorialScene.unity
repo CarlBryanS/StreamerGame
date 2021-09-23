@@ -1749,6 +1749,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -8759382097907940349, guid: d0af0c23303162b47ba41f12ca1f8652,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d0af0c23303162b47ba41f12ca1f8652,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11346,12 +11351,6 @@ Transform:
   m_Father: {fileID: 1936692354}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &775519310 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2697451615092649730, guid: fef4b2c7d58bc984eb553801084a7117,
-    type: 3}
-  m_PrefabInstance: {fileID: 1681556870}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &777989383
 GameObject:
   m_ObjectHideFlags: 0
@@ -18476,6 +18475,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1681556870}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1402711938 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2697451614824474028, guid: fef4b2c7d58bc984eb553801084a7117,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681556870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1408522235
 GameObject:
   m_ObjectHideFlags: 0
@@ -21732,7 +21737,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ShowNextButton.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 775519310}
+      objectReference: {fileID: 0}
     - target: {fileID: 2697451615879284254, guid: fef4b2c7d58bc984eb553801084a7117,
         type: 3}
       propertyPath: ShowNextButton.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -22528,6 +22533,31 @@ PrefabInstance:
       propertyPath: RestoreFoodPrices.m_PersistentCalls.m_Calls.Array.data[7].m_Arguments.m_StringArgument
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 2697451615879284254, guid: fef4b2c7d58bc984eb553801084a7117,
+        type: 3}
+      propertyPath: TutorialBox
+      value: 
+      objectReference: {fileID: 1402711937}
+    - target: {fileID: 2697451615879284254, guid: fef4b2c7d58bc984eb553801084a7117,
+        type: 3}
+      propertyPath: HideDialogueBox.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 71806358}
+    - target: {fileID: 2697451615879284254, guid: fef4b2c7d58bc984eb553801084a7117,
+        type: 3}
+      propertyPath: HideDialogueBox.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697451615879284254, guid: fef4b2c7d58bc984eb553801084a7117,
+        type: 3}
+      propertyPath: TutorialEvents
+      value: 
+      objectReference: {fileID: 1695195776}
+    - target: {fileID: 2697451615879284254, guid: fef4b2c7d58bc984eb553801084a7117,
+        type: 3}
+      propertyPath: DialogueBox
+      value: 
+      objectReference: {fileID: 1402711937}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fef4b2c7d58bc984eb553801084a7117, type: 3}
 --- !u!114 &1681556871 stripped
@@ -22746,6 +22776,200 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1695195775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695195777}
+  - component: {fileID: 1695195776}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1695195776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695195775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94df79c6675fa324ea7dc203ea1ce69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HideDialogueBox:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1402711937}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ShowDialogueBox:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1402711937}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1681556871}
+        m_MethodName: TextOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  TutorialScript: {fileID: 1681556871}
+  BedOutline: {fileID: 953658537}
+  PcOutline: {fileID: 495526132}
+  DoorOutline: {fileID: 1789561071}
+  ToggleBrendan:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 864401607}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  MakeFoodPricesFree:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1304139074}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1840633355}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1067231128}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1758636353}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  RestoreFoodPrices:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1304139074}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1840633355}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1067231128}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 24
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1758636353}
+        m_MethodName: ModifyPrice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 40
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1695195777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695195775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 640, y: 360, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697566900
 GameObject:
   m_ObjectHideFlags: 0
@@ -25844,6 +26068,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1849599440}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1858254366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858254367}
+  - component: {fileID: 1858254369}
+  - component: {fileID: 1858254368}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1858254367
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858254366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1402711938}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 12.7, y: 280.1}
+  m_SizeDelta: {x: 1329.2812, y: 721.8934}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1858254368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858254366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1858254369
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858254366}
+  m_CullTransparentMesh: 0
 --- !u!1 &1861350950
 GameObject:
   m_ObjectHideFlags: 0
@@ -31403,7 +31701,7 @@ PrefabInstance:
     - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
         type: 3}
       propertyPath: Money
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
         type: 3}
@@ -31534,6 +31832,21 @@ PrefabInstance:
       propertyPath: UIThatNeedsToBeDisabled.Array.data[19]
       value: 
       objectReference: {fileID: 143471228}
+    - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
+        type: 3}
+      propertyPath: Energy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
+        type: 3}
+      propertyPath: Health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876803299092402260, guid: 91a57c43d6cb9804486fa8e98073ba4d,
+        type: 3}
+      propertyPath: viewerCap
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4876803299092402261, guid: 91a57c43d6cb9804486fa8e98073ba4d,
         type: 3}
       propertyPath: InternetPM
@@ -31885,7 +32198,7 @@ PrefabInstance:
     - target: {fileID: 8992002943242452141, guid: 0319674044447804597e66a4dfbe4814,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0319674044447804597e66a4dfbe4814, type: 3}
