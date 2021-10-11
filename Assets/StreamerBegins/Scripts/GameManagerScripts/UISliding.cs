@@ -3,9 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
+public enum ActiveMenu{
+    Upgrade,
+    Results,
+    Game,
+    Bills,
+    GameStore,
+    FoodStore,
+    Help,
+    GameOver,
+    Restart,
+    PartTime,
+    GameResult
+}
 public class UISliding : MonoBehaviour
 {
+    public ActiveMenu activeMenu;
+    public UnityEvent OpenMenu;
+    public UnityEvent CloseMenu;
     public RectTransform UpgradeScreen;
     public RectTransform ResultsScreen;
     public RectTransform GameScreen;
@@ -35,6 +52,10 @@ public class UISliding : MonoBehaviour
     public Camera RoomCamera;
     public GameObject FaceCam;
 
+    //public GameObject StreamTitleBar;
+    bool closeDelay;
+    bool delayCoroutineRunning;
+
     public SoundManager SoundManager;
     void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
@@ -42,6 +63,7 @@ public class UISliding : MonoBehaviour
 
 
     void Start(){
+        closeDelay = false;
         if(DialogueScript.TextActive) return;
         UIActive = true;
     }
@@ -58,10 +80,13 @@ public class UISliding : MonoBehaviour
     public void OpenGameResultScreen(){
         UIActive = true;
         GameResultScreen.DOAnchorPos(Vector2.zero, 0.25f);
+        OpenMenu.Invoke();
+        activeMenu = ActiveMenu.GameResult;
     }
     public void CloseGameResultScreen(){
         UIActive = false;
         GameResultScreen.DOAnchorPos(new Vector2(0, 974), 0.25f);
+        CloseMenu.Invoke();
     }
     public void OpenUpgradeScreen()
     {
@@ -72,6 +97,8 @@ public class UISliding : MonoBehaviour
             OpenUpgradeScreenButton.SetActive(false);
             UIActive = true;
             UpgradeScreen.DOAnchorPos(new Vector2(0, 472f), 0.25f);
+            OpenMenu.Invoke();
+            activeMenu = ActiveMenu.Upgrade;
         }
     }
 
@@ -83,7 +110,8 @@ public class UISliding : MonoBehaviour
             CloseUpgradeScreenButton.SetActive(false);
             OpenUpgradeScreenButton.SetActive(true);
             UIActive = false;
-            UpgradeScreen.DOAnchorPos(new Vector2(0, -362f), 0.25f);
+            UpgradeScreen.DOAnchorPos(new Vector2(0, -528f), 0.25f);
+            CloseMenu.Invoke();
         }
     }
 
@@ -91,6 +119,8 @@ public class UISliding : MonoBehaviour
     {
         UIActive = true;
         ResultsScreen.DOAnchorPos(Vector2.zero, 0.25f);
+        OpenMenu.Invoke();
+        activeMenu = ActiveMenu.Results;
     }
 
     public void CloseResultsScreen()
@@ -98,16 +128,20 @@ public class UISliding : MonoBehaviour
         SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         ResultsScreen.DOAnchorPos(new Vector2(0, 974), 0.25f);
+        CloseMenu.Invoke();
     }
 
     public void OpenGameScreen()
     {
         SoundManager.PlaySound(SoundManager.clickSound);   
         HelpScreenScript.TStreamBool = true;
-        DurationSlider.value = 0f;
+       // DurationSlider.value = 0f;
         GameScreenActive = true;
         UIActive = true;
         GameScreen.DOAnchorPos(Vector2.zero, 0.25f);
+        activeMenu = ActiveMenu.Game;
+        OpenMenu.Invoke();
+        
     }
 
     public void CloseGameScreen()
@@ -115,7 +149,8 @@ public class UISliding : MonoBehaviour
         SoundManager.PlaySound(SoundManager.closeWindowSound);   
         GameScreenActive = false;
         UIActive = false;
-        GameScreen.DOAnchorPos(new Vector2(-1566, 0), 0.25f);
+        GameScreen.DOAnchorPos(new Vector2(-1864, 0), 0.25f);
+        CloseMenu.Invoke();
         
     }
 
@@ -123,12 +158,15 @@ public class UISliding : MonoBehaviour
     {
         UIActive = true;
         BillsScreen.DOAnchorPos(Vector2.zero, 0.25f);
+        OpenMenu.Invoke();
+        activeMenu = ActiveMenu.Bills;
     }
 
     public void CloseBillsScreen()
     {  
         UIActive = false;
         BillsScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+        CloseMenu.Invoke();
     }
 
     public void OpenGameStoreScreen()
@@ -137,16 +175,16 @@ public class UISliding : MonoBehaviour
         UIActive = true;
         GameStoreScreen.DOAnchorPos(Vector2.zero, 0.25f);
         DoorUI.SetActive(false);
-       /* gameStoreButton.SetActive(false);
-        foodStoreButton.SetActive(false);
-        partTimeButton.SetActive(false);*/
+        OpenMenu.Invoke();
+        activeMenu = ActiveMenu.GameStore;
     }
 
     public void CloseGamesStoreScreen()
     {
         SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
-        GameStoreScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+        GameStoreScreen.DOAnchorPos(new Vector2(1831, 0), 0.25f);
+        CloseMenu.Invoke();
     }
 
     public void OpenFoodStoreScreen()
@@ -155,16 +193,16 @@ public class UISliding : MonoBehaviour
         UIActive = true;
         FoodStoreScreen.DOAnchorPos(Vector2.zero, 0.25f);
         DoorUI.SetActive(false);
-       /* gameStoreButton.SetActive(false);
-        foodStoreButton.SetActive(false);
-        partTimeButton.SetActive(false);*/
+        OpenMenu.Invoke();
+        activeMenu = ActiveMenu.FoodStore;
     }
 
     public void CloseFoodStoreScreen()
     {
         SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
-        FoodStoreScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+        FoodStoreScreen.DOAnchorPos(new Vector2(1831, 0), 0.25f);
+        CloseMenu.Invoke();
     }
 
     public void OpenHelpScreen()
@@ -174,6 +212,8 @@ public class UISliding : MonoBehaviour
             SoundManager.PlaySound(SoundManager.openWindowSound);   
             UIActive = true;
             HelpScreen.DOAnchorPos(Vector2.zero, 0.25f);
+            OpenMenu.Invoke();
+            activeMenu = ActiveMenu.Help;
         }
     }
 
@@ -182,6 +222,7 @@ public class UISliding : MonoBehaviour
         SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         HelpScreen.DOAnchorPos(new Vector2(1521f, -924f), 0.25f);
+        CloseMenu.Invoke();
     }
 
     public void OpenGOScreen()
@@ -189,13 +230,15 @@ public class UISliding : MonoBehaviour
         SoundManager.PlaySound(SoundManager.miniGameLoseSound);   
             UIActive = true;
             GOScreen.DOAnchorPos(Vector2.zero, 0.25f);
-        
+            OpenMenu.Invoke();
+            activeMenu = ActiveMenu.GameOver;
     }
 
     public void CloseGOScreen()
     {
         UIActive = false;
         GOScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
+        CloseMenu.Invoke();
     }
 
     public void OpenRestartScreen()
@@ -205,6 +248,8 @@ public class UISliding : MonoBehaviour
             SoundManager.PlaySound(SoundManager.openWindowSound);   
             UIActive = true;
             RestartScreen.DOAnchorPos(Vector2.zero, 0.25f);
+            OpenMenu.Invoke();
+            activeMenu = ActiveMenu.Restart;
         }
 
 
@@ -215,6 +260,7 @@ public class UISliding : MonoBehaviour
         SoundManager.PlaySound(SoundManager.closeWindowSound);   
         UIActive = false;
         RestartScreen.DOAnchorPos(new Vector2(2426f, 0f), 0.25f);
+        CloseMenu.Invoke();
     }
     
     public void OpenPartTimeScreen(){
@@ -222,9 +268,8 @@ public class UISliding : MonoBehaviour
         UIActive = true;
         PartTimeScreen.DOAnchorPos(new Vector2(109f, 9.2f), 0.25f);
         DoorUI.SetActive(false);
-       /* gameStoreButton.SetActive(false);
-        foodStoreButton.SetActive(false);
-        partTimeButton.SetActive(false); */
+        OpenMenu.Invoke();
+        activeMenu = ActiveMenu.PartTime;
     }
 
     public void ClosePartTimeScreen()
@@ -236,7 +281,8 @@ public class UISliding : MonoBehaviour
             SoundManager.PlaySound(SoundManager.closeWindowSound);
         }
         UIActive = false;
-        PartTimeScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+        PartTimeScreen.DOAnchorPos(new Vector2(1831, 0), 0.25f);
+        CloseMenu.Invoke();
     }
 
 
@@ -265,5 +311,64 @@ public class UISliding : MonoBehaviour
     public void RescaleFaceCameraBase(){
        FaceCam.transform.DOScale(new Vector3(190.1007f,219.3283f,110.0575f), 1);
        FaceCam.transform.DOLocalMove(new Vector3(-10.73804f,-9.193085f,-10098.91f), 1);
+   }
+
+   public void RunDelayCoroutine(){
+       if(!delayCoroutineRunning){
+        StartCoroutine("DelayCloseButton");
+       }
+
+   }
+
+   public IEnumerator DelayCloseButton(){
+       delayCoroutineRunning = true;
+       yield return new WaitForSeconds(0.5f);
+       closeDelay = true; 
+       delayCoroutineRunning = false;
+   }
+
+   public void changeCloseDelay(bool value){
+       closeDelay = value;
+   }
+
+   public void CloseActiveMenu(){
+       if(closeDelay){
+        switch(activeMenu){
+            case ActiveMenu.Upgrade:
+            CloseUpgradeScreen();
+            break;
+            case ActiveMenu.Bills:
+            CloseBillsScreen();
+            break;
+            case ActiveMenu.FoodStore:
+            CloseFoodStoreScreen();
+            break;
+            case ActiveMenu.Game:
+            CloseGameScreen();
+            break;
+            case ActiveMenu.GameOver:
+            CloseGOScreen();
+            break;
+            case ActiveMenu.GameResult:
+            CloseGameResultScreen();
+            break;
+            case ActiveMenu.GameStore:
+            CloseGamesStoreScreen();
+            break;
+            case ActiveMenu.Help:
+            CloseHelpScreen();
+            break;
+            case ActiveMenu.PartTime:
+            ClosePartTimeScreen();
+            break;
+            case ActiveMenu.Restart:
+            CloseRestartScreen();
+            break;
+            case ActiveMenu.Results:
+            CloseResultsScreen();
+            break;
+        }
+       }
+
    }
 }

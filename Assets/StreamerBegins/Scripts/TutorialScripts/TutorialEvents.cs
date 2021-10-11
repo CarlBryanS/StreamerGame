@@ -28,16 +28,16 @@ public class TutorialEvents : DialogueEvents
         BedOutline.EnableOutline();
         DoorOutline.EnableOutline();
         PcOutline.EnableOutline();
-        yield return new WaitForSeconds(1f);
-        BedOutline.DisableOutline();
-        DoorOutline.DisableOutline();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         ShowDialogueBox.Invoke();
         TutorialScript.JustGoNextLine();
     }
     public IEnumerator Event3(){
         TutorialScript.TextOff();
         HideDialogueBox.Invoke();
+        BedOutline.DisableOutline();
+        DoorOutline.DisableOutline();
+        PcOutline.EnableOutline();
         while(TutorialTriggerCheck.State == TutorialTriggerCheck.TutorialState.Start){
             yield return null;
         }
@@ -45,6 +45,7 @@ public class TutorialEvents : DialogueEvents
         while(TutorialTriggerCheck.TutorialProgress == 0){
             yield return null;
         }
+        
         TutorialScript.TextOn();
         ShowDialogueBox.Invoke();
         TutorialScript.JustGoNextLine();
@@ -57,20 +58,31 @@ public class TutorialEvents : DialogueEvents
         TutorialScript.JustGoNextLine();
         ShowDialogueBox.Invoke();      
     }
-    public IEnumerator Event5(){    
+    public IEnumerator Event4_5(){
         HideDialogueBox.Invoke();
-        TutorialTriggerCheck.State = TutorialTriggerCheck.TutorialState.Door;
-        TutorialScript.TextActive = false;
         while(TutorialTriggerCheck.TutorialProgress ==2){
             yield return null;
         }
+        TutorialScript.JustGoNextLine();
+        ShowDialogueBox.Invoke();      
+    }
+    public IEnumerator Event5(){    
+        HideDialogueBox.Invoke();
+        print(11231231);
+        TutorialTriggerCheck.State = TutorialTriggerCheck.TutorialState.Door;
+        TutorialScript.TextActive = false;
+        DoorOutline.EnableOutline();
+        while(TutorialTriggerCheck.TutorialProgress ==3){
+            yield return null;
+        }
+        DoorOutline.DisableOutline();
         TutorialScript.JustGoNextLine();
         ShowDialogueBox.Invoke();
     }
     public IEnumerator Event6(){
         HideDialogueBox.Invoke();
         MakeFoodPricesFree.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==3){
+        while(TutorialTriggerCheck.TutorialProgress ==4){
             yield return null;
         }
         RestoreFoodPrices.Invoke();
@@ -81,10 +93,12 @@ public class TutorialEvents : DialogueEvents
     public IEnumerator Event7(){
         HideDialogueBox.Invoke();
         TutorialScript.TextActive = false;
+        BedOutline.EnableOutline();
         TutorialTriggerCheck.State = TutorialTriggerCheck.TutorialState.Sleep;
-        while(TutorialTriggerCheck.TutorialProgress ==4){
+        while(TutorialTriggerCheck.TutorialProgress ==5){
             yield return null;
         }
+        BedOutline.DisableOutline();
         TutorialScript.JustGoNextLine();
         ShowDialogueBox.Invoke();
     }
@@ -92,7 +106,7 @@ public class TutorialEvents : DialogueEvents
         HideDialogueBox.Invoke();
         TutorialScript.TextActive = false;
         TutorialTriggerCheck.State = TutorialTriggerCheck.TutorialState.Door;
-        while(TutorialTriggerCheck.TutorialProgress ==5){
+        while(TutorialTriggerCheck.TutorialProgress ==6){
             yield return null;
         }
         TutorialScript.JustGoNextLine();
@@ -101,7 +115,8 @@ public class TutorialEvents : DialogueEvents
     public IEnumerator Event9(){
         TutorialScript.TextActive = true;
         HideDialogueBox.Invoke();
-        while(TutorialTriggerCheck.TutorialProgress ==6){
+        print(TutorialTriggerCheck.TutorialProgress);
+        while(TutorialTriggerCheck.TutorialProgress ==7){
             yield return null;
         }
         TutorialScript.JustGoNextLine();

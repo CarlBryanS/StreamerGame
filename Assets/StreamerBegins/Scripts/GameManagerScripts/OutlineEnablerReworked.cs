@@ -19,7 +19,7 @@ public class OutlineEnablerReworked : MonoBehaviour
     public void EnableOutline(){
         for (int i = 0; i < outline.Length; i++)
             {
-                outline[i].OutlineWidth = 4;
+                outline[i].OutlineWidth = 10;
             }
     }
 

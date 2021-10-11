@@ -35,6 +35,7 @@ public class WORLDPARAMETERS : MonoBehaviour
 
     public Sprite[] popularityImages;
     public GameObject[] UIThatNeedsToBeDisabled;
+    public GameObject[] TopUI;
 
     private void Update()
     {
@@ -54,6 +55,11 @@ public class WORLDPARAMETERS : MonoBehaviour
              foreach(GameObject UI in UIThatNeedsToBeDisabled){
                     UI.SetActive(I);
                 }
+        }
+        else{
+            foreach(GameObject UI in TopUI){
+                UI.SetActive(I);
+            }
         }
 
     }

@@ -73,7 +73,7 @@ public class TutorialGetInBed : MonoBehaviour
             }
             else
             {
-                TutorialTriggerCheck.ProgressTo5();
+                TutorialTriggerCheck.ProgressTo6();
                 SoundManager.BGM.Play();
                 SoundManager.SleepBGM.enabled = false;
                 this.GetComponent<BoxCollider>().size = new Vector3(5.951694f, 2.631015f, 7.626603f);
@@ -117,7 +117,7 @@ public class TutorialGetInBed : MonoBehaviour
         }
         else
         {
-            TutorialTriggerCheck.ProgressTo5();
+            TutorialTriggerCheck.ProgressTo6();
             SoundManager.PlaySound(SoundManager.clickSound);
             SoundManager.BGM.Play();
             SoundManager.SleepBGM.enabled = false;

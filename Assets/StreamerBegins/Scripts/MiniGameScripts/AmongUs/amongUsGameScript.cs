@@ -35,7 +35,7 @@ public class amongUsGameScript : MonoBehaviour
             SoundManager.BGM.Stop(); 
             SoundManager.AmongUsBGM.enabled = true;
             if(WordManager.playerStarted){
-                amongUsGoalText.SetText("Type " + amongUsGoal.ToString() + " Sentences: " + amongUsPoints.ToString()+ "/" + amongUsGoal.ToString());
+                amongUsGoalText.SetText("Type " + amongUsGoal.ToString() + " Words: " + amongUsPoints.ToString()+ "/" + amongUsGoal.ToString());
                 time -= Time.unscaledDeltaTime;
                 timerText.SetText("Time Left: " + Mathf.RoundToInt(time));
                 didThePlayerWin();

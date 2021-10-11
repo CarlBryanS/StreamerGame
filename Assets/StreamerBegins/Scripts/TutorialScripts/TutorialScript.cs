@@ -6,15 +6,16 @@ using UnityEngine.SceneManagement;
 
 public static class TutorialIndex{
     public const int Event1 =2;
-    public const int Event2 =6;
-    public const int Event3 =7;
+    public const int Event2 =7;
+    public const int Event3 =8;
     public const int Event4 =9;
-    public const int Event5 =12;
-    public const int Event6 =14;
-    public const int Event7 =16;
-    public const int Event8 =18;
-    public const int Event9 =19;
-    public const int End =21;
+    public const int Event4_5=10;
+    public const int Event5 =13;
+    public const int Event6 =15;
+    public const int Event7 =17;
+    public const int Event8 =19;
+    public const int Event9 =20;
+    public const int End =23;
 }
 public class TutorialScript : DialogueScript
 {
@@ -56,6 +57,9 @@ public class TutorialScript : DialogueScript
             case TutorialIndex.Event4:
                 StartCoroutine(TutorialEvents.Event4());   
                 break;
+            case TutorialIndex.Event4_5:
+                StartCoroutine(TutorialEvents.Event4_5());   
+                break;    
             case TutorialIndex.Event5:
                 StartCoroutine(TutorialEvents.Event5());   
                 break;

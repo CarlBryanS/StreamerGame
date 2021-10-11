@@ -147,7 +147,6 @@ void Update(){
            // WP.Health = WP.tempHealth;
             WP.Health = Mathf.Round(WP.tempHealth*100)/100;
             WP.Energy = Mathf.Round(WP.tempEnergy*100)/100;
-            Debug.Log("work ended");
             Brendan.SetActive(true);
             Lights.SetActive(true);
             SVS.UpdateUI();
@@ -163,7 +162,6 @@ void Update(){
                 PartTimePage.sprite =PTFirstPage;
                 firstPage.SetActive(true);
                 secondPage.SetActive(false);
-                Debug.Log("first page");
                 break;
             case 2: 
                 PTButton2.SetActive(true);
@@ -171,10 +169,8 @@ void Update(){
                 PartTimePage.sprite = PTLastPage;
                 firstPage.SetActive(false);
                 secondPage.SetActive(true);
-                Debug.Log("second page");
                 break;
             default:
-                Debug.Log("where are we");
                 break;
         }
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class TutorialOutlines : OutlineEnablerReworked
     public TutorialScript tutorialScript;
     public override void OnMouseEnter()
     {
+
         switch(this.gameObject.name){
             case "BedCollider":
                 if(TutorialTriggerCheck.State == TutorialTriggerCheck.TutorialState.Sleep){

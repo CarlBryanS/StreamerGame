@@ -40,13 +40,13 @@ public class TutorialTriggerCheck : MonoBehaviour
         }   
     }
 
-    public static void ProgressTo5(){
+    public void ProgressTo5(){
         if(TutorialProgress ==4){
                 TutorialProgress =5;
         }   
     }
 
-    public void ProgressTo6(){
+    public static void ProgressTo6(){
         if(TutorialProgress ==5){
                 TutorialProgress =6;
         }   
@@ -55,6 +55,12 @@ public class TutorialTriggerCheck : MonoBehaviour
     public void ProgressTo7(){
         if(TutorialProgress ==6){
                 TutorialProgress =7;
+        }   
+    }
+
+    public void ProgressTo8(){
+        if(TutorialProgress ==7){
+                TutorialProgress =8;
         }   
     }
 }
