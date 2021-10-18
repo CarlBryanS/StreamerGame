@@ -7,4 +7,6 @@ public class DialogueEvents : MonoBehaviour
 {
     public UnityEvent HideDialogueBox;
     public UnityEvent ShowDialogueBox;  
+    
+
 }

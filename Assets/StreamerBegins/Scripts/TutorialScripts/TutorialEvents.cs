@@ -14,6 +14,9 @@ public class TutorialEvents : DialogueEvents
     public UnityEvent MakeFoodPricesFree;
     public UnityEvent RestoreFoodPrices;
 
+    public void EventStart(string callback){
+        StartCoroutine(callback);
+    }
     public IEnumerator Event1(){
         HideDialogueBox.Invoke();
         yield return new WaitForSeconds(1f);
@@ -68,7 +71,6 @@ public class TutorialEvents : DialogueEvents
     }
     public IEnumerator Event5(){    
         HideDialogueBox.Invoke();
-        print(11231231);
         TutorialTriggerCheck.State = TutorialTriggerCheck.TutorialState.Door;
         TutorialScript.TextActive = false;
         DoorOutline.EnableOutline();
@@ -126,4 +128,5 @@ public class TutorialEvents : DialogueEvents
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(1);
     }
+    
 }

@@ -16,7 +16,7 @@ public class amongUsGameScript : MonoBehaviour
 
     float time;
     // Start is called before the first frame update
-        void Awake(){
+    void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
     }
 

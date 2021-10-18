@@ -10,6 +10,7 @@ public class GameStats : MonoBehaviour
     public int GTMax;
     public int GTMin;
     public Image PopularityImage;
+    public Image PopularityImage2;
 
     void Start(){
         GameTrend = Random.Range(GTMin, GTMax);
@@ -23,15 +24,19 @@ public class GameStats : MonoBehaviour
     public void popularityIndicator(){
         if(this.GameTrend > 0 && this.GameTrend <40){
             PopularityImage.sprite = WP.popularityImages[0];
+            PopularityImage.sprite = WP.popularityImages[0];
         }
         else if(this.GameTrend > 40 && this.GameTrend <60){
             PopularityImage.sprite = WP.popularityImages[1];
+            PopularityImage2.sprite = WP.popularityImages[1];
         }
         else if(this.GameTrend > 60 && this.GameTrend <90){
             PopularityImage.sprite = WP.popularityImages[2];
+            PopularityImage2.sprite = WP.popularityImages[2];
         }
         else if(this.GameTrend > 90){
             PopularityImage.sprite = WP.popularityImages[3];
+            PopularityImage2.sprite = WP.popularityImages[3];
         }
     }
 

@@ -21,6 +21,7 @@ public class TutorialScript : DialogueScript
 {
     public TutorialEvents TutorialEvents;
     public GameObject DialogueBox;
+    public DialogueNode node;
 
     private void Update() {
         if(TextActive&&DialogueBox.activeSelf){
@@ -45,7 +46,7 @@ public class TutorialScript : DialogueScript
     { 
        if(base.IsLineOver()){  
            switch(index){
-            case TutorialIndex.Event1:
+            /*case TutorialIndex.Event1:
                 StartCoroutine(TutorialEvents.Event1());            
                 break;
             case TutorialIndex.Event2:
@@ -77,7 +78,7 @@ public class TutorialScript : DialogueScript
                 break;
             case TutorialIndex.End:
                 StartCoroutine(TutorialEvents.End());
-                break;
+                break;*/
             default:
                 base.GoNextLine();
                 break;
@@ -90,6 +91,6 @@ public class TutorialScript : DialogueScript
     }
 
     public void JustGoNextLine(){
-        base.GoNextLine();
+        //base.GoNextLine();
     }
 }

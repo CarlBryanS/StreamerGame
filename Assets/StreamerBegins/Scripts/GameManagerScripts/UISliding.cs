@@ -151,7 +151,6 @@ public class UISliding : MonoBehaviour
         UIActive = false;
         GameScreen.DOAnchorPos(new Vector2(-1864, 0), 0.25f);
         CloseMenu.Invoke();
-        
     }
 
     public void OpenBillsScreen()
@@ -350,7 +349,7 @@ public class UISliding : MonoBehaviour
             CloseGOScreen();
             break;
             case ActiveMenu.GameResult:
-            CloseGameResultScreen();
+            //CloseGameResultScreen();
             break;
             case ActiveMenu.GameStore:
             CloseGamesStoreScreen();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BuyGame : MonoBehaviour
 {
@@ -12,10 +13,10 @@ public class BuyGame : MonoBehaviour
     public GameObject SIMS4;
 
     public GameObject[] bgExtras;
-    public GameObject owned;
+    public UnityEvent owned;
     public GameObject warning;
     public SoundManager SoundManager;
-        void Awake(){
+    void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
     }
 
@@ -28,9 +29,9 @@ public class BuyGame : MonoBehaviour
                 {
                    SoundManager.PlaySound(SoundManager.buySound2);   
                     HelpScreenScript.TGameStoreBool = true;
-                    owned.SetActive(true);
+                    owned.Invoke();
                     WP.Money -= 1000;
-                    MC.SetActive(true);
+                   // MC.SetActive(true);
                     for (int i = 0; i < bgExtras.Length; i++)
                     {
                         bgExtras[i].SetActive(false);
@@ -49,9 +50,9 @@ public class BuyGame : MonoBehaviour
                 {
                     SoundManager.PlaySound(SoundManager.buySound2);   
                     HelpScreenScript.TGameStoreBool = true;
-                    owned.SetActive(true);
+                    owned.Invoke();
                     WP.Money -= 2500;
-                    CSGO.SetActive(true);
+                  //  CSGO.SetActive(true);
                     for (int i = 0; i < bgExtras.Length; i++)
                     {
                         bgExtras[i].SetActive(false);
@@ -70,8 +71,8 @@ public class BuyGame : MonoBehaviour
                 {
                     SoundManager.PlaySound(SoundManager.buySound2);   
                     HelpScreenScript.TGameStoreBool = true;
-                    owned.SetActive(true);
-                    SIMS4.SetActive(true);
+                    owned.Invoke();
+                   // SIMS4.SetActive(true);
                     WP.Money -= 5000;
                     for (int i = 0; i < bgExtras.Length; i++)
                     {
