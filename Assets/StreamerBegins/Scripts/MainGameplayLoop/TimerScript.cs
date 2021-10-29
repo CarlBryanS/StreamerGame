@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public class TimerScript : MonoBehaviour
@@ -9,7 +10,7 @@ public class TimerScript : MonoBehaviour
     public UISliding UI;
 
     public float day;
-    float oldDay;
+    public float oldDay;
 
     public TMP_Text timeText;
     public TMP_Text daysText;
@@ -19,7 +20,7 @@ public class TimerScript : MonoBehaviour
     public BillsScript BS;
 
     public string hoursString;
-    string minutesString;
+    public string minutesString;
     float dayNormalized ;
     float hoursPerDay;
     float minutesPerHour;
@@ -31,12 +32,12 @@ public class TimerScript : MonoBehaviour
     {
         currentHour = 8;
         oldDay = 1;
+        minutesString ="0";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void ShittyFix(){
         daysText.SetText(Mathf.Floor(day).ToString());
@@ -59,7 +60,7 @@ public class TimerScript : MonoBehaviour
         timeText.SetText(hoursString + ":" + minutesString);
 
         if(Mathf.Floor(oldDay) < Mathf.Floor(day))
-        {
+        {      
             oldDay += 1;
             BS.CheckDays();
             for (int i = 0; i < GS.Length; i += 1)

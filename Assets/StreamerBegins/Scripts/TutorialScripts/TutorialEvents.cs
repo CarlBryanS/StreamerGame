@@ -40,7 +40,7 @@ public class TutorialEvents : DialogueEvents
         HideDialogueBox.Invoke();
         BedOutline.DisableOutline();
         DoorOutline.DisableOutline();
-        PcOutline.EnableOutline();
+       // PcOutline.EnableOutline();
         while(TutorialTriggerCheck.State == TutorialTriggerCheck.TutorialState.Start){
             yield return null;
         }
@@ -107,10 +107,12 @@ public class TutorialEvents : DialogueEvents
     public IEnumerator Event8(){
         HideDialogueBox.Invoke();
         TutorialScript.TextActive = false;
+        DoorOutline.EnableOutline();
         TutorialTriggerCheck.State = TutorialTriggerCheck.TutorialState.Door;
         while(TutorialTriggerCheck.TutorialProgress ==6){
             yield return null;
         }
+        DoorOutline.DisableOutline();
         TutorialScript.JustGoNextLine();
         ShowDialogueBox.Invoke();
     }

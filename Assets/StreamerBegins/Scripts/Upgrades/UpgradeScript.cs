@@ -30,6 +30,10 @@ public class UpgradeScript : MonoBehaviour
     public GameObject warning;
     public SoundManager SoundManager;
 
+    public GameObject InternetTimer;
+    public GameObject RigTimer;
+    public GameObject SocialMediaTimer;
+
     void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
     }
@@ -53,18 +57,12 @@ public class UpgradeScript : MonoBehaviour
         if (WP.Money >= InternetPM.upgradeCost && InternetLevel < 10)
         {
             SoundManager.PlaySound(SoundManager.UpgradeSound);  
-            InternetLevel += 1;
             HelpScreenScript.TInternetBool = true;
-            WP.Money -= InternetPM.upgradeCost;
-            
+            WP.Money -= InternetPM.upgradeCost; 
             InternetPM.upgradeCost += 25;
-
-            WP.viewerCap += addViewCap;
             InternetPM.Upgrade();
             SVS.UpdateUI();
-            if(InternetLevel > 9){
-                InternetButton.SetActive(false);
-            }
+            InitiateBuildTimer(InternetButton.GetComponent<Button>(), InternetTimer);
         }
         else{
                 if(!warning.activeSelf){
@@ -74,24 +72,27 @@ public class UpgradeScript : MonoBehaviour
 
        
     }
+    public void InternetUpgradeEffect()
+    {
+        
+            InternetLevel += 1;
+            WP.viewerCap += addViewCap;
+            if(InternetLevel > 9){
+                InternetButton.SetActive(false);
+            }
+    }
 
     public void RigUpgrade()
     {
         if (WP.Money >= RigPM.upgradeCost && RigLevel < 10)
         {
             SoundManager.PlaySound(SoundManager.UpgradeSound);  
-            RigLevel += 1;
             HelpScreenScript.TGamingRigBool = true;
             WP.Money -= RigPM.upgradeCost;
-
             RigPM.upgradeCost += 100;
-
-            WP.gamingRigStat += addRigStat;
             RigPM.Upgrade();
             SVS.UpdateUI();
-            if(RigLevel > 9){
-                RigButton.SetActive(false);
-            }
+            InitiateBuildTimer(RigButton.GetComponent<Button>(), RigTimer);
         }
               else{
                 if(!warning.activeSelf){
@@ -101,28 +102,44 @@ public class UpgradeScript : MonoBehaviour
         //raise value of gaming rig
     }
 
+    public void RigUpgradeEffect(){
+            RigLevel += 1;
+            WP.gamingRigStat += addRigStat;
+            if(RigLevel > 9){
+                RigButton.SetActive(false);
+            }
+    }
+
     public void SocialMediaUpgrade()
     {
         if (WP.Money >= SocialMediaPM.upgradeCost && SMMLevel < 10)
         {
             SoundManager.PlaySound(SoundManager.UpgradeSound);  
-            SMMLevel += 1;
             HelpScreenScript.TSocialMediaMarketingBool = true;
             WP.Money -= SocialMediaPM.upgradeCost;
-
             SocialMediaPM.upgradeCost += 50;
-
-            WP.socialMediaStat += addSMStat;
             SocialMediaPM.Upgrade();
             SVS.UpdateUI();
-            if(SMMLevel > 9){
-                SocialMediaButton.SetActive(false);
-            }
+            InitiateBuildTimer(SocialMediaButton.GetComponent<Button>(), SocialMediaTimer);
         }
               else{
                 if(!warning.activeSelf){
                     warning.SetActive(true);
                 }
         }
+    }
+
+    public void SocialMediaUpgradeEffect(){
+
+            SMMLevel += 1;
+            WP.socialMediaStat += addSMStat;
+            if(SMMLevel > 9){
+                SocialMediaButton.SetActive(false);
+            }
+    }
+
+    public void InitiateBuildTimer(Button button, GameObject timer){
+        timer.SetActive(true);
+        button.interactable =false;
     }
 }

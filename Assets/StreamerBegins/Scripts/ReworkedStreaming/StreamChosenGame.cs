@@ -15,6 +15,7 @@ public class StreamChosenGame : MonoBehaviour
     public ActiveGame AG;
     public GameObject NotEnoughIndicator;
     public GameStats[] GS;
+    public GameObject streamButton;
     public float streamDurationBar;
     public float streamDurationTimer;
     public static bool amIStreaming;
@@ -94,6 +95,7 @@ public class StreamChosenGame : MonoBehaviour
         {
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
+                streamButton.SetActive(false);
                 if(DC.DurationValue == 24){
                     TS.day +=1;
                     TS.ShittyFix();

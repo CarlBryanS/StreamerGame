@@ -4137,6 +4137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 1924798108}
   day: 1.333
+  oldDay: 0
   timeText: {fileID: 5339711}
   daysText: {fileID: 236269827}
   GS:
@@ -4147,6 +4148,7 @@ MonoBehaviour:
   WP: {fileID: 1924798107}
   BS: {fileID: 1166441404}
   hoursString: 
+  minutesString: 
 --- !u!1 &165936948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7150,7 +7152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineWidth: 0
   precomputeOutline: 1
   bakeKeys:
@@ -10693,7 +10695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineWidth: 0
   precomputeOutline: 1
   bakeKeys:
@@ -14495,7 +14497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineWidth: 0
   precomputeOutline: 1
   bakeKeys:
@@ -24650,7 +24652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineWidth: 0
   precomputeOutline: 1
   bakeKeys:
@@ -27892,7 +27894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineWidth: 0
   precomputeOutline: 1
   bakeKeys:
@@ -34851,7 +34853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
   outlineWidth: 0
   precomputeOutline: 0
   bakeKeys: []
@@ -36332,6 +36334,7 @@ MonoBehaviour:
   - {fileID: 2050108359}
   - {fileID: 1619422728}
   - {fileID: 136481856}
+  streamButton: {fileID: 1978317599}
   streamDurationBar: 20
   streamDurationTimer: 20
   FaceCamTexture: {fileID: 8400000, guid: 2164820264f059c418c4ae31d2328ec0, type: 2}
