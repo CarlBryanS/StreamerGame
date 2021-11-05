@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2975539496247060193}
   - component: {fileID: 4995014186009293934}
   - component: {fileID: 1125707515741121402}
+  - component: {fileID: -221063719124086370}
   m_Layer: 10
   m_Name: simsMoney
   m_TagString: simsMoney
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2975539496247060195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 181, z: 0}
-  m_LocalScale: {x: 22, y: 22, z: 22}
+  m_LocalScale: {x: 2.2507322, y: 2.2507322, z: 2.2507322}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 200
-  m_Sprite: {fileID: 21300000, guid: 86d3c6dc86b412e459fff31e04eaf823, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 825ceba3587853d47ad905c9eae3bb16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  SoundManager: {fileID: 0}
 --- !u!61 &1125707515741121402
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -109,16 +111,31 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028868914, y: 0.0096229315}
+  m_Offset: {x: -0.32882977, y: 0.009660721}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.06, y: 4.06}
+    oldSize: {x: 26.314903, y: 26.470001}
     newSize: {x: 2.66, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9687119, y: 4.0596876}
+  m_Size: {x: 24.378054, y: 23.87859}
   m_EdgeRadius: 0
+--- !u!114 &-221063719124086370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975539496247060195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d547380518f2b2418e6eee4e95131da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 825ceba3587853d47ad905c9eae3bb16, type: 3}
+  - {fileID: 21300000, guid: 4bb1edeb32295584885f4c86cf7b36ae, type: 3}

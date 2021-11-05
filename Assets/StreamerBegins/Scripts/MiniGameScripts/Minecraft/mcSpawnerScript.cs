@@ -39,14 +39,14 @@ public class mcSpawnerScript : MonoBehaviour
         GameObject mcEnemies = Instantiate(Spawnables[randomSpawn], whereToSpawn, transform.rotation) as GameObject;
         mcEnemies.transform.SetParent(parent.transform);
         if(this.tag == "simsSpawner" &&randomSpawn == 1){
-            xDimensions = 1.883467f;
-            yDimensions =3.463149f;
-            zDimensions =2.43028f;    
+            xDimensions = 2.250732f;
+            yDimensions =2.250732f;
+            zDimensions =22.250732f;    
         }
         else if(this.tag == "simsSpawner"){
-            xDimensions =22;
-            yDimensions =22;
-            zDimensions =22;
+            xDimensions =2.250732f;
+            yDimensions =2.250732f;
+            zDimensions =2.250732f;
         }
         mcEnemies.transform.localScale = new Vector3(xDimensions, yDimensions, zDimensions);
 

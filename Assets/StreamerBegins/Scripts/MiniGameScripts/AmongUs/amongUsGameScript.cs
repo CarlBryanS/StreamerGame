@@ -26,6 +26,8 @@ public class amongUsGameScript : MonoBehaviour
         amongUsPoints = 0;
         amongUsGoal = 10;
         time = ControlStreamTime.StreamTime + 20;
+        timerText.SetText(Mathf.RoundToInt(time).ToString());
+        amongUsGoalText.SetText(amongUsGoal.ToString() + "		                " + amongUsPoints.ToString()+ "      " + amongUsGoal.ToString());
     }
 
     // Update is called once per frame
@@ -35,9 +37,9 @@ public class amongUsGameScript : MonoBehaviour
             SoundManager.BGM.Stop(); 
             SoundManager.AmongUsBGM.enabled = true;
             if(WordManager.playerStarted){
-                amongUsGoalText.SetText("Type " + amongUsGoal.ToString() + " Words: " + amongUsPoints.ToString()+ "/" + amongUsGoal.ToString());
+                amongUsGoalText.SetText(amongUsGoal.ToString() + "		                " + amongUsPoints.ToString()+ "      "  + amongUsGoal.ToString());
                 time -= Time.unscaledDeltaTime;
-                timerText.SetText("Time Left: " + Mathf.RoundToInt(time));
+                timerText.SetText(Mathf.RoundToInt(time).ToString());
                 didThePlayerWin();
             }    
 

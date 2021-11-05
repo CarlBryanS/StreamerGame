@@ -33,17 +33,16 @@ public class mouseCursor : MonoBehaviour
            if(CSGOGameScript.csgoActive ==true && StreamChosenGame.GOAHEAD){
                Cursor.SetCursor(crosshair, new Vector2(32,31.5f), CursorMode.ForceSoftware);
            }
-           else if((amongUsGameScript.amongUsActive ==true || mcGameScript.mcActive)&& StreamChosenGame.GOAHEAD){
-               
-            if(Input.GetMouseButton(0)){
-                Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.ForceSoftware);
-            }
-            else if(Input.GetMouseButtonUp(0)){
-                Cursor.SetCursor(idleCursor, Vector2.zero, CursorMode.ForceSoftware);
-            }
-            else{
-                 Cursor.SetCursor(idleCursor, Vector2.zero, CursorMode.ForceSoftware);
-            }
+           else if((amongUsGameScript.amongUsActive ==true || mcGameScript.mcActive)&& StreamChosenGame.GOAHEAD){            
+                if(Input.GetMouseButton(0)){
+                    Cursor.SetCursor(clickCursor, Vector2.zero, CursorMode.ForceSoftware);
+                }
+                else if(Input.GetMouseButtonUp(0)){
+                    Cursor.SetCursor(idleCursor, Vector2.zero, CursorMode.ForceSoftware);
+                }
+                else{
+                    Cursor.SetCursor(idleCursor, Vector2.zero, CursorMode.ForceSoftware);
+                }
            }
             else if(simsGameScript.simsActive ==true && StreamChosenGame.GOAHEAD){
                 Cursor.visible = false;

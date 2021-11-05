@@ -61,6 +61,11 @@ public class TimerScript : MonoBehaviour
 
         if(Mathf.Floor(oldDay) < Mathf.Floor(day))
         {      
+            goNextDay();
+        }
+    }
+
+    public void goNextDay(){
             oldDay += 1;
             BS.CheckDays();
             for (int i = 0; i < GS.Length; i += 1)
@@ -68,7 +73,6 @@ public class TimerScript : MonoBehaviour
                 GS[i].ResetGameTrends();
                 GS[i].popularityIndicator();
             }
-        }
     }
 
     public float getNextTime(float jobTime){

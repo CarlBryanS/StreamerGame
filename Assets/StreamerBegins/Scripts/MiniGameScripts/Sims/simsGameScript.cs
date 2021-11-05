@@ -31,7 +31,7 @@ public class simsGameScript : MonoBehaviour
         simsPoints = 0;
         simsGoal = 20;
         simsHealth = 2;
-        time = ControlStreamTime.StreamTime +4;
+        time = ControlStreamTime.StreamTime +10;
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class simsGameScript : MonoBehaviour
         if(miniGameState.State ==miniGameState.mgState.onGoing&& StreamChosenGame.GOAHEAD){
             SoundManager.BGM.Stop(); 
             SoundManager.SimsBGM.enabled = true; 
-            simsGoalText.SetText("Catch " + simsGoal.ToString() + " Money: " + simsPoints.ToString()+ "/" + simsGoal.ToString());
+            simsGoalText.SetText("Catch " + simsGoal.ToString() + " Cookies: " + simsPoints.ToString()+ "/" + simsGoal.ToString());
             time -= Time.unscaledDeltaTime;
             timeText.SetText("Time Left:" + Mathf.RoundToInt(time));
             HealthText.SetText("Health Left: " + Mathf.RoundToInt(simsHealth));

@@ -58,8 +58,8 @@ public class BillsScript : MonoBehaviour
         MonthCount += 1;
         if(MonthCount == MonthThreshold)
         {
-            ElectricityObj.transform.localPosition = new Vector2(10.79f, 6.73f);
-            WaterObj.transform.localPosition = new Vector2(10.79f, 19.68f);
+          //  ElectricityObj.transform.localPosition = new Vector2(10.79f, 6.73f);
+           // WaterObj.transform.localPosition = new Vector2(10.79f, 19.68f);
             billsImage.sprite = billsSprites[0];
             billsDue = true;
             //if(miniGameState.State != miniGameState.mgState.onGoing){
@@ -70,8 +70,8 @@ public class BillsScript : MonoBehaviour
         else if (DayCount>= DayThreshold)
         {
 
-            ElectricityObj.transform.localPosition = new Vector2(10.79f, 9.550006f);
-            WaterObj.transform.localPosition = new Vector2(10.79f, -3.4f);
+            //ElectricityObj.transform.localPosition = new Vector2(10.79f, 9.550006f);
+          //  WaterObj.transform.localPosition = new Vector2(10.79f, -3.4f);
             billsImage.sprite = billsSprites[1];
             WP.Electricity = 500*currentMonth;
             WP.Water =500*currentMonth;

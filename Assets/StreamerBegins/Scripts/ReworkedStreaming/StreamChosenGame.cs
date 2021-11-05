@@ -96,9 +96,10 @@ public class StreamChosenGame : MonoBehaviour
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
                 streamButton.SetActive(false);
-                if(DC.DurationValue == 24){
+                if(DC.DurationValue == 1){
                     TS.day +=1;
                     TS.ShittyFix();
+                    TS.goNextDay();
                 }
                 mgs.gameEnabled();
                 AG.ResetHighlights();
@@ -110,7 +111,7 @@ public class StreamChosenGame : MonoBehaviour
                 RS.ViewersForTheDay = WP.Viewers;
                 WP.Fans += fanLimit(Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat) * DC.ReturnDurationInt(), 0, WP.Viewers));
                 RS.FansGainedValue = WP.Fans - tempFans;
-                WP.Money += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers);
+                WP.Money += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers) + GameTrend;
                 RS.MoneyGainedValue = WP.Money - tempMoney;
               
                 amIStreaming = true;

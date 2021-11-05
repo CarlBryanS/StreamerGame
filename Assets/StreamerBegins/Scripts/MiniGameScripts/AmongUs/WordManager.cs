@@ -34,7 +34,7 @@ public class WordManager : MonoBehaviour
 
     private void SetCurrentWord()
     {
-        text.color = Color.white;
+        text.color = Color.black;
         currentWord = WordGenerator.GetRandomWord();
         SetRemainingWord(currentWord);
     }

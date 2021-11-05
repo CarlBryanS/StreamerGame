@@ -79,7 +79,7 @@ void Update(){
            SoundManager.PlaySound(SoundManager.clickSound);   
             ptDurationBar = 5;
             partTimeDuration = 10;
-            WorkPartTime(0.4f, 0.1f, 50, 6);
+            WorkPartTime(0.4f, 0.1f, 60, 6);
             break;
         case "comShop":
             SoundManager.PlaySound(SoundManager.clickSound);   

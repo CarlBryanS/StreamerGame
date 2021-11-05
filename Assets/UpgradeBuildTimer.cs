@@ -16,12 +16,15 @@ public class UpgradeBuildTimer : MonoBehaviour
     public int Increment;
     public UnityEvent BuildComplete;
 
+    void Update(){
+    }
     public void StreamUpdateTimerText(){
         if(this.gameObject.activeSelf){
             hourNeeded -= ControlStreamTime.StreamTime;
-            timerText.SetText(hourNeeded.ToString() + ":" + "00");
+            timerText.SetText("Upgrading: "+"\n" +"Hrs: " + hourNeeded.ToString() + " : " + "00");
             if(hourNeeded <= 0){
                 this.gameObject.SetActive(false);
+                UpTheUpgradeTimer();
             }
         }
 
@@ -29,7 +32,7 @@ public class UpgradeBuildTimer : MonoBehaviour
     public void WorkUpdateTimerText(int Hours){
         if(this.gameObject.activeSelf){
         hourNeeded -= Hours;
-        timerText.SetText(hourNeeded.ToString() + " : " + "00");
+        timerText.SetText("Upgrading: "+"\n" +"Hrs: " + hourNeeded.ToString() + " : " + "00");
         if(hourNeeded <= 0){
             this.gameObject.SetActive(false);
             UpTheUpgradeTimer();
@@ -50,7 +53,7 @@ public class UpgradeBuildTimer : MonoBehaviour
 
     public void BuildTimer(){
         hourNeeded = returnHour(TimerNeeded);
-        timerText.SetText(hourNeeded.ToString() + " : " + "00");
+        timerText.SetText("Upgrading: "+"\n" +"Hrs: " + hourNeeded.ToString() + " : " + "00");
     }
 
     public int returnHour(int timerNeeded){

@@ -265,7 +265,7 @@ public class UISliding : MonoBehaviour
     public void OpenPartTimeScreen(){
         SoundManager.PlaySound(SoundManager.openWindowSound);   
         UIActive = true;
-        PartTimeScreen.DOAnchorPos(new Vector2(109f, 9.2f), 0.25f);
+        PartTimeScreen.DOAnchorPos(new Vector2(34f, 9.2f), 0.25f);
         DoorUI.SetActive(false);
         OpenMenu.Invoke();
         activeMenu = ActiveMenu.PartTime;

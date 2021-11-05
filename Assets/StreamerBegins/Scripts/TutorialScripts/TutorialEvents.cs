@@ -119,7 +119,6 @@ public class TutorialEvents : DialogueEvents
     public IEnumerator Event9(){
         TutorialScript.TextActive = true;
         HideDialogueBox.Invoke();
-        print(TutorialTriggerCheck.TutorialProgress);
         while(TutorialTriggerCheck.TutorialProgress ==7){
             yield return null;
         }

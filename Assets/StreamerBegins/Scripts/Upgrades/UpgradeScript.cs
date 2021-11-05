@@ -140,6 +140,6 @@ public class UpgradeScript : MonoBehaviour
 
     public void InitiateBuildTimer(Button button, GameObject timer){
         timer.SetActive(true);
-        button.interactable =false;
+        button.gameObject.SetActive(false);
     }
 }

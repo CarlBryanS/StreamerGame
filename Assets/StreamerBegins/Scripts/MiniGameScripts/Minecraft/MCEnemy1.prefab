@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4303821937569485101}
   - component: {fileID: 2810124917805494801}
   - component: {fileID: -4711418450580971974}
+  - component: {fileID: 6503671992123137362}
   m_Layer: 10
   m_Name: MCEnemy1
   m_TagString: Enemy
@@ -28,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4303821937569485103}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 650, y: -33, z: -27}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 650, y: -15, z: -27}
+  m_LocalScale: {x: 7.753508, y: 7.753508, z: 7.753508}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 433d2b60eefea5c4082ab8ca9d711b99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5181201528a403a468214c3396f8eec6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.709999, y: -0.1826973}
+  m_Offset: {x: 2.709999, y: -1.8487511}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 17.1, y: 35.090984}
+    oldSize: {x: 20.91, y: 40.94042}
     newSize: {x: 2.66, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.394165, y: 34.141823}
+  m_Size: {x: 10.394165, y: 37.47393}
   m_EdgeRadius: 0
 --- !u!50 &4303821937569485101
 Rigidbody2D:
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: -4
   health: 3
+  SoundManager: {fileID: 0}
 --- !u!95 &-4711418450580971974
 Animator:
   serializedVersion: 3
@@ -165,3 +167,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6503671992123137362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303821937569485103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d547380518f2b2418e6eee4e95131da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 0}
+  - {fileID: 0}
