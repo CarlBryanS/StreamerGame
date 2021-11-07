@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StreamChosenGame : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class StreamChosenGame : MonoBehaviour
     public GameObject warning;
     public GameObject warning2;
     public bool temptime;
+
+    public UnityEvent UpdateUpgradeTimers;
     void start(){
         temptime = false;
     }
@@ -95,6 +98,7 @@ public class StreamChosenGame : MonoBehaviour
         {
             if (WP.Energy >= DC.DurationValue && WP.Health >= DC.DurationValue)
             {
+                UpdateUpgradeTimers.Invoke();
                 streamButton.SetActive(false);
                 if(DC.DurationValue == 1){
                     TS.day +=1;
@@ -111,7 +115,7 @@ public class StreamChosenGame : MonoBehaviour
                 RS.ViewersForTheDay = WP.Viewers;
                 WP.Fans += fanLimit(Mathf.Clamp((Random.Range(0, WP.Viewers) +WP.socialMediaStat) * DC.ReturnDurationInt(), 0, WP.Viewers));
                 RS.FansGainedValue = WP.Fans - tempFans;
-                WP.Money += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers) + GameTrend;
+                WP.Money += Mathf.Clamp((WP.Fans + (GameTrend)) * DC.ReturnDurationInt(), 0, WP.Viewers) + scaledGameTrend(GameTrend);
                 RS.MoneyGainedValue = WP.Money - tempMoney;
               
                 amIStreaming = true;
@@ -128,6 +132,15 @@ public class StreamChosenGame : MonoBehaviour
                     warning2.SetActive(true);
                 }
             }
+        }
+    }
+
+    public int scaledGameTrend(int gameTrend){
+        if(DC.DurationValue >= 0.5){
+            return gameTrend;
+        }
+        else{
+            return gameTrend/2;
         }
     }
     

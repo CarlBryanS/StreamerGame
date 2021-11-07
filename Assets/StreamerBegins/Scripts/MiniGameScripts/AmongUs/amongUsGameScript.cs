@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class amongUsGameScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class amongUsGameScript : MonoBehaviour
     public static int amongUsGoal;
     public static bool amongUsActive;
     public SoundManager SoundManager;
+    public UnityEvent YouWin;
+    public UnityEvent YouLose;
 
     float time;
     // Start is called before the first frame update
@@ -51,7 +54,8 @@ public class amongUsGameScript : MonoBehaviour
             SoundManager.AmongUsBGM.enabled = false;
             amongUsActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Won!");
+            //resultText.SetText("You Won!");
+            YouWin.Invoke();
             UI.OpenGameResultScreen();       
             SoundManager.PlaySound(SoundManager.miniGameWinSound);            
         }
@@ -59,7 +63,8 @@ public class amongUsGameScript : MonoBehaviour
             SoundManager.AmongUsBGM.enabled = false;
             amongUsActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Lost!");
+            //resultText.SetText("You Lost!");
+            YouLose.Invoke();
             UI.OpenGameResultScreen();     
             SoundManager.PlaySound(SoundManager.miniGameLoseSound);   
         }

@@ -66,4 +66,11 @@ public class WORLDPARAMETERS : MonoBehaviour
     public void AmHoveredNo(){
         amIUIHovered = false;
     }
+
+    public void Cheat(){
+        Health = 1000;
+        Energy = 1000;
+        Money = 99999;
+        gamingRigStat = 10;
+    }
 }

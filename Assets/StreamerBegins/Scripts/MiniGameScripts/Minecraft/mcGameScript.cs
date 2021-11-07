@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class mcGameScript : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class mcGameScript : MonoBehaviour
     public static int mcGoal;
     public static bool mcActive;
     public static bool mcGotHit;
+    public UnityEvent YouWin;
+    public UnityEvent YouLose;
+
 
     float time;
     public SoundManager SoundManager;
@@ -50,7 +54,8 @@ public class mcGameScript : MonoBehaviour
         if(mcPoints >= mcGoal){
             mcActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Won!");
+           // resultText.SetText("You Won!");
+            YouWin.Invoke();
             UI.OpenGameResultScreen();       
             SoundManager.PlaySound(SoundManager.miniGameWinSound);   
             SoundManager.MCBGM.enabled = false;
@@ -60,7 +65,8 @@ public class mcGameScript : MonoBehaviour
         else if(mcGotHit|| time <= 0){
             mcActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Lost!");
+           // resultText.SetText("You Lost!");
+            YouLose.Invoke();
             UI.OpenGameResultScreen();     
             SoundManager.PlaySound(SoundManager.miniGameLoseSound);  
             SoundManager.MCBGM.enabled = false;         

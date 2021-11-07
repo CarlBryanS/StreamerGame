@@ -15,6 +15,10 @@ public class BillsScript : MonoBehaviour
     public TMP_Text Electricity;
     public TMP_Text Water;
 
+    public TMP_Text DayCountdownText1;
+    public TMP_Text DayCountdownText2;
+    int DayCountdown;
+
     public GameObject ElectricityObj;
     public GameObject WaterObj;
 
@@ -34,11 +38,13 @@ public class BillsScript : MonoBehaviour
  
     public SoundManager SoundManager;
         void Awake(){
+
         SoundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Start()
     {
+        DayCountdown = 29;
         lost = false;
         currentMonth = 1;
         billsImage = GetComponent<Image>();
@@ -50,6 +56,7 @@ public class BillsScript : MonoBehaviour
     {
         if(billsDue ==true && miniGameState.State != miniGameState.mgState.onGoing && StreamChosenGame.amIStreaming == false && GetInBed.isAsleep == false && PartTimeScript.isWorking == false && lost == false){
             UI.OpenBillsScreen();
+
         }
     }
     public void CheckDays()
@@ -79,6 +86,9 @@ public class BillsScript : MonoBehaviour
             Water.SetText(WP.Water.ToString());
             billsDue=true;
             DayCount = 0;
+            billsCountdown();
+            DayCountdownText1.SetText(DayCountdown.ToString());
+            DayCountdownText2.SetText(DayCountdown.ToString());
         }
     }
 
@@ -98,6 +108,9 @@ public class BillsScript : MonoBehaviour
                 currentMonth +=1;
                 billsDue = false;
                 SVS.UpdateUI();
+                DayCountdown =30;
+                DayCountdownText1.SetText(DayCountdown.ToString());
+                DayCountdownText2.SetText(DayCountdown.ToString());
             }
             else
             {
@@ -112,6 +125,9 @@ public class BillsScript : MonoBehaviour
             billsDue = false;
             UI.CloseBillsScreen();
         }
+    }
 
+    public void billsCountdown(){
+        DayCountdown -=1;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class CSGOGameScript : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class CSGOGameScript : MonoBehaviour
     public static int csgoGoal;
     public static bool csgoActive;
     public SoundManager SoundManager;
+    public UnityEvent YouWin;
+    public UnityEvent YouLose;
+
 
     float time;
         void Awake(){
@@ -26,6 +30,11 @@ public class CSGOGameScript : MonoBehaviour
         csgoPoints = 0;
         csgoGoal = ControlStreamTime.StreamTime;
         time = ControlStreamTime.StreamTime + 5;
+    }
+
+    void OnDisable()
+    {
+        csgoActive =false;
     }
 
     // Update is called once per frame
@@ -48,7 +57,8 @@ public class CSGOGameScript : MonoBehaviour
         if(csgoPoints >= csgoGoal){
             csgoActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Won!");
+            //resultText.SetText("You Won!");
+            YouWin.Invoke();
             UI.OpenGameResultScreen();   
             SoundManager.CSGOBGM.enabled = false;      
             SoundManager.PlaySound(SoundManager.miniGameWinSound);    
@@ -56,7 +66,8 @@ public class CSGOGameScript : MonoBehaviour
         else if(time <= 0){
             csgoActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Lost!");
+            //resultText.SetText("You Lost!");
+            YouLose.Invoke();
             UI.OpenGameResultScreen();     
             SoundManager.CSGOBGM.enabled = false;
             SoundManager.PlaySound(SoundManager.miniGameLoseSound);   

@@ -27,6 +27,8 @@ public class TimerScript : MonoBehaviour
 
     public static float currentHour;
     public static float currentMinutes;
+
+    public UnityEvent updateUpgradeTimers;
     // Start is called before the first frame update
     void Start()
     {

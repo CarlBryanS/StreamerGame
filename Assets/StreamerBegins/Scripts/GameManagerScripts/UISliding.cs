@@ -55,6 +55,7 @@ public class UISliding : MonoBehaviour
     //public GameObject StreamTitleBar;
     bool closeDelay;
     bool delayCoroutineRunning;
+    public UnityEvent ChangeUpgradeSprite;
 
     public SoundManager SoundManager;
     void Awake(){
@@ -92,6 +93,7 @@ public class UISliding : MonoBehaviour
     {
         if(!StreamChosenGame.amIStreaming&& UIActive == false&& !GetInBed.isAsleep)
         {
+            ChangeUpgradeSprite.Invoke();
             SoundManager.PlaySound(SoundManager.openWindowSound);   
             CloseUpgradeScreenButton.SetActive(true);
             OpenUpgradeScreenButton.SetActive(false);
@@ -155,17 +157,24 @@ public class UISliding : MonoBehaviour
 
     public void OpenBillsScreen()
     {
-        UIActive = true;
-        BillsScreen.DOAnchorPos(Vector2.zero, 0.25f);
-        OpenMenu.Invoke();
-        activeMenu = ActiveMenu.Bills;
+            UIActive = true;
+            BillsScreen.DOAnchorPos(Vector2.zero, 0.25f);
+            OpenMenu.Invoke();
+            activeMenu = ActiveMenu.Bills;
     }
 
     public void CloseBillsScreen()
     {  
-        UIActive = false;
-        BillsScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
-        CloseMenu.Invoke();
+        if(ResultsScreen.anchoredPosition == Vector2.zero){
+            BillsScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+            CloseMenu.Invoke();
+        }
+        else{
+            UIActive = false;
+            BillsScreen.DOAnchorPos(new Vector2(1566, 0), 0.25f);
+            CloseMenu.Invoke();
+        }
+
     }
 
     public void OpenGameStoreScreen()

@@ -35,6 +35,9 @@ public class PartTimeScript : MonoBehaviour
     public GameObject Lights;
 
     public SoundManager SoundManager;
+
+    public static float currentPartTimeEnergyCost;
+    public static float currentPartTimeHealthCost;
     void Awake(){
         SoundManager = FindObjectOfType<SoundManager>();
     }
@@ -80,18 +83,24 @@ void Update(){
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.4f, 0.1f, 60, 6);
+            currentPartTimeEnergyCost =0.4f;
+            currentPartTimeHealthCost =0.1f;
             break;
         case "comShop":
             SoundManager.PlaySound(SoundManager.clickSound);   
             ptDurationBar = 7;
             partTimeDuration = 10;
             WorkPartTime(0.15f, 0.2f, 15, 1);
+            currentPartTimeEnergyCost =0.15f;
+            currentPartTimeHealthCost =0.2f;
             break;
         case "angkas":
             SoundManager.PlaySound(SoundManager.clickSound);   
             ptDurationBar = 5;
             partTimeDuration = 10;
             WorkPartTime(0.1f, 0.4f, 30, 6);
+            currentPartTimeEnergyCost =0.1f;
+            currentPartTimeHealthCost =0.4f;
             break;
            default:
             Debug.Log("What Job Is this");

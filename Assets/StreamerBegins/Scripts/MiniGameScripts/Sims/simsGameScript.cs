@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.Events;
 public class simsGameScript : MonoBehaviour
 {
     public UISliding UI;
@@ -14,6 +14,9 @@ public class simsGameScript : MonoBehaviour
     public static int simsGoal;
     public static bool simsActive;
     public Camera gameplaycam;
+    public UnityEvent YouWin;
+    public UnityEvent YouLose;
+
 
     public GameObject player;
 
@@ -32,6 +35,10 @@ public class simsGameScript : MonoBehaviour
         simsGoal = 20;
         simsHealth = 2;
         time = ControlStreamTime.StreamTime +10;
+    }
+    void OnDisable()
+    {
+        simsActive =false;
     }
 
     // Update is called once per frame
@@ -56,7 +63,8 @@ public class simsGameScript : MonoBehaviour
             SoundManager.SimsBGM.enabled = false;
             simsActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Won!");
+           // resultText.SetText("You Won!");
+           YouWin.Invoke();
             UI.OpenGameResultScreen();       
             SoundManager.PlaySound(SoundManager.miniGameWinSound);   
             
@@ -65,7 +73,8 @@ public class simsGameScript : MonoBehaviour
             SoundManager.SimsBGM.enabled = false;
             simsActive = false;
             miniGameState.State = miniGameState.mgState.paused;
-            resultText.SetText("You Lost!");
+          //  resultText.SetText("You Lost!");
+            YouLose.Invoke();
             UI.OpenGameResultScreen();     
             SoundManager.PlaySound(SoundManager.miniGameLoseSound);   
         }
